@@ -2,17 +2,27 @@ package entidades;
 
 public class Cania {
 
-    public boolean valor;
+       private Boolean valor;
 
-    public Cania(boolean valor) {
+    public Cania(Boolean valor) {
         this.valor = valor;
     }
 
-    public boolean isValor() {
+    /**
+     * Métodos de acceso.
+     * @return 
+     */
+    public Boolean getValor() {
         return valor;
     }
 
-    public void setValor(boolean valor) {
+    public void setValor(Boolean valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Cania{" + "valor=" + valor + '}';
+    }
+    
 }

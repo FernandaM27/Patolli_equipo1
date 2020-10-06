@@ -18,6 +18,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
     
     public FrmIngresarPartida() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
     
      public static FrmIngresarPartida createInstance() {
