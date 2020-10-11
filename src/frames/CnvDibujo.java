@@ -5,6 +5,7 @@
  */
 package frames;
 
+import entidades.Ficha;
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -13,7 +14,9 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import sun.java2d.loops.DrawPolygons;
 import java.util.stream.IntStream;
 
@@ -22,9 +25,11 @@ public class CnvDibujo extends Canvas {
     private int numTablero;
     private final int centro = 230;
     private final int tamanioCasilla = 20;
+    private List<Ficha> fichas;
 
     public CnvDibujo(int numTablero) {
         this.numTablero = numTablero - 1;
+        fichas = new ArrayList<>();
     }
 
     @Override
@@ -40,13 +45,53 @@ public class CnvDibujo extends Canvas {
         this.dibujarLados(g2d);
         this.dibujarCirculo(g2d);
         this.dibujarTriangulos(g2d);
-//        g2d.setStroke(new BasicStroke(1));
-//        g2d.setColor(Color.BLUE);
-//        Ellipse2D.Double ficha = new Ellipse2D.Double(x+(ancho/7), y+(alto/7), ancho-(ancho/4), alto-(alto/4));
-//        g2d.fill(ficha);        
-//        g2d.setColor(Color.BLACK);
-//        g2d.draw(ficha);
+        this.dibujarFicha(g2d);
+    }
 
+    private void dibujarFicha(Graphics2D g2d) {
+        g2d.setStroke(new BasicStroke(1));
+        g2d.setColor(Color.BLUE);
+        Ellipse2D.Double ficha;
+        for (Ficha f : fichas) {
+            ficha = new Ellipse2D.Double(f.getCordenadaX(),
+                    f.getCordenadaY(), tamanioCasilla / 2, tamanioCasilla / 2);
+            g2d.fill(ficha);
+            g2d.setColor(Color.BLACK);
+            g2d.draw(ficha);
+        }
+
+    }
+
+    public void agregarFichas(Ficha ficha, int numJugador) {
+        switch (numJugador) {
+            case 1:
+                ficha.setCordenadaX(centro - tamanioCasilla);
+                ficha.setCordenadaY(centro);
+                break;
+            case 2:
+                ficha.setCordenadaX(centro);
+                ficha.setCordenadaY(centro + tamanioCasilla * 2);
+                break;
+            case 3:
+                ficha.setCordenadaX(centro + tamanioCasilla * 2);
+                ficha.setCordenadaY(centro + tamanioCasilla);
+                break;
+            case 4:
+                ficha.setCordenadaX(centro + tamanioCasilla);
+                ficha.setCordenadaY(centro - tamanioCasilla);
+                break;
+        }
+        this.repaint();
+    }
+
+    private Ficha moverFichaIzquierda(Ficha ficha) {
+        ficha.setCordenadaX(ficha.getCordenadaX() - tamanioCasilla);
+        return ficha;
+    }
+
+    private Ficha moverFichaDerecha(Ficha ficha) {
+        ficha.setCordenadaX(ficha.getCordenadaX() + tamanioCasilla);
+        return ficha;
     }
 
     private void dibujarTriangulos(Graphics2D g2d) {
@@ -59,7 +104,7 @@ public class CnvDibujo extends Canvas {
     private void dibujarTriangulosIzquierda(Graphics2D g2d) {
         //primer triangulo izquierda
         int[] x = {(this.centro - (tamanioCasilla * this.numTablero)) + (tamanioCasilla),
-            this.centro - (tamanioCasilla * this.numTablero) + tamanioCasilla*2,
+            this.centro - (tamanioCasilla * this.numTablero) + tamanioCasilla * 2,
             this.centro - (tamanioCasilla * this.numTablero)};
         int[] y = {this.centro + tamanioCasilla,
             this.centro, this.centro};
@@ -68,7 +113,7 @@ public class CnvDibujo extends Canvas {
         g2d.drawPolygon(p);
         //segundo triangulo izquierda
         x = new int[]{(this.centro - (tamanioCasilla * this.numTablero)) + (tamanioCasilla),
-            this.centro - (tamanioCasilla * this.numTablero) + tamanioCasilla*2,
+            this.centro - (tamanioCasilla * this.numTablero) + tamanioCasilla * 2,
             this.centro - (tamanioCasilla * this.numTablero)};
         y = new int[]{this.centro + tamanioCasilla,
             this.centro + (this.tamanioCasilla * 2), this.centro + (this.tamanioCasilla * 2)};
@@ -82,7 +127,7 @@ public class CnvDibujo extends Canvas {
         //primer triangulo derecha 
         int[] x = new int[]{(this.centro + (tamanioCasilla * this.numTablero)) + ((tamanioCasilla * 2) - tamanioCasilla),
             this.centro + (tamanioCasilla * this.numTablero) + tamanioCasilla * 2,
-            this.centro + (tamanioCasilla * this.numTablero) };
+            this.centro + (tamanioCasilla * this.numTablero)};
         int[] y = new int[]{this.centro + tamanioCasilla,
             this.centro + (this.tamanioCasilla * 2), this.centro + (this.tamanioCasilla * 2)};
         Polygon p = new Polygon(x, y, 3);
@@ -106,7 +151,7 @@ public class CnvDibujo extends Canvas {
             this.centro,
             this.centro + (tamanioCasilla)};
         int[] y = new int[]{this.centro - (this.tamanioCasilla * this.numTablero),
-            this.centro - ((tamanioCasilla * this.numTablero) - this.tamanioCasilla*2),
+            this.centro - ((tamanioCasilla * this.numTablero) - this.tamanioCasilla * 2),
             this.centro - (tamanioCasilla * this.numTablero) + this.tamanioCasilla};
         Polygon p = new Polygon(x, y, 3);
         g2d.fillPolygon(p);
@@ -116,7 +161,7 @@ public class CnvDibujo extends Canvas {
             this.centro + tamanioCasilla * 2,
             this.centro + (tamanioCasilla)};
         y = new int[]{this.centro - (this.tamanioCasilla * this.numTablero),
-            this.centro - ((tamanioCasilla * this.numTablero) - this.tamanioCasilla*2),
+            this.centro - ((tamanioCasilla * this.numTablero) - this.tamanioCasilla * 2),
             this.centro - (tamanioCasilla * this.numTablero) + this.tamanioCasilla};
         p = new Polygon(x, y, 3);
         g2d.fillPolygon(p);
@@ -128,8 +173,8 @@ public class CnvDibujo extends Canvas {
         int[] x = new int[]{(this.centro),
             this.centro,
             this.centro + (tamanioCasilla)};
-        int[] y = new int[]{this.centro + (this.tamanioCasilla * this.numTablero) ,
-            this.centro + ((tamanioCasilla * this.numTablero) + this.tamanioCasilla) +tamanioCasilla,
+        int[] y = new int[]{this.centro + (this.tamanioCasilla * this.numTablero),
+            this.centro + ((tamanioCasilla * this.numTablero) + this.tamanioCasilla) + tamanioCasilla,
             this.centro + (tamanioCasilla * this.numTablero) + this.tamanioCasilla * 2 - (tamanioCasilla)};
         Polygon p = new Polygon(x, y, 3);
         g2d.fillPolygon(p);
@@ -138,9 +183,9 @@ public class CnvDibujo extends Canvas {
         x = new int[]{(this.centro + this.tamanioCasilla * 2),
             this.centro + this.tamanioCasilla * 2,
             this.centro + (tamanioCasilla)};
-        y = new int[]{this.centro + (this.tamanioCasilla * this.numTablero) ,
+        y = new int[]{this.centro + (this.tamanioCasilla * this.numTablero),
             this.centro + ((tamanioCasilla * this.numTablero) + this.tamanioCasilla) + tamanioCasilla,
-            this.centro + (tamanioCasilla * this.numTablero) + this.tamanioCasilla * 2 - (tamanioCasilla )};
+            this.centro + (tamanioCasilla * this.numTablero) + this.tamanioCasilla * 2 - (tamanioCasilla)};
         p = new Polygon(x, y, 3);
         g2d.fillPolygon(p);
         g2d.drawPolygon(p);
