@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Partida {
 
-   private final List<Cania> canias;
+    private final List<Cania> canias;
     private int numeroJugadores;
     private int numeroFichas;
     private int montoApuestas;

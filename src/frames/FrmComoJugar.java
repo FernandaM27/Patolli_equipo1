@@ -21,6 +21,9 @@ public class FrmComoJugar extends javax.swing.JFrame {
     public FrmComoJugar() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        
     }
 
     /**
@@ -43,6 +46,11 @@ public class FrmComoJugar extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 240, 173));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 240, 173), 3, true));
@@ -109,10 +117,15 @@ public class FrmComoJugar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       FrmPrincipal frm = new FrmPrincipal();
+       FrmPrincipal frm = FrmPrincipal.createPrincipal();
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
+        frmPrincipal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

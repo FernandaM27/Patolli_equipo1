@@ -15,13 +15,15 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
      * Creates new form FrmIngresar
      */
     private static FrmIngresarPartida frmIngresaP;
-    
+
     public FrmIngresarPartida() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setResizable(false);
     }
-    
-     public static FrmIngresarPartida createInstance() {
+
+    public static FrmIngresarPartida createInstance() {
         if (frmIngresaP == null) {
             return frmIngresaP = new FrmIngresarPartida();
         } else if (frmIngresaP != null) {
@@ -49,6 +51,11 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(69, 38, 29));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(69, 38, 29), 3));
@@ -102,6 +109,11 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
+        frmPrincipal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

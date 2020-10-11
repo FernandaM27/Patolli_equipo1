@@ -18,12 +18,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public FrmPrincipal() {
+    private FrmPrincipal() {
         initComponents();
         this.setTitle("Patolli");
         this.setLocationRelativeTo(this);
         this.setVisible(true);
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setResizable(false);
     }
      public static FrmPrincipal createPrincipal() {
         if (frmPrincipal == null) {

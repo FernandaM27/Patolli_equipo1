@@ -47,7 +47,7 @@ public class CnvDibujo extends Canvas {
         this.dibujarCirculo(g2d);
         this.dibujarTriangulos(g2d);
         this.dibujarFicha(g2d);
-
+         
     }
 
     private void dibujarFicha(Graphics2D g2d) {
@@ -88,14 +88,14 @@ public class CnvDibujo extends Canvas {
         this.repaint();
     }
 
-    private Ficha moverFichaIzquierda(Ficha ficha) {
+    public void moverFichaIzquierda(Ficha ficha) {
         ficha.setCordenadaX(ficha.getCordenadaX() - tamanioCasilla);
-        return ficha;
+        this.repaint();
     }
 
-    private Ficha moverFichaDerecha(Ficha ficha) {
+    private void moverFichaDerecha(Ficha ficha) {
         ficha.setCordenadaX(ficha.getCordenadaX() + tamanioCasilla);
-        return ficha;
+        this.repaint();
     }
 
     private void dibujarTriangulos(Graphics2D g2d) {
@@ -108,8 +108,8 @@ public class CnvDibujo extends Canvas {
     private void dibujarTriangulosIzquierda(Graphics2D g2d) {
         //primer triangulo izquierda
         int[] x = {(this.centro - (tamanioCasilla * this.numTablero)) + (tamanioCasilla),
-            this.centro - (tamanioCasilla * this.numTablero) + tamanioCasilla * 2,
-            this.centro - (tamanioCasilla * this.numTablero)};
+            this.centro - (tamanioCasilla * this.numTablero) + tamanioCasilla+tamanioCasilla/2,
+            this.centro - (tamanioCasilla * this.numTablero)+tamanioCasilla/2};
         int[] y = {this.centro + tamanioCasilla,
             this.centro, this.centro};
         Polygon p = new Polygon(x, y, 3);

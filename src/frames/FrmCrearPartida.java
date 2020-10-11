@@ -23,6 +23,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.setResizable(false);
     }
 
     public static FrmCrearPartida getInstance() {
@@ -67,6 +68,11 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         txtFondos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(199, 213, 76));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(154, 181, 42), 3));
@@ -198,7 +204,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-         int numTablero = 0;
+        int numTablero = 0;
         if (cuatroC.isSelected()) {
             numTablero = 4;
         } else if (cincoC.isSelected()) {
@@ -216,6 +222,11 @@ public class FrmCrearPartida extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un número de casillas");
         }
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
+        frmPrincipal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
