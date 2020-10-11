@@ -26,6 +26,7 @@ public class CnvDibujo extends Canvas {
     private final int centro = 230;
     private final int tamanioCasilla = 20;
     private List<Ficha> fichas;
+    private Graphics2D g2d;
 
     public CnvDibujo(int numTablero) {
         this.numTablero = numTablero - 1;
@@ -34,7 +35,7 @@ public class CnvDibujo extends Canvas {
 
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
+        g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
         Rectangle rect = new Rectangle();
         rect.setBounds(0, 0, this.getWidth() - 1, this.getHeight() - 1);
@@ -46,13 +47,15 @@ public class CnvDibujo extends Canvas {
         this.dibujarCirculo(g2d);
         this.dibujarTriangulos(g2d);
         this.dibujarFicha(g2d);
+
     }
 
     private void dibujarFicha(Graphics2D g2d) {
         g2d.setStroke(new BasicStroke(1));
-        g2d.setColor(Color.BLUE);
         Ellipse2D.Double ficha;
         for (Ficha f : fichas) {
+            g2d.setColor(Color.BLUE);
+
             ficha = new Ellipse2D.Double(f.getCordenadaX(),
                     f.getCordenadaY(), tamanioCasilla / 2, tamanioCasilla / 2);
             g2d.fill(ficha);
@@ -81,6 +84,7 @@ public class CnvDibujo extends Canvas {
                 ficha.setCordenadaY(centro - tamanioCasilla);
                 break;
         }
+        fichas.add(ficha);
         this.repaint();
     }
 
