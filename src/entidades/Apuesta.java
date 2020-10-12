@@ -4,6 +4,10 @@ public class Apuesta {
 
     public int cantidad;
 
+    /**
+     * Constructor que establece el valor que va a tener la apuesta en la partida
+     * @param cantidad valor de la apuesta
+     */
     public Apuesta(int cantidad) {
         this.cantidad = cantidad;
     }

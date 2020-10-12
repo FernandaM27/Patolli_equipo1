@@ -14,6 +14,12 @@ import entidades.Casilla;
 public class CoordenadaCasilla extends Coordenada {
     private Casilla casilla;
 
+    /**
+     * Consructor que establece una casilla y sus coordenadas, hereda de Coordenada
+     * @param x coordenada x
+     * @param y coordenada y
+     * @param casilla la casilla que va a estar en las coordenadas establecidas
+     */
     public CoordenadaCasilla(int x,int y,Casilla casilla) {
         super(x, y);
         this.casilla = casilla;

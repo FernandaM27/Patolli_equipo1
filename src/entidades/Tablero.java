@@ -7,6 +7,10 @@ public class Tablero {
     public int numCasillas;
     public ArrayList<Casilla> casillas = new ArrayList<>(numCasillas);
 
+    /**
+     * Crea el tablero
+     * @param numCasillas numero de casillas por aspa
+     */
     public Tablero(int numCasillas) {
         this.numCasillas = numCasillas;
     }

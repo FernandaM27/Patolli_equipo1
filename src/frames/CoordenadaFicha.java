@@ -14,6 +14,12 @@ import entidades.Ficha;
 public class CoordenadaFicha extends Coordenada{
     private Ficha ficha;
     
+    /**
+     * Constructor que establece una ficha y sus coordenadas, hereda de Coordenada
+     * @param ficha ficha que va a estar en las coordenadas establecidas
+     * @param x coordenada x
+     * @param y coordenada yS
+     */
     public CoordenadaFicha(Ficha ficha,int x, int y) {
         super(x, y);
         this.ficha=ficha;

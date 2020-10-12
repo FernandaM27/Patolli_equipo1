@@ -13,8 +13,8 @@ import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 
-     private static FrmPrincipal frmPrincipal;
-     
+    private static FrmPrincipal frmPrincipal;
+
     /**
      * Creates new form Principal
      */
@@ -26,7 +26,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
     }
-     public static FrmPrincipal createPrincipal() {
+
+    /**
+     * Contructor que crea el frame principal
+     * @return regresa una instancia de frame principal, aplicando singleton
+     */
+    public static FrmPrincipal createPrincipal() {
         if (frmPrincipal == null) {
             return frmPrincipal = new FrmPrincipal();
         } else if (frmPrincipal != null) {
@@ -34,7 +39,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
         return null;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,13 +137,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       FrmCrearPartida frmCP= FrmCrearPartida.getInstance();
+        FrmCrearPartida frmCP = FrmCrearPartida.getInstance();
         frmCP.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-       FrmPrincipal frm = FrmPrincipal.createPrincipal();
+        FrmPrincipal frm = FrmPrincipal.createPrincipal();
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
@@ -149,9 +153,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       FrmComoJugar frmCJ = new FrmComoJugar();
-      frmCJ.setVisible(true);
-      this.dispose();
+        FrmComoJugar frmCJ = new FrmComoJugar();
+        frmCJ.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

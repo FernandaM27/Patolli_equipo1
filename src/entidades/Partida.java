@@ -11,6 +11,12 @@ public class Partida {
     private int numeroFichas;
     private int montoApuestas;
 
+    /**
+     * Constructor que cera una partida
+     * @param numeroJugadores cantidad de jugadores que van a jugar
+     * @param numeroFichas cantidad de fichas que va a tener cada jugador
+     * @param montoApuestas valor que van a tener las apuestas de esa partida
+     */
     public Partida(int numeroJugadores, int numeroFichas, int montoApuestas) {
         canias = new ArrayList<>(5);
         this.numeroJugadores = numeroJugadores;

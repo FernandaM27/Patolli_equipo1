@@ -6,6 +6,10 @@ public class Ficha {
     private Jugador jugador;
     private int orden;
 
+    /**
+     * Constructor que crea una ficha y establece el orden de salida de ella
+     * @param orden valor de orden en el que salieron las fichas
+     */
     public Ficha(int orden) {
         this.orden=orden;
     }

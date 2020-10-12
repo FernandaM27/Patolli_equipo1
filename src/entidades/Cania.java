@@ -2,16 +2,17 @@ package entidades;
 
 public class Cania {
 
-       private Boolean valor;
+    private Boolean valor;
 
+    /**
+     * Constructor que establece el valor de la cania, que se usa como dado en el juego
+     * Solo puede tener dos vakores
+     * @param valor valor de la cania
+     */
     public Cania(Boolean valor) {
         this.valor = valor;
     }
 
-    /**
-     * Métodos de acceso.
-     * @return 
-     */
     public Boolean getValor() {
         return valor;
     }
