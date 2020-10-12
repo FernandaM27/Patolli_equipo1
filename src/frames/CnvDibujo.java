@@ -6,6 +6,7 @@
 package frames;
 
 import entidades.Ficha;
+import entidades.Jugador;
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -25,12 +26,15 @@ public class CnvDibujo extends Canvas {
     private int numTablero;
     private final int centro = 230;
     private final int tamanioCasilla = 20;
-    private List<Ficha> fichas;
+    private List<CoordenadaFicha> coordenadasFichas;
+    private List<CoordenadaCasilla>coordenadasCasillas;
+    
     private Graphics2D g2d;
 
     public CnvDibujo(int numTablero) {
         this.numTablero = numTablero - 1;
-        fichas = new ArrayList<>();
+        coordenadasFichas = new ArrayList<>();
+        coordenadasCasillas = new ArrayList<>();
     }
 
     @Override
@@ -53,11 +57,10 @@ public class CnvDibujo extends Canvas {
     private void dibujarFicha(Graphics2D g2d) {
         g2d.setStroke(new BasicStroke(1));
         Ellipse2D.Double ficha;
-        for (Ficha f : fichas) {
+        for (CoordenadaFicha coordenada : coordenadasFichas) {
             g2d.setColor(Color.BLUE);
-
-            ficha = new Ellipse2D.Double(f.getCordenadaX(),
-                    f.getCordenadaY(), tamanioCasilla / 2, tamanioCasilla / 2);
+            ficha = new Ellipse2D.Double(coordenada.getX(),
+                    coordenada.getY(), tamanioCasilla / 2, tamanioCasilla / 2);
             g2d.fill(ficha);
             g2d.setColor(Color.BLACK);
             g2d.draw(ficha);
@@ -65,38 +68,75 @@ public class CnvDibujo extends Canvas {
 
     }
 
-    public void agregarFichas(Ficha ficha, int numJugador) {
+    public void agregarFichas(Ficha ficha,int numJugador) {
+        int x=0;
+        int y=0;
         switch (numJugador) {
             case 1:
-                ficha.setCordenadaX(centro - tamanioCasilla);
-                ficha.setCordenadaY(centro);
+                x=(centro - tamanioCasilla);
+                y=(centro);
                 break;
             case 2:
-                ficha.setCordenadaX(centro);
-                ficha.setCordenadaY(centro + tamanioCasilla * 2);
+                x=(centro);
+                y=(centro + tamanioCasilla * 2);
                 break;
             case 3:
-                ficha.setCordenadaX(centro + tamanioCasilla * 2);
-                ficha.setCordenadaY(centro + tamanioCasilla);
+                x=(centro + tamanioCasilla * 2);
+                y=(centro + tamanioCasilla);
                 break;
             case 4:
-                ficha.setCordenadaX(centro + tamanioCasilla);
-                ficha.setCordenadaY(centro - tamanioCasilla);
+                x=(centro + tamanioCasilla);
+                y=(centro - tamanioCasilla);
                 break;
         }
-        fichas.add(ficha);
+        coordenadasFichas.add(new CoordenadaFicha(ficha, x, y));
         this.repaint();
     }
 
-    public void moverFichaIzquierda(Ficha ficha) {
-        ficha.setCordenadaX(ficha.getCordenadaX() - tamanioCasilla);
+    public void moverFicha(int orden, int cantidad){
+        CoordenadaFicha coordenada = this.buscarFicha(orden);
+        this.moverFichaAbajo(coordenada);
+    }
+    //>AGREGARjUGADOR
+    public CoordenadaFicha buscarFicha(int orden){
+        for (CoordenadaFicha coor : coordenadasFichas) {
+            if(coor.getFicha().getOrden() == orden){
+                return coor;
+            }
+        }
+        return null;
+    }
+    
+    public CoordenadaCasilla buscarCasilla(int x, int y){
+        for (CoordenadaCasilla coordenaC: coordenadasCasillas) {
+            if(coordenaC.getX()== x && coordenaC.getY()==y){
+                return coordenaC;
+            }
+        }
+        return null;
+    }
+    
+    public void moverFichaIzquierda(CoordenadaFicha coordenada) {
+        coordenada.setX(coordenada.getX() - tamanioCasilla);
         this.repaint();
     }
 
-    private void moverFichaDerecha(Ficha ficha) {
-        ficha.setCordenadaX(ficha.getCordenadaX() + tamanioCasilla);
+    private void moverFichaDerecha(CoordenadaFicha coordenada) {
+        coordenada.setX(coordenada.getX()  + tamanioCasilla);
         this.repaint();
     }
+    
+   private void moverFichaAbajo(CoordenadaFicha coordenada) {
+        coordenada.setY(coordenada.getY() + tamanioCasilla);
+        this.repaint();
+    }
+
+     private void moverFichaArriba(CoordenadaFicha coordenada) {
+        coordenada.setY(coordenada.getY() - tamanioCasilla);
+        this.repaint();
+    }
+    
+    
 
     private void dibujarTriangulos(Graphics2D g2d) {
         this.dibujarTriangulosIzquierda(g2d);

@@ -21,8 +21,7 @@ public class FrmTablero extends javax.swing.JFrame {
     public FrmTablero(int numTablero) {
         canvas = new CnvDibujo(numTablero);
         canvas.setBounds(160, 50, 500, 500);
-        canvas.setBackground(Color.white);
-        
+        canvas.setBackground(Color.white);      
         this.add(canvas);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -31,11 +30,9 @@ public class FrmTablero extends javax.swing.JFrame {
         this.setResizable(false);
     }
     
-    private void agregarFicha(int numJugador){
-        canvas.agregarFichas(new Ficha("#000000"), 1);
-        canvas.agregarFichas(new Ficha("#000000"), 2);
-        canvas.agregarFichas(new Ficha("#000000"), 3);
-        canvas.agregarFichas(new Ficha("#000000"), 4);
+    private void agregarFicha(){
+        canvas.agregarFichas(new Ficha(1),1);
+        canvas.agregarFichas(new Ficha(2),2);
     }
     
     private FrmTablero() {
@@ -57,6 +54,7 @@ public class FrmTablero extends javax.swing.JFrame {
         jugador3 = new javax.swing.JLabel();
         jugador2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -76,10 +74,17 @@ public class FrmTablero extends javax.swing.JFrame {
 
         jugador2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/m2.PNG"))); // NOI18N
 
-        jButton2.setText("jButton1");
+        jButton2.setText("Ingresar Ficha");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Mover");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -92,34 +97,36 @@ public class FrmTablero extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jugador3)
                     .addComponent(jugador2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 588, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jugador4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton2)
+                        .addGap(121, 121, 121)
+                        .addComponent(jugador4))
                     .addComponent(jugador1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(36, 36, 36))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(402, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(321, 321, 321)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jugador4)
-                    .addComponent(jugador3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jugador4)
+                            .addComponent(jugador3)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jugador2)
                     .addComponent(jugador1))
                 .addGap(22, 22, 22))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(jButton2)
-                    .addContainerGap(535, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,10 +149,16 @@ public class FrmTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.agregarFicha();
      }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.canvas.moverFicha(1, 5);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jugador1;

@@ -3,9 +3,12 @@ package entidades;
 public class Ficha {
 
     private String color;
-    private int cordenadaX;
-    private int cordenadaY;
     private Jugador jugador;
+    private int orden;
+
+    public Ficha(int orden) {
+        this.orden=orden;
+    }
 
     public Jugador getJugador() {
         return jugador;
@@ -15,32 +18,20 @@ public class Ficha {
         this.jugador = jugador;
     }
 
-    public int getCordenadaX() {
-        return cordenadaX;
-    }
-
-    public void setCordenadaX(int cordenadaX) {
-        this.cordenadaX = cordenadaX;
-    }
-
-    public int getCordenadaY() {
-        return cordenadaY;
-    }
-
-    public void setCordenadaY(int cordenadaY) {
-        this.cordenadaY = cordenadaY;
-    }
-
-    public Ficha(String color) {
-        this.color = color;
-    }
-
     public String getColor() {
         return color;
     }
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
     }
 
 }
