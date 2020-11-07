@@ -20,6 +20,8 @@ import java.util.Arrays;
 import java.util.List;
 import sun.java2d.loops.DrawPolygons;
 import java.util.stream.IntStream;
+import modelos.CoordenadaCasilla;
+import modelos.CoordenadaFicha;
 
 public class CnvDibujo extends Canvas {
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package frames;
+package modelos;
 
 /**
  *
@@ -13,11 +13,6 @@ public abstract class Coordenada {
     protected int x;
     protected int y;
 
-    /**
-     * Constructor que inicializa las coordenadas
-     * @param x coordenada x
-     * @param y coordenada y
-     */
     public Coordenada(int x, int y) {
         this.x = x;
         this.y = y;
