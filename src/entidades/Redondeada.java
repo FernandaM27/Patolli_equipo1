@@ -11,4 +11,9 @@ public class Redondeada extends Casilla {
         super(disponible);
     }
 
+    @Override
+    public String toString() {
+        return "Redondeada{" + '}';
+    }
+    
 }

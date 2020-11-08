@@ -12,9 +12,15 @@ import entidades.Casilla;
  * @author Dany
  */
 public class CoordenadaCasilla extends Coordenada {
+
     private Casilla casilla;
 
-    public CoordenadaCasilla(int x,int y,Casilla casilla) {
+    @Override
+    public String toString() {
+        return "CoordenadaCasilla{"+this.x+", "+this.y+", " + "casilla=" + casilla + '}';
+    }
+
+    public CoordenadaCasilla(int x, int y, Casilla casilla) {
         super(x, y);
         this.casilla = casilla;
     }
@@ -26,5 +32,5 @@ public class CoordenadaCasilla extends Coordenada {
     public void setCasilla(Casilla casilla) {
         this.casilla = casilla;
     }
-    
+
 }

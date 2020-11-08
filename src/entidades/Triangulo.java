@@ -10,4 +10,9 @@ public class Triangulo extends Casilla {
         super(disponible);
     }
 
+    @Override
+    public String toString() {
+        return "Triangulo{" + '}';
+    }
+
 }

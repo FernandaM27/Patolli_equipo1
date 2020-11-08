@@ -6,7 +6,6 @@
 package frames;
 
 import entidades.Ficha;
-import entidades.Jugador;
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -16,10 +15,7 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import sun.java2d.loops.DrawPolygons;
-import java.util.stream.IntStream;
 import modelos.CoordenadaCasilla;
 import modelos.CoordenadaFicha;
 

@@ -11,4 +11,9 @@ public class Normal extends Casilla {
         super(disponible);
     }
 
+    @Override
+    public String toString() {
+        return "Normal{" + '}';
+    }
+
 }

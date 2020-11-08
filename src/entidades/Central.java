@@ -10,4 +10,9 @@ public class Central extends Casilla {
         super(disponible);
     }
 
+    @Override
+    public String toString() {
+        return "Central{" + '}';
+    }
+
 }
