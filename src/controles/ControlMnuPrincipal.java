@@ -35,9 +35,6 @@ public class ControlMnuPrincipal implements ActionListener {
         } else if (event.getActionCommand().equalsIgnoreCase("Ingresar partida")) {
             this.ingresarPartida();
         }
-        
-        
-        
     }
 
     private void crearPartida() {

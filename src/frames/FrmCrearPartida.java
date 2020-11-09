@@ -6,6 +6,7 @@
 package frames;
 
 import controles.ControlCrearPartida;
+import entidades.Partida;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,37 +15,31 @@ import javax.swing.JOptionPane;
  */
 public class FrmCrearPartida extends javax.swing.JFrame {
 
-     private static FrmCrearPartida crearPartida;
-     
+    private static FrmCrearPartida crearPartida;
+    private ControlCrearPartida cCrearPartida;
+
     /**
      * Creates new form FrmPartida
      */
     public FrmCrearPartida() {
         initComponents();
+        cCrearPartida = new ControlCrearPartida(this);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setResizable(false);
-        this.agregarActionListeners(new ControlCrearPartida(this));
+        this.inicializarComandos();
+        this.agregarActionListeners(cCrearPartida);
     }
-    
-    public void inicializarComandos(){
-        if (cuatroC.isSelected()) { 
-            this.btnListo.setActionCommand("listo4");
-        } else if (cincoC.isSelected()) {
-            this.btnListo.setActionCommand("Listo5");
-        } else if (seisC.isSelected()) {
-            this.btnListo.setActionCommand("Listo6");
-        } else if (sieteC.isSelected()) {
-            this.btnListo.setActionCommand("Listo7");
-        }
-        
+
+    private void inicializarComandos() {
+        this.btnListo.setActionCommand("listo");
     }
-    
-    private void agregarActionListeners(ControlCrearPartida ctrlCrearPartida){
+
+    private void agregarActionListeners(ControlCrearPartida ctrlCrearPartida) {
         this.btnListo.addActionListener(ctrlCrearPartida);
     }
-    
+
     public static FrmCrearPartida getInstance() {
         if (crearPartida == null) {
             return crearPartida = new FrmCrearPartida();
@@ -53,7 +48,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         }
         return null;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,15 +71,13 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         sieteC = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxNumJugadores = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        dosJ = new javax.swing.JRadioButton();
-        tresJ = new javax.swing.JRadioButton();
-        cuatroJ = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         txtApuesta = new javax.swing.JTextField();
         txtFondos = new javax.swing.JTextField();
+        cbxNumFichas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -152,18 +145,18 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(68, 32, 6));
         jLabel6.setText("Num. jugadores");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(68, 32, 6));
         jLabel7.setText("Num. fichas");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(199, 213, 76));
-        jComboBox1.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(68, 32, 6));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
+        cbxNumJugadores.setBackground(new java.awt.Color(199, 213, 76));
+        cbxNumJugadores.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        cbxNumJugadores.setForeground(new java.awt.Color(68, 32, 6));
+        cbxNumJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
+        jPanel1.add(cbxNumJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(68, 32, 6));
@@ -175,28 +168,6 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         jLabel9.setText("valor por apuesta");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
 
-        dosJ.setBackground(new java.awt.Color(199, 213, 76));
-        btgJugadores.add(dosJ);
-        dosJ.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        dosJ.setForeground(new java.awt.Color(68, 32, 6));
-        dosJ.setText("2");
-        jPanel1.add(dosJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
-
-        tresJ.setBackground(new java.awt.Color(199, 213, 76));
-        btgJugadores.add(tresJ);
-        tresJ.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        tresJ.setForeground(new java.awt.Color(68, 32, 6));
-        tresJ.setText("3");
-        jPanel1.add(tresJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
-
-        cuatroJ.setBackground(new java.awt.Color(199, 213, 76));
-        btgJugadores.add(cuatroJ);
-        cuatroJ.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        cuatroJ.setForeground(new java.awt.Color(68, 32, 6));
-        cuatroJ.setSelected(true);
-        cuatroJ.setText("4");
-        jPanel1.add(cuatroJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(68, 32, 6));
         jLabel5.setText("Tamaño del tablero");
@@ -207,6 +178,12 @@ public class FrmCrearPartida extends javax.swing.JFrame {
 
         txtFondos.setBackground(new java.awt.Color(248, 228, 180));
         jPanel1.add(txtFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 80, 30));
+
+        cbxNumFichas.setBackground(new java.awt.Color(199, 213, 76));
+        cbxNumFichas.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        cbxNumFichas.setForeground(new java.awt.Color(68, 32, 6));
+        cbxNumFichas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
+        jPanel1.add(cbxNumFichas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,19 +205,40 @@ public class FrmCrearPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        // TODO add your handling code here:
+        Partida partida = new Partida(this.cbxNumJugadores.getSelectedIndex()+2,
+                this.cbxNumFichas.getSelectedIndex()+2,
+                Integer.valueOf(this.txtApuesta.getText()),
+                this.getNumCasillas());
+        if (partida.getTablero().getNumCasillas() < 1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un número de casillas");
+        } else {
+            cCrearPartida.crearPartida(partida);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_btnListoActionPerformed
 
+    private int getNumCasillas() {
+        if (this.cuatroC.isSelected()) {
+            return 4;
+        } else if (this.cincoC.isSelected()) {
+            return 5;
+        } else if (this.seisC.isSelected()) {
+            return 6;
+        } else if (this.sieteC.isSelected()) {
+            return 7;
+        }
+        return 0;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgCasillas;
     private javax.swing.ButtonGroup btgJugadores;
     private javax.swing.JButton btnListo;
+    private javax.swing.JComboBox<String> cbxNumFichas;
+    private javax.swing.JComboBox<String> cbxNumJugadores;
     private javax.swing.JRadioButton cincoC;
     private javax.swing.JRadioButton cuatroC;
-    private javax.swing.JRadioButton cuatroJ;
-    private javax.swing.JRadioButton dosJ;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -252,7 +250,6 @@ public class FrmCrearPartida extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton seisC;
     private javax.swing.JRadioButton sieteC;
-    private javax.swing.JRadioButton tresJ;
     private javax.swing.JTextField txtApuesta;
     private javax.swing.JTextField txtFondos;
     // End of variables declaration//GEN-END:variables

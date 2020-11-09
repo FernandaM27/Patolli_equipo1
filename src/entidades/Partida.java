@@ -10,20 +10,25 @@ public class Partida {
     private int numeroJugadores;
     private int numeroFichas;
     private int montoApuestas;
-
+    private Tablero tablero;
     /**
      * Constructor que cera una partida
      * @param numeroJugadores cantidad de jugadores que van a jugar
      * @param numeroFichas cantidad de fichas que va a tener cada jugador
      * @param montoApuestas valor que van a tener las apuestas de esa partida
      */
-    public Partida(int numeroJugadores, int numeroFichas, int montoApuestas) {
+    public Partida(int numeroJugadores, int numeroFichas, int montoApuestas, int casillas) {
         canias = new ArrayList<>(5);
         this.numeroJugadores = numeroJugadores;
+        tablero= new Tablero(casillas);
         this.numeroFichas = numeroFichas;
         this.montoApuestas = montoApuestas;
     }
 
+    public Tablero getTablero() {
+        return tablero;
+    }
+    
     public int getNumeroJugadores() {
         return numeroJugadores;
     }
