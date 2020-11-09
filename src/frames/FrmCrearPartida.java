@@ -5,6 +5,7 @@
  */
 package frames;
 
+import controles.ControlCrearPartida;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,8 +25,26 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setResizable(false);
+        this.agregarActionListeners(new ControlCrearPartida(this));
     }
-
+    
+    public void inicializarComandos(){
+        if (cuatroC.isSelected()) { 
+            this.btnListo.setActionCommand("listo4");
+        } else if (cincoC.isSelected()) {
+            this.btnListo.setActionCommand("Listo5");
+        } else if (seisC.isSelected()) {
+            this.btnListo.setActionCommand("Listo6");
+        } else if (sieteC.isSelected()) {
+            this.btnListo.setActionCommand("Listo7");
+        }
+        
+    }
+    
+    private void agregarActionListeners(ControlCrearPartida ctrlCrearPartida){
+        this.btnListo.addActionListener(ctrlCrearPartida);
+    }
+    
     public static FrmCrearPartida getInstance() {
         if (crearPartida == null) {
             return crearPartida = new FrmCrearPartida();
@@ -50,7 +69,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        bAceptar = new javax.swing.JButton();
+        btnListo = new javax.swing.JButton();
         cuatroC = new javax.swing.JRadioButton();
         cincoC = new javax.swing.JRadioButton();
         seisC = new javax.swing.JRadioButton();
@@ -91,16 +110,16 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm5.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 410));
 
-        bAceptar.setBackground(new java.awt.Color(155, 3, 2));
-        bAceptar.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
-        bAceptar.setForeground(new java.awt.Color(248, 228, 180));
-        bAceptar.setText("Listo");
-        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnListo.setBackground(new java.awt.Color(155, 3, 2));
+        btnListo.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
+        btnListo.setForeground(new java.awt.Color(248, 228, 180));
+        btnListo.setText("Listo");
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAceptarActionPerformed(evt);
+                btnListoActionPerformed(evt);
             }
         });
-        jPanel1.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 170, -1));
+        jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 170, -1));
 
         cuatroC.setBackground(new java.awt.Color(199, 213, 76));
         btgCasillas.add(cuatroC);
@@ -203,36 +222,20 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        int numTablero = 0;
-        if (cuatroC.isSelected()) {
-            numTablero = 4;
-        } else if (cincoC.isSelected()) {
-            numTablero = 5;
-        } else if (seisC.isSelected()) {
-            numTablero = 6;
-        } else if (sieteC.isSelected()) {
-            numTablero = 7;
-        }
-        if (numTablero > 0) {
-            FrmTablero fm = new FrmTablero(numTablero);
-            fm.setVisible(true);
-            this.dispose();
-        } else if (numTablero == 0) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un número de casillas");
-        }
-    }//GEN-LAST:event_bAceptarActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAceptar;
     private javax.swing.ButtonGroup btgCasillas;
     private javax.swing.ButtonGroup btgJugadores;
+    private javax.swing.JButton btnListo;
     private javax.swing.JRadioButton cincoC;
     private javax.swing.JRadioButton cuatroC;
     private javax.swing.JRadioButton cuatroJ;

@@ -48,8 +48,7 @@ public class ModeloTablero {
             this.guardarNormal(movimiento, size, 4);
             this.calcularXY(movimiento);
         }
-        this.CoordenadasCasillas.stream().forEach(x->System.out.println(x));
-    }
+     }
 
     private void guardarNormal(String movimiento, int size, int i) {
         for (int j = 0; j < size - i; j++) {

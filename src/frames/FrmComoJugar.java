@@ -5,6 +5,8 @@
  */
 package frames;
 
+import controles.ControlComoJugar;
+
 /**
  *
  * @author fermi
@@ -23,9 +25,18 @@ public class FrmComoJugar extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         this.setResizable(false);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        
+        this.inicializarComandos();
+        this.agregarActionListeners(new ControlComoJugar(this));
     }
 
+    
+    private void inicializarComandos(){
+        this.btnSalir.setActionCommand("Salir");
+    }
+    
+    private void agregarActionListeners(ControlComoJugar ctrlComoJugar){
+        this.btnSalir.addActionListener(ctrlComoJugar);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,11 +84,6 @@ public class FrmComoJugar extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(247, 180, 93));
         btnSalir.setText("salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 140, 40));
 
         jLabel5.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
@@ -115,12 +121,6 @@ public class FrmComoJugar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       FrmPrincipal frm = FrmPrincipal.createPrincipal();
-        frm.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();

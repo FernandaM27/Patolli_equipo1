@@ -5,8 +5,9 @@
  */
 package frames;
 
-import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
+import controles.ControlMnuPrincipal;
 
+ 
 /**
  *
  * @author fermi
@@ -25,8 +26,23 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
+        this.inicializarComandos();
+        this.agregarActionLisneters(new ControlMnuPrincipal(this));
     }
 
+    private void inicializarComandos(){
+        this.btnComoJugar.setActionCommand("Como jugar");
+        this.btnCrearPartida.setActionCommand("CrearPartida");
+        this.btnIngresarPartida.setActionCommand("Ingresar partida");
+        this.btnSalir.setActionCommand("salir");
+    }
+    
+    private void agregarActionLisneters(ControlMnuPrincipal ctrlPrincipal){
+        this.btnComoJugar.addActionListener(ctrlPrincipal);
+        this.btnCrearPartida.addActionListener(ctrlPrincipal);
+        this.btnIngresarPartida.addActionListener(ctrlPrincipal);
+        this.btnSalir.addActionListener(ctrlPrincipal);
+    }
     /**
      * Contructor que crea el frame principal
      * @return regresa una instancia de frame principal, aplicando singleton
@@ -50,10 +66,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        btnIngresarPartida = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCrearPartida = new javax.swing.JButton();
+        btnComoJugar = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -68,49 +84,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 56, 12), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setBackground(new java.awt.Color(155, 56, 12));
-        jButton4.setFont(new java.awt.Font("Algerian", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("ingresar a partida");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 180, 40));
+        btnIngresarPartida.setBackground(new java.awt.Color(155, 56, 12));
+        btnIngresarPartida.setFont(new java.awt.Font("Algerian", 0, 14)); // NOI18N
+        btnIngresarPartida.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresarPartida.setText("ingresar a partida");
+        jPanel1.add(btnIngresarPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 180, 40));
 
         btnSalir.setBackground(new java.awt.Color(155, 56, 12));
         btnSalir.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 180, 40));
 
-        jButton1.setBackground(new java.awt.Color(155, 56, 12));
-        jButton1.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Crear partida");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 180, 40));
+        btnCrearPartida.setBackground(new java.awt.Color(155, 56, 12));
+        btnCrearPartida.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        btnCrearPartida.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearPartida.setText("Crear partida");
+        jPanel1.add(btnCrearPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 180, 40));
 
-        jButton3.setBackground(new java.awt.Color(155, 56, 12));
-        jButton3.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Como jugar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 180, 40));
+        btnComoJugar.setBackground(new java.awt.Color(155, 56, 12));
+        btnComoJugar.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
+        btnComoJugar.setForeground(new java.awt.Color(255, 255, 255));
+        btnComoJugar.setText("Como jugar");
+        jPanel1.add(btnComoJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 180, 40));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maya2.PNG"))); // NOI18N
         jPanel1.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
@@ -136,39 +132,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FrmCrearPartida frmCP = FrmCrearPartida.getInstance();
-        frmCP.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         FrmPrincipal frm = FrmPrincipal.createPrincipal();
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FrmComoJugar frmCJ = new FrmComoJugar();
-        frmCJ.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        FrmIngresarPartida frmIP = new FrmIngresarPartida();
-        frmIP.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComoJugar;
+    private javax.swing.JButton btnCrearPartida;
+    private javax.swing.JButton btnIngresarPartida;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
