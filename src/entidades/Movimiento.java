@@ -2,7 +2,7 @@ package entidades;
 
 public class Movimiento {
 
-    public int id;
+    private int id;
 
     public Movimiento() {
     }

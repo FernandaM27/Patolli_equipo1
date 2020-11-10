@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-    public String nombre;
-    public String color;
-    public ArrayList<Ficha> fichas;
+    private String nombre;
+    private String color;
+    private ArrayList<Ficha> fichas;
 
     /**
      * Constructor que crea un jugador

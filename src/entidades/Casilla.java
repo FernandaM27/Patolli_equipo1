@@ -2,8 +2,8 @@ package entidades;
 
 public class Casilla implements ICasilla {
 
-    public boolean disponible;
-    public Ficha ficha;
+    private boolean disponible;
+    private Ficha ficha;
 
     /**
      * Constructor que crea una casilla y se establece si esta ocupada o no

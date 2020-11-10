@@ -4,30 +4,42 @@
  * and open the template in the editor.
  */
 package frames;
-
 import controles.ControlMnuPrincipal;
+import java.util.Observable;
+import java.util.Observer;
+import modelos.ModeloPrincipal;
 
  
 /**
  *
  * @author fermi
  */
-public class FrmPrincipal extends javax.swing.JFrame {
+public class FrmPrincipal extends javax.swing.JFrame implements Observer {
 
     private static FrmPrincipal frmPrincipal;
-
+    private ModeloPrincipal modeloPrincipal;
     /**
      * Creates new form Principal
      */
     private FrmPrincipal() {
         initComponents();
-        this.setTitle("Patolli");
         this.setLocationRelativeTo(this);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.inicializarComandos();
+        this.modeloPrincipal= new ModeloPrincipal();
+        this.modeloPrincipal.addObserver(this);
+        this.setEtiquetas();
         this.agregarActionLisneters(new ControlMnuPrincipal(this));
+    }
+    
+    private void setEtiquetas(){
+        this.lblTitulo.setText(modeloPrincipal.getEtiquetas().get(0));
+        this.btnCrearPartida.setText(modeloPrincipal.getEtiquetas().get(1));
+        this.btnIngresarPartida.setText(modeloPrincipal.getEtiquetas().get(2));
+        this.btnComoJugar.setText(modeloPrincipal.getEtiquetas().get(3));
+        this.btnSalir.setText(modeloPrincipal.getEtiquetas().get(4));
     }
 
     private void inicializarComandos(){
@@ -71,7 +83,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnCrearPartida = new javax.swing.JButton();
         btnComoJugar = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -87,34 +99,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnIngresarPartida.setBackground(new java.awt.Color(155, 56, 12));
         btnIngresarPartida.setFont(new java.awt.Font("Algerian", 0, 14)); // NOI18N
         btnIngresarPartida.setForeground(new java.awt.Color(255, 255, 255));
-        btnIngresarPartida.setText("ingresar a partida");
         jPanel1.add(btnIngresarPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 180, 40));
 
         btnSalir.setBackground(new java.awt.Color(155, 56, 12));
         btnSalir.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setText("Salir");
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 180, 40));
 
         btnCrearPartida.setBackground(new java.awt.Color(155, 56, 12));
         btnCrearPartida.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
         btnCrearPartida.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrearPartida.setText("Crear partida");
+        btnCrearPartida.setBorder(null);
+        btnCrearPartida.setBorderPainted(false);
         jPanel1.add(btnCrearPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 180, 40));
 
         btnComoJugar.setBackground(new java.awt.Color(155, 56, 12));
         btnComoJugar.setFont(new java.awt.Font("Algerian", 0, 16)); // NOI18N
         btnComoJugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnComoJugar.setText("Como jugar");
         jPanel1.add(btnComoJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 180, 40));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maya2.PNG"))); // NOI18N
         jPanel1.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Algerian", 0, 52)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(196, 72, 17));
-        jLabel2.setText("PATOLLI");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        lblTitulo.setFont(new java.awt.Font("Algerian", 0, 52)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(196, 72, 17));
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,8 +152,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearPartida;
     private javax.swing.JButton btnIngresarPartida;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object o1) {
+        this.setEtiquetas();
+    }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ModeloTablero {
+public class ModeloCasillas {
 
     private List<CoordenadaCasilla> CoordenadasCasillas;
     private List<CoordenadaFicha> CoordenadasFichas;
@@ -22,7 +22,7 @@ public class ModeloTablero {
     private int contador = 0;
     private String movimiento = null;
 
-    public ModeloTablero(int size) {
+    public ModeloCasillas(int size) {
         this.CoordenadasCasillas = new LinkedList<>();
         this.CoordenadasFichas = new ArrayList<>();
         guardarCasillas(size);

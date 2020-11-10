@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Tablero {
 
-    public int numCasillas;
-    public ArrayList<Casilla> casillas = new ArrayList<>(numCasillas);
+    private int numCasillas;
+    private ArrayList<Casilla> casillas = new ArrayList<>(numCasillas);
 
     /**
      * Crea el tablero

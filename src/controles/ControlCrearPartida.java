@@ -40,7 +40,7 @@ public class ControlCrearPartida implements ActionListener {
     }
 
     public void crearPartida(Partida partida) {
-         if (partida.getTablero().numCasillas>0) {
+         if (partida.getTablero().getNumCasillas()>0) {
             FrmTablero frmTablero= new FrmTablero(partida.getTablero().getNumCasillas());
             frmTablero.setVisible(true);
         }  

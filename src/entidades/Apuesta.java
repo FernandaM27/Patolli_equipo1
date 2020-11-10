@@ -2,7 +2,7 @@ package entidades;
 
 public class Apuesta {
 
-    public int cantidad;
+    private int cantidad;
 
     /**
      * Constructor que establece el valor que va a tener la apuesta en la partida

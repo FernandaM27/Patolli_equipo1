@@ -215,7 +215,6 @@ public class FrmCrearPartida extends javax.swing.JFrame {
             cCrearPartida.crearPartida(partida);
             this.dispose();
         }
-        
     }//GEN-LAST:event_btnListoActionPerformed
 
     private int getNumCasillas() {
