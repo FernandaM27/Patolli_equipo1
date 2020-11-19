@@ -1,4 +1,4 @@
-package modelos;
+package dibujos;
 
 import dibujos.CoordenadaFicha;
 import dibujos.CoordenadaCasilla;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ModeloCasillas {
+public class DibujoCasilla {
 
     private List<CoordenadaCasilla> CoordenadasCasillas;
     private List<CoordenadaFicha> CoordenadasFichas;
@@ -24,7 +24,7 @@ public class ModeloCasillas {
     private int contador = 0;
     private String movimiento = null;
 
-    public ModeloCasillas(int size) {
+    public DibujoCasilla(int size) {
         this.CoordenadasCasillas = new LinkedList<>();
         this.CoordenadasFichas = new ArrayList<>();
         guardarCasillas(size);

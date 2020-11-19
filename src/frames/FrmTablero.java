@@ -5,6 +5,7 @@
  */
 package frames;
 
+import dibujos.CnvDibujo;
 import entidades.Ficha;
 import java.awt.Color;
 import java.awt.Graphics2D;

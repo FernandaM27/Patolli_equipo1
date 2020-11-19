@@ -1,4 +1,4 @@
-package frames;
+package dibujos;
 
 import entidades.Ficha;
 import java.awt.BasicStroke;

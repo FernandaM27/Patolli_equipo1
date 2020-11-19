@@ -6,13 +6,18 @@
 package frames;
 
 import controles.ControlComoJugar;
+import java.util.Observable;
+import java.util.Observer;
+import modelos.ModeloComoJugar;
 
 /**
  *
  * @author fermi
  */
-public class FrmComoJugar extends javax.swing.JFrame {
-
+public class FrmComoJugar extends javax.swing.JFrame implements Observer {
+    
+    ModeloComoJugar modeloComoJugar;
+    
     public static FrmComoJugar createPrincipal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -26,7 +31,9 @@ public class FrmComoJugar extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.inicializarComandos();
+        this.modeloComoJugar= new ModeloComoJugar();
         this.agregarActionListeners(new ControlComoJugar(this));
+        this.setEtiquetas();
     }
 
     
@@ -47,14 +54,14 @@ public class FrmComoJugar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbl4 = new javax.swing.JLabel();
+        lbl5 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -67,15 +74,15 @@ public class FrmComoJugar extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 240, 173), 3, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(58, 162, 113));
-        jLabel3.setText("Como jugar");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
+        lblTitulo.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(58, 162, 113));
+        lblTitulo.setText("title");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(9, 17, 6));
-        jLabel4.setText("- guardar datos");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 300, -1));
+        lbl3.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
+        lbl3.setForeground(new java.awt.Color(9, 17, 6));
+        lbl3.setText("3");
+        jPanel1.add(lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 300, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm4.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 400));
@@ -83,28 +90,28 @@ public class FrmComoJugar extends javax.swing.JFrame {
         btnSalir.setBackground(new java.awt.Color(58, 162, 113));
         btnSalir.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(247, 180, 93));
-        btnSalir.setText("salir");
+        btnSalir.setText("s");
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 140, 40));
 
-        jLabel5.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(9, 17, 6));
-        jLabel5.setText("2. ingresar a partida");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 280, -1));
+        lbl4.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
+        lbl4.setForeground(new java.awt.Color(9, 17, 6));
+        lbl4.setText("4");
+        jPanel1.add(lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 280, -1));
 
-        jLabel6.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(9, 17, 6));
-        jLabel6.setText(" - INGRESAR datos");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 330, -1));
+        lbl5.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
+        lbl5.setForeground(new java.awt.Color(9, 17, 6));
+        lbl5.setText("5");
+        jPanel1.add(lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 330, -1));
 
-        jLabel7.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(9, 17, 6));
-        jLabel7.setText("1. crear partida ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 280, -1));
+        lbl1.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
+        lbl1.setForeground(new java.awt.Color(9, 17, 6));
+        lbl1.setText("1");
+        jPanel1.add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 280, -1));
 
-        jLabel8.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(9, 17, 6));
-        jLabel8.setText(" - INGRESAR datos de la partida");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 330, -1));
+        lbl2.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
+        lbl2.setForeground(new java.awt.Color(9, 17, 6));
+        lbl2.setText("2");
+        jPanel1.add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 330, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,16 +134,29 @@ public class FrmComoJugar extends javax.swing.JFrame {
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
-
+    private void setEtiquetas(){
+        this.lblTitulo.setText(this.modeloComoJugar.getEtiquetas().get(0));
+        this.lbl1.setText(this.modeloComoJugar.getEtiquetas().get(1));
+        this.lbl2.setText(this.modeloComoJugar.getEtiquetas().get(2));
+        this.lbl3.setText(this.modeloComoJugar.getEtiquetas().get(3));
+        this.lbl4.setText(this.modeloComoJugar.getEtiquetas().get(4));
+        this.lbl5.setText(this.modeloComoJugar.getEtiquetas().get(5));
+        this.btnSalir.setText(this.modeloComoJugar.getEtiquetas().get(6));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.setEtiquetas();
+    }
 }

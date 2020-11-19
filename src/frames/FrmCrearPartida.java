@@ -7,13 +7,15 @@ package frames;
 
 import controles.ControlCrearPartida;
 import entidades.Partida;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author fermi
  */
-public class FrmCrearPartida extends javax.swing.JFrame {
+public class FrmCrearPartida extends javax.swing.JFrame{
 
     private static FrmCrearPartida crearPartida;
     private ControlCrearPartida cCrearPartida;
@@ -216,7 +218,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnListoActionPerformed
-
+            
     private int getNumCasillas() {
         if (this.cuatroC.isSelected()) {
             return 4;
@@ -252,4 +254,5 @@ public class FrmCrearPartida extends javax.swing.JFrame {
     private javax.swing.JTextField txtApuesta;
     private javax.swing.JTextField txtFondos;
     // End of variables declaration//GEN-END:variables
+
 }
