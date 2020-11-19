@@ -11,8 +11,8 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.List;
-import modelos.CoordenadaCasilla;
-import modelos.CoordenadaFicha;
+import dibujos.CoordenadaCasilla;
+import dibujos.CoordenadaFicha;
 
 public class CnvDibujo extends Canvas {
 

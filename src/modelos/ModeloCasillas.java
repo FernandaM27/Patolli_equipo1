@@ -1,5 +1,7 @@
 package modelos;
 
+import dibujos.CoordenadaFicha;
+import dibujos.CoordenadaCasilla;
 import entidades.Casilla;
 import entidades.FactoryCasillas;
 import java.util.ArrayList;
