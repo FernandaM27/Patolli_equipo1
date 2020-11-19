@@ -55,7 +55,6 @@ public class CnvDibujo extends Canvas {
         this.dibujarCirculo(g2d);
         this.dibujarTriangulos(g2d);
         this.dibujarFicha(g2d);
-
     }
 
     /**

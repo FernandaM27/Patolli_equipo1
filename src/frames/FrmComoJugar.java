@@ -141,7 +141,7 @@ public class FrmComoJugar extends javax.swing.JFrame implements Observer {
         this.lbl3.setText(this.modeloComoJugar.getEtiquetas().get(3));
         this.lbl4.setText(this.modeloComoJugar.getEtiquetas().get(4));
         this.lbl5.setText(this.modeloComoJugar.getEtiquetas().get(5));
-        this.btnSalir.setText(this.modeloComoJugar.getEtiquetas().get(6));
+        this.btnSalir.setText(this.modeloComoJugar.getEtiquetas().get(6 ));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;

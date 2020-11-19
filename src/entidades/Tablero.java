@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Tablero {
 
     private int numCasillas;
+    //Cambiar Linked list
     private ArrayList<Casilla> casillas = new ArrayList<>(numCasillas);
 
     /**
