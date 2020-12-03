@@ -224,7 +224,6 @@ public class CnvDibujo extends Canvas {
         p = new Polygon(x, y, 3);
         g2d.fill(p);
         g2d.drawPolygon(p);
-
     }
 
     /**

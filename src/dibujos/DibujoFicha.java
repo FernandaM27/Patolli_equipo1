@@ -20,6 +20,27 @@ public class DibujoFicha {
         this.ficha = ficha;
         this.coordenadas = new Point(x, y);
     }
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
+
+    public Point getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(Point coordenadas) {
+        this.coordenadas = coordenadas;
+    }
+
+    @Override
+    public String toString() {
+        return "DibujoFicha{" + "ficha=" + ficha + ", coordenadas=" + coordenadas + '}';
+    }
     
     
 }
