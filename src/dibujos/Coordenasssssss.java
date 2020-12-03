@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class coordenasssssCasilla {
+public class Coordenasssssss {
 
     private List<CoordenadaCasilla> CoordenadasCasillas;
     private List<CoordenadaFicha> CoordenadasFichas;
@@ -24,7 +24,7 @@ public class coordenasssssCasilla {
     private int contador = 0;
     private String movimiento = null;
 
-    public coordenasssssCasilla(int size) {
+    public Coordenasssssss(int size) {
         this.CoordenadasCasillas = new LinkedList<>();
         this.CoordenadasFichas = new ArrayList<>();
         guardarCasillas(size);
