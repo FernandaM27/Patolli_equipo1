@@ -12,7 +12,7 @@ import entidades.Tablero;
  *
  * @author MSI GF63
  */
-public class Fachada implements IDibujos{
+public class Fachada implements IDibujoTablero{
 
     private Tablero tablero;
     private CanvasTablero canvas;

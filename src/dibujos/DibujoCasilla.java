@@ -36,4 +36,17 @@ public class DibujoCasilla {
     public void setPoint(Point point) {
         this.coordenadas = point;
     }
+    
+    public int getX(){
+        return (int)coordenadas.getX();
+    }
+    public int getY(){
+        return (int)coordenadas.getY();
+    }
+    
+    @Override
+    public String toString() {
+        return "DibujoCasilla{" + "casilla=" + casilla + ", coordenadas=" + coordenadas + '}';
+    }
+    
 }

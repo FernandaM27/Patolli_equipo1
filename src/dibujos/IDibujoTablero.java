@@ -11,7 +11,7 @@ import entidades.Ficha;
  *
  * @author MSI GF63
  */
-public interface IDibujos {
+public interface IDibujoTablero {
     public void dibujarTablero();
     
     public void dibujarFichas();

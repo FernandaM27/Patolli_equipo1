@@ -64,7 +64,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 207, 127));
         jLabel3.setText("Ingresar a partida");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Algerian", 0, 29)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(131, 151, 8));
@@ -91,7 +91,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 170, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("<Aqui va un Bootstrap>");
+        jLabel2.setText("<Aqui va un colorPicker>");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
