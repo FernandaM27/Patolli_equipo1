@@ -5,11 +5,15 @@
  */
 package frames;
 
+import controles.ControlNgresarPartida;
+import java.util.Observable;
+import modelos.ModeloIngresarPartida;
+
 /**
  *
  * @author fermi
  */
-public class FrmIngresarPartida extends javax.swing.JFrame {
+public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<ControlNgresarPartida, ModeloIngresarPartida> {
 
     /**
      * Creates new form FrmIngresar
@@ -126,4 +130,24 @@ public class FrmIngresarPartida extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void asignarEtiquetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarComando() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Observable arg0, Object arg1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

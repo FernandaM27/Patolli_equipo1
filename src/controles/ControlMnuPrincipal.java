@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  *
  * @author Alfonso Sempoalt
  */
-public class ControlMnuPrincipal implements ActionListener {
+public class ControlMnuPrincipal implements ControlBase {
 
     private FrmPrincipal principal;
 
@@ -57,5 +57,20 @@ public class ControlMnuPrincipal implements ActionListener {
     FrmIngresarPartida frmIP = new FrmIngresarPartida();
         frmIP.setVisible(true);
         this.salir();
+    }
+
+    @Override
+    public void mostrarPantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarError() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarExito() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

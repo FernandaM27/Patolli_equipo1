@@ -21,13 +21,12 @@ public class DibujoTablero {
     private Tablero tablero;   
     
     private List<DibujoCasilla> casillas;
-    private List<DibujoFicha> fichas;
+    
 
     public DibujoTablero(Tablero tablero) {
         this.tablero = tablero;
         this.casillas = new ArrayList<>();
-        this.fichas = new ArrayList<>();
-    }
+     }
 
     public List<DibujoCasilla> getCasillas() {
         return casillas;
@@ -36,13 +35,5 @@ public class DibujoTablero {
     public void setCasillas(List<DibujoCasilla> casillas) {
         this.casillas = casillas;
     }
-
-    public List<DibujoFicha> getFichas() {
-        return fichas;
-    }
-
-    public void setFichas(List<DibujoFicha> fichas) {
-        this.fichas = fichas;
-    }
-    
+ 
 }

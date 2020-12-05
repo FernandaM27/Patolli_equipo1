@@ -5,25 +5,25 @@
  */
 package frames;
 
-import dibujos.CnvDibujo;
-import entidades.Ficha;
-import java.awt.Color;
-import java.awt.Graphics2D;
+import controles.ControlTablero;
+import java.util.Observable;
+import modelos.ModeloBase;
+import modelos.ModeloTablero;
 
 /**
  *
  * @author fermi
  */
-public class FrmTablero extends javax.swing.JFrame {
+public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlTablero, ModeloTablero>{
 
-    private CnvDibujo canvas;
+//    private CnvDibujo canvas;
     static int numTablero;
 
     public FrmTablero(int numTablero) {
-        canvas = new CnvDibujo(numTablero);
-        canvas.setBounds(160, 50, 500, 500);
-        canvas.setBackground(Color.white);      
-        this.add(canvas);
+//        canvas = new CnvDibujo(numTablero);
+//        canvas.setBounds(160, 50, 500, 500);
+//        canvas.setBackground(Color.white);      
+//        this.add(canvas);
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Tablero");
@@ -32,8 +32,8 @@ public class FrmTablero extends javax.swing.JFrame {
     }
     
     private void agregarFicha(){
-        canvas.agregarFichas(new Ficha(1),1);
-        canvas.agregarFichas(new Ficha(2),2);
+//        canvas.agregarFichas(new Ficha(1),1);
+//        canvas.agregarFichas(new Ficha(2),2);
     }
     
     private FrmTablero() {
@@ -153,7 +153,7 @@ public class FrmTablero extends javax.swing.JFrame {
      }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.canvas.moverFicha(1, 5);
+//        this.canvas.moverFicha(1, 5);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -166,4 +166,24 @@ public class FrmTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jugador3;
     private javax.swing.JLabel jugador4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void asignarEtiquetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarComando() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Observable arg0, Object arg1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

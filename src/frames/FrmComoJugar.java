@@ -7,17 +7,20 @@ package frames;
 
 import controles.ControlComoJugar;
 import java.util.Observable;
-import java.util.Observer;
 import modelos.ModeloComoJugar;
 
 /**
  *
  * @author fermi
  */
-public class FrmComoJugar extends javax.swing.JFrame implements Observer {
+public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<ControlComoJugar, ModeloComoJugar>{
     
     ModeloComoJugar modeloComoJugar;
-    
+   
+    /**
+     * Singletoon pendiente de hacer 
+     * @return 
+     */
     public static FrmComoJugar createPrincipal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -155,8 +158,25 @@ public class FrmComoJugar extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 
-    @Override
+   @Override
     public void update(Observable o, Object arg) {
         this.setEtiquetas();
     }
+
+    @Override
+    public void asignarEtiquetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarComando() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

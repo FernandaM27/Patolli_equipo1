@@ -7,6 +7,7 @@ package frames;
 import controles.ControlMnuPrincipal;
 import java.util.Observable;
 import java.util.Observer;
+import modelos.ModeloBase;
 import modelos.ModeloPrincipal;
 
  
@@ -14,7 +15,7 @@ import modelos.ModeloPrincipal;
  *
  * @author fermi
  */
-public class FrmPrincipal extends javax.swing.JFrame implements Observer {
+public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<ControlMnuPrincipal, ModeloPrincipal> {
 
     private static FrmPrincipal frmPrincipal;
     private ModeloPrincipal modeloPrincipal;
@@ -160,5 +161,20 @@ public class FrmPrincipal extends javax.swing.JFrame implements Observer {
     @Override
     public void update(Observable o, Object o1) {
         this.setEtiquetas();
+    }
+
+    @Override
+    public void asignarEtiquetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarComando() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

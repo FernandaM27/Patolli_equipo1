@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  *
  * @author Alfonso Sempoalt
  */
-public class ControlComoJugar implements ActionListener {
+public class ControlComoJugar implements ControlBase {
 
     private FrmComoJugar frame;
 
@@ -33,5 +33,20 @@ public class ControlComoJugar implements ActionListener {
         FrmPrincipal frm = FrmPrincipal.createPrincipal();
         frm.setVisible(true);
         frame.dispose();
+    }
+
+    @Override
+    public void mostrarPantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarError() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarExito() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
