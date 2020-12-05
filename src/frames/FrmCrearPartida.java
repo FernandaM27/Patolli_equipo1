@@ -8,14 +8,15 @@ package frames;
 import controles.ControlCrearPartida;
 import entidades.Partida;
 import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JOptionPane;
+import modelos.ModeloBase;
+import modelos.ModeloCrearPartida;
 
 /**
  *
  * @author fermi
  */
-public class FrmCrearPartida extends javax.swing.JFrame{
+public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<ControlCrearPartida, ModeloCrearPartida>{
 
     private static FrmCrearPartida crearPartida;
     private ControlCrearPartida cCrearPartida;
@@ -254,5 +255,25 @@ public class FrmCrearPartida extends javax.swing.JFrame{
     private javax.swing.JTextField txtApuesta;
     private javax.swing.JTextField txtFondos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void asignarEtiquetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarComando() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void asignarEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Observable arg0, Object arg1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

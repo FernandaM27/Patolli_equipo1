@@ -5,34 +5,31 @@
  */
 package modelos;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 /**
  *
  * @author MSI GF63
  */
-public class ModeloComoJugar extends Observable {
-     private List <String>etiquetasComoJugar;
-    
+public class ModeloComoJugar extends ModeloBase {
+     
     public ModeloComoJugar(){
-        this.etiquetasComoJugar=new ArrayList<>();
-        etiquetasComoJugar.add("Como Jugar");
-        etiquetasComoJugar.add("1. crear partida");
-        etiquetasComoJugar.add(" - INGRESAR datos de la partida");
-        etiquetasComoJugar.add("- guardar datos");
-        etiquetasComoJugar.add("2. ingresar a partida");
-        etiquetasComoJugar.add(" - INGRESAR datos");
-        etiquetasComoJugar.add("SALIR");
+        super();
+        super.addEtiqueta("Como Jugar");
+        super.addEtiqueta("1. crear partida");
+        super.addEtiqueta(" - INGRESAR datos de la partida");
+        super.addEtiqueta("- guardar datos");
+        super.addEtiqueta("2. ingresar a partida");
+        super.addEtiqueta(" - INGRESAR datos");
+        super.addEtiqueta("SALIR");
     }
     //Pendiente un cambiar
     public List <String> getEtiquetas(){
-        return etiquetasComoJugar;
+        return super.getEtiquetas();
     }
     
     public void cambiarEtiqueta(int i, String etiqueta){
-        this.etiquetasComoJugar.set(i, etiqueta);
+        super.etiquetas.set(i, etiqueta);
         setChanged(); 
         this.notifyObservers();
     }

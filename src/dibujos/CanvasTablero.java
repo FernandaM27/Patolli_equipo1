@@ -17,6 +17,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,7 @@ public class CanvasTablero extends Canvas {
 
         for (DibujoCasilla dCasilla : dCasillas) {
             if (dCasilla.getCasilla() instanceof InicioFinal) {
+                //Agregar color dependiendo del jugador
                 this.dCasillas(dCasilla, g2d);
             }
             if (dCasilla.getCasilla() instanceof Triangulo) {
@@ -66,21 +68,37 @@ public class CanvasTablero extends Canvas {
         }
         this.dibujarTriangulos(g2d);
         this.dibujarCirculo(g2d);
+        this.dibujarLinea(this.centro, this.centro, g2d);
     }
-
-    private void dFichas() {
-
-    }
-
+    
     //Metodos visibles desde una clase externa
     public void actualizarTablero() {
         this.repaint();
     }
-
-    public void dibujarFichas() {
-        this.repaint();
-    }
-
+    
+    /**
+     * checar donde añadir el método repaint que se vincula con el método dibujarFichas
+     */
+    public void dFichas() {
+        g2d.setStroke(new BasicStroke(1));
+        Ellipse2D.Double ficha;
+        g2d.setColor(Color.BLUE);
+        List<DibujoCasilla> dCasillas = this.dibujoTablero.getCasillas();
+        for (DibujoCasilla dCasilla : dCasillas) {
+            if (!dCasilla.getCasilla().isDisponible()) {
+                ficha = new Ellipse2D.Double(dCasilla.getX(),
+                    dCasilla.getY(), tamanioCasilla / 2, tamanioCasilla / 2);
+                g2d.fill(ficha);
+                g2d.setColor(Color.LIGHT_GRAY);
+                g2d.draw(ficha);
+            } 
+        }
+     }
+    
+//    public void dibujarFichas() {
+//        this.repaint();
+//    }
+    
     private void dCasillas(DibujoCasilla dCasilla, Graphics2D g) {
         Rectangle rect = new Rectangle();
         rect.setBounds(dCasilla.getX(), dCasilla.getY(), this.tamanioCasilla, this.tamanioCasilla);

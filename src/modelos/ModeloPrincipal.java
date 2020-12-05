@@ -5,33 +5,29 @@
  */
 package modelos;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-
+ import java.util.List;
+ 
 /**
  *
  *
  */
-public class ModeloPrincipal extends Observable{
-    private List <String>etiquetasBotones;
-    
+public class ModeloPrincipal extends ModeloBase{
+     
     public ModeloPrincipal(){
-        this.etiquetasBotones=new ArrayList<>();
-        etiquetasBotones.add("PATOLLI");
-        etiquetasBotones.add("CREAR PARTIDA");
-        etiquetasBotones.add("INGRESAR A PARTIDA");
-        etiquetasBotones.add("COMO JUGAR");
-        etiquetasBotones.add("SALIR");
+        super.addEtiqueta("PATOLLI");
+        super.addEtiqueta("CREAR PARTIDA");
+        super.addEtiqueta("INGRESAR A PARTIDA");
+        super.addEtiqueta("COMO JUGAR");
+        super.addEtiqueta("SALIR");
     }
     //Pendiente un cambiar
     public List <String> getEtiquetas(){
-        return etiquetasBotones;
+        return super.getEtiquetas();
     }
     
     /*Metodo creado para probar el concepto observer*/
     public void cambiarEtiqueta(int i, String etiqueta){
-        this.etiquetasBotones.set(i, etiqueta);
+        super.etiquetas.set(i, etiqueta);
         setChanged(); 
         this.notifyObservers();
     }

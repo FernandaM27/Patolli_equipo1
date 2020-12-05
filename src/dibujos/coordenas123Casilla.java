@@ -1,8 +1,6 @@
 package dibujos;
 
-import dibujos.CoordenadaFicha;
-import dibujos.CoordenadaCasilla;
-import entidades.Casilla;
+ import entidades.Casilla;
 import entidades.FactoryCasillas;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -10,9 +8,7 @@ import java.util.List;
 
 public class coordenas123Casilla {
 
-    private List<CoordenadaCasilla> CoordenadasCasillas;
-    private List<CoordenadaFicha> CoordenadasFichas;
-
+  
     private final String movimientos[] = {"R", "U", "R", "D", "R", "D", "L", "D", "L", "U", "L", "U", "R"};
     //variable x y: son para la posición dentro del tablero  
     // if L x-=20 
@@ -25,9 +21,7 @@ public class coordenas123Casilla {
     private String movimiento = null;
 
     public coordenas123Casilla(int size) {
-        this.CoordenadasCasillas = new LinkedList<>();
-        this.CoordenadasFichas = new ArrayList<>();
-        guardarCasillas(size);
+          guardarCasillas(size);
     }
 
     private void guardarCasillas(int size) {
@@ -81,9 +75,9 @@ public class coordenas123Casilla {
     }
 
     private void guardarC(int x, int y, String tipo) {
-        CoordenadaCasilla cCasilla = new CoordenadaCasilla(x, y,
-                (Casilla) FactoryCasillas.createInstance(tipo));
-        this.CoordenadasCasillas.add(cCasilla);
+//        CoordenadaCasilla cCasilla = new CoordenadaCasilla(x, y,
+//                (Casilla) FactoryCasillas.createInstance(tipo));
+//        this.CoordenadasCasillas.add(cCasilla);
     }
 
     public void agregarFichas() {

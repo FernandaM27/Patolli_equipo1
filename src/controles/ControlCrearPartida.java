@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Alfonso Sempoalt
  */
-public class ControlCrearPartida implements ActionListener {
+public class ControlCrearPartida implements ControlBase {
 
     private FrmCrearPartida frame;
 
@@ -44,6 +44,21 @@ public class ControlCrearPartida implements ActionListener {
             FrmTablero frmTablero= new FrmTablero(partida.getTablero().getNumCasillas());
             frmTablero.setVisible(true);
         }  
+    }
+
+    @Override
+    public void mostrarPantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarError() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarExito() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

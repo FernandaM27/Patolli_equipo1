@@ -9,9 +9,9 @@ import java.awt.event.ActionEvent;
 
 /**
  *
- * @author Dany
+ * @author Alfon
  */
-public class ControlTablero implements ControlBase{
+public class ControlNgresarPartida extends ControlComunicacion implements ControlBase{
 
     @Override
     public void mostrarPantalla() {
