@@ -1,7 +1,7 @@
 package dibujos;
 
  import entidades.Casilla;
-import entidades.FactoryCasillas;
+import creadorCasillas.FactoryCasillas;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
