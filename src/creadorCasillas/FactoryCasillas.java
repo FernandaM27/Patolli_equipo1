@@ -3,7 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entidades;
+package creadorCasillas;
+
+import entidades.Central;
+import entidades.ICasilla;
+import entidades.InicioFinal;
+import entidades.Normal;
+import entidades.Redondeada;
+import entidades.Triangulo;
 
 /**
  *
@@ -13,11 +20,9 @@ public class FactoryCasillas {
 
     /**
      * No castear
-     *
      * @param type
      * @return
-     */
-    
+     */  
     public static ICasilla createInstance(String type) {
         if (type.equalsIgnoreCase("normal")) {
             return (ICasilla) new Normal(true);
@@ -32,5 +37,4 @@ public class FactoryCasillas {
         }
         return null;
     }
-
 }

@@ -6,7 +6,9 @@
 package frames;
 
 import controles.ControlCrearPartida;
+import creadorCasillas.CreadorCasillas;
 import entidades.Partida;
+import entidades.Tablero;
 import java.util.Observable;
 import javax.swing.JOptionPane;
 import modelos.ModeloBase;
@@ -20,7 +22,6 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
 
     private static FrmCrearPartida crearPartida;
     private ControlCrearPartida cCrearPartida;
-
     /**
      * Creates new form FrmPartida
      */
@@ -208,18 +209,36 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
     }//GEN-LAST:event_formWindowClosing
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        Partida partida = new Partida(this.cbxNumJugadores.getSelectedIndex()+2,
-                this.cbxNumFichas.getSelectedIndex()+2,
-                Integer.valueOf(this.txtApuesta.getText()),
-                this.getNumCasillas());
-        if (partida.getTablero().getNumCasillas() < 1) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un número de casillas");
-        } else {
-            cCrearPartida.crearPartida(partida);
-            this.dispose();
+        if(validarCampos()){
+            this.crearInstanciaPartida();
+        }else{
+            JOptionPane.showMessageDialog(this, "Todos los campos deben de estar llenos");
         }
     }//GEN-LAST:event_btnListoActionPerformed
-            
+    
+    /**
+     * Verificar validaciones FERNANDA M
+     * @return 
+     */
+    private boolean validarCampos(){
+        if(this.getNumCasillas()==0){
+            return false;
+        }
+        return true;
+    }
+    
+    public void crearInstanciaPartida(){
+        Partida partida = new Partida();
+        partida.setNumeroJugadores(this.cbxNumJugadores.getSelectedIndex()+2);
+        partida.setNumeroFichas(this.cbxNumFichas.getSelectedIndex()+2);
+        partida.setMontoApuestas(Integer.valueOf(this.txtApuesta.getText()));
+        CreadorCasillas cc=new CreadorCasillas(this.getNumCasillas());
+        Tablero tablero = new Tablero(this.getNumCasillas(), cc.crearCasillas(this.getNumCasillas()));
+        partida.setTablero(tablero);
+        cCrearPartida.crearPartida(partida);
+        this.dispose();
+    }
+    
     private int getNumCasillas() {
         if (this.cuatroC.isSelected()) {
             return 4;

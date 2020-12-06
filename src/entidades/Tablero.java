@@ -1,19 +1,23 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Tablero {
+public class Tablero implements Serializable{
 
     private int numCasillas;
     //Cambiar Linked list
-    private ArrayList<Casilla> casillas = new ArrayList<>(numCasillas);
-
+    private List<Casilla> casillas;
     /**
      * Crea el tablero
      * @param numCasillas numero de casillas por aspa
+     * @param casillas
      */
-    public Tablero(int numCasillas) {
+    public Tablero(int numCasillas,List casillas) {
         this.numCasillas = numCasillas;
+        this.casillas= casillas;
     }
 
     public int getNumCasillas() {
@@ -23,4 +27,15 @@ public class Tablero {
     public void setNumCasillas(int numCasillas) {
         this.numCasillas = numCasillas;
     }
+    
+    public void addCasilla(Casilla casilla){
+        this.casillas.add(casilla);
+    }
+    
+    /* Si se llega necesitar todas las casillas.
+    */
+    public List<Casilla> getCasillas(){
+        return casillas;
+    }
+    
 }

@@ -11,18 +11,9 @@ public class Partida {
     private int numeroFichas;
     private int montoApuestas;
     private Tablero tablero;
-    /**
-     * Constructor que cera una partida
-     * @param numeroJugadores cantidad de jugadores que van a jugar
-     * @param numeroFichas cantidad de fichas que va a tener cada jugador
-     * @param montoApuestas valor que van a tener las apuestas de esa partida
-     */
-    public Partida(int numeroJugadores, int numeroFichas, int montoApuestas, int casillas) {
+
+    public Partida() {
         canias = new ArrayList<>(5);
-        this.numeroJugadores = numeroJugadores;
-        tablero= new Tablero(casillas);
-        this.numeroFichas = numeroFichas;
-        this.montoApuestas = montoApuestas;
     }
 
     public Tablero getTablero() {
@@ -53,6 +44,11 @@ public class Partida {
         this.montoApuestas = montoApuestas;
     }
 
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+    
+    /**Mover a la clase correspondiente*/
     public List<Cania> tirarCanias() {
         Random rd = new Random();
         for (int i = 0; i < 5; i++) {
