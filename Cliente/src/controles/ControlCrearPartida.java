@@ -7,10 +7,8 @@ package controles;
 
 import entidades.Partida;
 import frames.FrmCrearPartida;
-import frames.FrmTablero;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
+
 
 /**
  *

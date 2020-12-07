@@ -6,7 +6,6 @@
 package creadorCasillas;
 
 import entidades.Casilla;
-import entidades.Tablero;
 import java.util.LinkedList;
 import java.util.List;
 
