@@ -15,7 +15,7 @@ import modelos.ModeloBase;
  * @param <C>
  * @param <M>
  */
-public interface FrameBase<C extends ControlBase,M extends ModeloBase> extends Observer{
+public interface FrameBase<C,M> extends Observer{
     public void asignarEtiquetas();
     public void asignarComando();
     public void asignarEventos();

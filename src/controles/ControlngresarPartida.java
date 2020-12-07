@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
  *
  * @author Alfon
  */
-public class ControlNgresarPartida extends ControlComunicacion implements ControlBase{
+public class ControlngresarPartida extends ControlComunicacion implements ControlBase{
 
     @Override
     public void mostrarPantalla() {
