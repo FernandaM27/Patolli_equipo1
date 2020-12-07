@@ -1,6 +1,8 @@
 package entidades;
 
-public class Movimiento {
+import java.io.Serializable;
+
+public class Movimiento implements Serializable{
 
     private int id;
 

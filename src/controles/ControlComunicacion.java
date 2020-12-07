@@ -5,8 +5,8 @@
  */
 package controles;
 
-import comunicacion.Comunicacion;
-import comunicacion.IComunicacion;
+import comunicacionCliente.Comunicacion;
+import comunicacionCliente.IComunicacion;
 
 /**
  *

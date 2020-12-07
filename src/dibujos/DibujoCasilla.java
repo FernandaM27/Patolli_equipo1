@@ -21,6 +21,10 @@ public class DibujoCasilla {
         this.coordenadas=new Point(x, y);
     }
 
+    public DibujoCasilla(Casilla casilla) {
+        this.casilla = casilla;
+    }    
+
     public Casilla getCasilla() {
         return casilla;
     }

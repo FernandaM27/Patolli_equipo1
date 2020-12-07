@@ -1,10 +1,11 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Partida {
+public class Partida implements Serializable{
 
     private final List<Cania> canias;
     private int numeroJugadores;
