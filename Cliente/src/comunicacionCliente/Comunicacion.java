@@ -22,7 +22,8 @@ public class Comunicacion implements IComunicacion {
 
     @Override
     public void crearPartida(Partida partida) {
-        
+       ClienteSocket socket = new ClienteSocket();
+       
     }
 
     @Override
