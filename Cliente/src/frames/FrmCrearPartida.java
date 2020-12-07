@@ -11,7 +11,6 @@ import entidades.Partida;
 import entidades.Tablero;
 import java.util.Observable;
 import javax.swing.JOptionPane;
-import modelos.ModeloBase;
 import modelos.ModeloCrearPartida;
 
 /**
@@ -236,6 +235,8 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         Tablero tablero = new Tablero(this.getNumCasillas(), cc.crearCasillas(this.getNumCasillas()));
         partida.setTablero(tablero);
         cCrearPartida.crearPartida(partida);
+        FrmTablero frmTablero= new FrmTablero(6);
+        frmTablero.setVisible(true);
         this.dispose();
     }
     
