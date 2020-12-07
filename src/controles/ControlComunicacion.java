@@ -5,10 +5,19 @@
  */
 package controles;
 
+import comunicacion.Comunicacion;
+import comunicacion.IComunicacion;
+
 /**
  *
  * @author Alfon
  */
 public class ControlComunicacion {
-    
+
+    protected IComunicacion comunicacion;    
+
+    public ControlComunicacion() {
+        this.comunicacion = new Comunicacion(this);
+    }
+
 }

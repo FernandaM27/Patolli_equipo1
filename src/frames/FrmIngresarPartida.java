@@ -5,7 +5,7 @@
  */
 package frames;
 
-import controles.ControlNgresarPartida;
+import controles.ControlngresarPartida;
 import java.util.Observable;
 import modelos.ModeloIngresarPartida;
 
@@ -13,7 +13,7 @@ import modelos.ModeloIngresarPartida;
  *
  * @author fermi
  */
-public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<ControlNgresarPartida, ModeloIngresarPartida> {
+public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<ControlngresarPartida, ModeloIngresarPartida> {
 
     /**
      * Creates new form FrmIngresar
