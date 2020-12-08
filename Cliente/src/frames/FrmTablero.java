@@ -6,7 +6,15 @@
 package frames;
 
 import controles.ControlTablero;
+import dibujos.Fachada;
+import dibujos.IDibujoTablero;
+import entidades.Cania;
+import entidades.Jugador;
+import java.util.List;
 import java.util.Observable;
+import java.util.Random;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import modelos.ModeloBase;
 import modelos.ModeloTablero;
 
@@ -14,31 +22,58 @@ import modelos.ModeloTablero;
  *
  * @author fermi
  */
-public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlTablero, ModeloTablero>{
+public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlTablero, ModeloTablero> {
 
-//    private CnvDibujo canvas;
-    static int numTablero;
-
-    public FrmTablero(int numTablero) {
+    private IDibujoTablero dibujadorTablero;
+    private static int numTablero;
+    private ModeloTablero modeloTablero;
+    private int i=0;
+    
+    public FrmTablero() {
 //        canvas = new CnvDibujo(numTablero);
 //        canvas.setBounds(160, 50, 500, 500);
 //        canvas.setBackground(Color.white);      
 //        this.add(canvas);
         initComponents();
+        this.dibujadorTablero= new Fachada(modeloTablero.getTablero());
         this.setLocationRelativeTo(null);
         this.setTitle("Tablero");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
+        this.agregarElementoPantalla();
     }
     
-    private void agregarFicha(){
+    public void agregarElementoPantalla(){
+        this.dibujadorTablero.dibujarTablero();
+        this.agregarInfoJugadores();
+    }
+                
+    public void agregarInfoJugadores(){
+//        
+//        for(Jugador jugador: modeloTablero.getJugadores()){
+//            
+//        }
+    } 
+    
+//    private JPanel obtenerPanel(){
+//        switch(i){
+//            case 0:
+//                return this.jPanel1;
+//                break;
+//            case 1:
+//                break;
+//            case 2:
+//                break;
+//            case 3:
+//                break;
+//        }
+//        return null;
+//    }
+    private void agregarFicha() {
 //        canvas.agregarFichas(new Ficha(1),1);
 //        canvas.agregarFichas(new Ficha(2),2);
     }
-    
-    private FrmTablero() {
-     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +90,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
         jugador2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        panel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -74,7 +110,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
 
         jugador2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/m2.PNG"))); // NOI18N
 
-        jButton2.setText("Ingresar Ficha");
+        jButton2.setText("Tirar Fichas");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -88,6 +124,17 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
             }
         });
 
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,38 +142,50 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jugador3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jugador3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jugador2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton2)
-                        .addGap(121, 121, 121)
+                        .addGap(197, 197, 197)
                         .addComponent(jugador4))
-                    .addComponent(jugador1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jugador1)))
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jugador4)
-                            .addComponent(jugador3)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jugador4)
+                                .addComponent(jugador3)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jugador2)
-                    .addComponent(jugador1))
-                .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jugador2)
+                            .addComponent(jugador1))
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(55, 55, 55))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,28 +203,59 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        FrmPrincipal frmPrincipal= FrmPrincipal.createPrincipal();
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.agregarFicha();
+        this.tirarCanias();
      }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //        this.canvas.moverFicha(1, 5);
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void tirarCanias(){
+        //agregar metodo para tirar cania Logica
+        //Ctrl
+    }
+    
+    private void agregarJugadores(){
+        
+    }
+    
+    /**
+     * Crear metodo en el control para avisar a los demás jugadores
+     * cuidar que los metodos que modifiquen el modelo pasen por el control y directo al modelo, para respetar el estilo.
+     */
+//    public List<Cania> tirarCanias() {
+//        Random rd = new Random();
+//        for (int i = 0; i < 5; i++) {
+//            Boolean b= rd.nextBoolean();            
+//            this.modeloTablero.canias.add(new Cania(b));
+//        }
+//        System.out.println(this.modeloTablero.canias);
+//        return canias;
+//    }
+//
+//    public Integer contarCanias() {
+//        List<Cania> turno = tirarCanias();
+//        Integer contador = 0;
+//        for (Cania b : turno) {
+//            if (b.getValor() == true) {
+//                contador++;
+//            }
+//        }
+//        return contador;
+//    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jugador1;
-    private javax.swing.JLabel jugador2;
-    private javax.swing.JLabel jugador3;
-    private javax.swing.JLabel jugador4;
-    // End of variables declaration//GEN-END:variables
+//    public Integer resultadoTurno() {
+//        Integer numCanias = contarCanias();
+//        if (numCanias == 5) {
+//            return 10;
+//        } else {
+//            return numCanias;
+//        }
+////    }
 
     @Override
     public void asignarEtiquetas() {
@@ -186,4 +276,15 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     public void update(Observable arg0, Object arg1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jugador1;
+    private javax.swing.JLabel jugador2;
+    private javax.swing.JLabel jugador3;
+    private javax.swing.JLabel jugador4;
+    private javax.swing.JPanel panel1;
+    // End of variables declaration//GEN-END:variables
+
 }

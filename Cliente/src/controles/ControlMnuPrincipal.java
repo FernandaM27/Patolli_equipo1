@@ -63,13 +63,13 @@ public class ControlMnuPrincipal implements ControlBase {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void mostrarError() {
+   @Override
+    public void mostrarError(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mostrarExito() {
+    public void mostrarExito(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

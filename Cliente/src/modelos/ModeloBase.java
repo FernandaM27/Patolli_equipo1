@@ -20,8 +20,12 @@ public abstract class ModeloBase extends Observable{
         this.etiquetas = new ArrayList<>();
     }
 
-    protected List<String> getEtiquetas() {
+    public List<String> getEtiquetas() {
         return etiquetas;
+    }
+    
+    public String getEtiqueta(int index){
+        return this.etiquetas.get(index);
     }
 
     protected void setEtiquetas(List<String> etiquetas) {

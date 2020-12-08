@@ -21,12 +21,14 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
 
     private static FrmCrearPartida crearPartida;
     private ControlCrearPartida cCrearPartida;
+    private ModeloCrearPartida modeloCrearPartida;
     /**
      * Creates new form FrmPartida
      */
     public FrmCrearPartida() {
         initComponents();
-        cCrearPartida = new ControlCrearPartida(this);
+        this.cCrearPartida = new ControlCrearPartida(this);
+        this.modeloCrearPartida= new ModeloCrearPartida();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -34,7 +36,11 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         this.inicializarComandos();
         this.agregarActionListeners(cCrearPartida);
     }
-
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        this.asignarEtiquetas();
+    }
     private void inicializarComandos() {
         this.btnListo.setActionCommand("listo");
     }
@@ -64,20 +70,20 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         btgCasillas = new javax.swing.ButtonGroup();
         btgJugadores = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblCasillas = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnListo = new javax.swing.JButton();
         cuatroC = new javax.swing.JRadioButton();
         cincoC = new javax.swing.JRadioButton();
         seisC = new javax.swing.JRadioButton();
         sieteC = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblNumJugadores = new javax.swing.JLabel();
+        lblNumFichas = new javax.swing.JLabel();
         cbxNumJugadores = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblFondos = new javax.swing.JLabel();
+        lblApuesta = new javax.swing.JLabel();
+        lbltamanio = new javax.swing.JLabel();
         txtApuesta = new javax.swing.JTextField();
         txtFondos = new javax.swing.JTextField();
         cbxNumFichas = new javax.swing.JComboBox<>();
@@ -93,15 +99,13 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(154, 181, 42), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(174, 35, 13));
-        jLabel3.setText("crear partida");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+        lblTitulo.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(174, 35, 13));
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(68, 32, 6));
-        jLabel4.setText("casillas:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, 40));
+        lblCasillas.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        lblCasillas.setForeground(new java.awt.Color(68, 32, 6));
+        jPanel1.add(lblCasillas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 110, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm5.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 410));
@@ -145,15 +149,13 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         sieteC.setText("7");
         jPanel1.add(sieteC, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(68, 32, 6));
-        jLabel6.setText("Num. jugadores");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
+        lblNumJugadores.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        lblNumJugadores.setForeground(new java.awt.Color(68, 32, 6));
+        jPanel1.add(lblNumJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(68, 32, 6));
-        jLabel7.setText("Num. fichas");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
+        lblNumFichas.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        lblNumFichas.setForeground(new java.awt.Color(68, 32, 6));
+        jPanel1.add(lblNumFichas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
         cbxNumJugadores.setBackground(new java.awt.Color(199, 213, 76));
         cbxNumJugadores.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
@@ -161,20 +163,17 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         cbxNumJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
         jPanel1.add(cbxNumJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(68, 32, 6));
-        jLabel8.setText("fondos de apuesta");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+        lblFondos.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        lblFondos.setForeground(new java.awt.Color(68, 32, 6));
+        jPanel1.add(lblFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(68, 32, 6));
-        jLabel9.setText("valor por apuesta");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
+        lblApuesta.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        lblApuesta.setForeground(new java.awt.Color(68, 32, 6));
+        jPanel1.add(lblApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(68, 32, 6));
-        jLabel5.setText("Tamaño del tablero");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 310, -1));
+        lbltamanio.setFont(new java.awt.Font("Algerian", 0, 22)); // NOI18N
+        lbltamanio.setForeground(new java.awt.Color(68, 32, 6));
+        jPanel1.add(lbltamanio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 310, -1));
 
         txtApuesta.setBackground(new java.awt.Color(248, 228, 180));
         jPanel1.add(txtApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 80, 30));
@@ -235,8 +234,8 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         Tablero tablero = new Tablero(this.getNumCasillas(), cc.crearCasillas(this.getNumCasillas()));
         partida.setTablero(tablero);
         cCrearPartida.crearPartida(partida);
-        FrmTablero frmTablero= new FrmTablero(6);
-        frmTablero.setVisible(true);
+        //FrmTablero frmTablero= new FrmTablero(6);
+        //frmTablero.setVisible(true);
         this.dispose();
     }
     
@@ -262,14 +261,14 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
     private javax.swing.JRadioButton cincoC;
     private javax.swing.JRadioButton cuatroC;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblApuesta;
+    private javax.swing.JLabel lblCasillas;
+    private javax.swing.JLabel lblFondos;
+    private javax.swing.JLabel lblNumFichas;
+    private javax.swing.JLabel lblNumJugadores;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lbltamanio;
     private javax.swing.JRadioButton seisC;
     private javax.swing.JRadioButton sieteC;
     private javax.swing.JTextField txtApuesta;
@@ -278,7 +277,14 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
 
     @Override
     public void asignarEtiquetas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.lblTitulo.setText(this.modeloCrearPartida.getEtiqueta(0));
+        this.lbltamanio.setText(this.modeloCrearPartida.getEtiqueta(1));
+        this.lblCasillas.setText(this.modeloCrearPartida.getEtiqueta(2));
+        this.lblNumJugadores.setText(this.modeloCrearPartida.getEtiqueta(3));
+        this.lblNumFichas.setText(this.modeloCrearPartida.getEtiqueta(4));
+        this.lblFondos.setText(this.modeloCrearPartida.getEtiqueta(5));
+        this.lblApuesta.setText(this.modeloCrearPartida.getEtiqueta(6));
+        this.btnListo.setText(this.modeloCrearPartida.getEtiquetas().get(7));
     }
 
     @Override
@@ -288,11 +294,6 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
 
     @Override
     public void asignarEventos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update(Observable arg0, Object arg1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

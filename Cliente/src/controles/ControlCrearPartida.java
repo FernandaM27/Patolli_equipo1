@@ -7,7 +7,9 @@ package controles;
 
 import entidades.Partida;
 import frames.FrmCrearPartida;
+import frames.FrmIngresarPartida;
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -16,14 +18,26 @@ import java.awt.event.ActionEvent;
  */
 public class ControlCrearPartida extends ControlComunicacion implements ControlBase{
     
-    private FrmCrearPartida frame;
+    private FrmCrearPartida fCrearPartida;
+    private FrmIngresarPartida fIngresarPartida;
     
-    public ControlCrearPartida(FrmCrearPartida frame) {
-        this.frame = frame;
+    /**
+     * NOTA: Aplicar singleton para evitar crear n intancias de los frame
+     * @param crear 
+     */
+    public ControlCrearPartida(FrmCrearPartida crear) {
+        this.fCrearPartida = crear;
+        this.fIngresarPartida = new FrmIngresarPartida();
     }
     
     public void crearPartida(Partida partida) {
-        super.comunicacion.crearPartida(partida);
+        if(super.comunicacion.crearPartida(partida).equalsIgnoreCase("Create")){
+            this.mostrarExito("Partida Creada con éxito");
+            this.fCrearPartida.setVisible(true);
+        }else{
+            this.mostrarError("Ocurrio un error al momento de crear la partida intenlo más tarde");
+        }
+        
     }
 
     @Override
@@ -31,14 +45,14 @@ public class ControlCrearPartida extends ControlComunicacion implements ControlB
         
     }
 
-    @Override
-    public void mostrarError() {
-        
+   @Override
+    public void mostrarError(String mensaje) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mostrarExito() {
-        
+    public void mostrarExito(String mensaje) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
