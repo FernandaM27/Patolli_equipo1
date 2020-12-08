@@ -5,26 +5,36 @@
  */
 package controles;
 
+import entidades.Jugador;
+import frames.FrmTablero;
 import java.awt.event.ActionEvent;
+import modelos.ModeloTablero;
 
 /**
  *
  * @author Alfon
  */
 public class ControlngresarPartida extends ControlComunicacion implements ControlBase{
+    
+    private FrmTablero frmTablero;
 
+    public ControlngresarPartida() {
+        this.frmTablero= new FrmTablero();
+    }
+    
+    
     @Override
     public void mostrarPantalla() {
+         
+    }
+
+  @Override
+    public void mostrarError(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mostrarError() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mostrarExito() {
+    public void mostrarExito(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -33,4 +43,9 @@ public class ControlngresarPartida extends ControlComunicacion implements Contro
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public void ingresarPartida(Jugador jugador){
+        super.comunicacion.ingresarPartida(jugador);
+        this.mostrarExito("");
+        this.frmTablero.setVisible(true);
+    }
 }

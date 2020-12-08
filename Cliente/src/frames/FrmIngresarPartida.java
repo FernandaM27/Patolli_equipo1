@@ -6,7 +6,11 @@
 package frames;
 
 import controles.ControlngresarPartida;
+import entidades.Jugador;
+import java.awt.Color;
 import java.util.Observable;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 import modelos.ModeloIngresarPartida;
 
 /**
@@ -15,16 +19,21 @@ import modelos.ModeloIngresarPartida;
  */
 public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<ControlngresarPartida, ModeloIngresarPartida> {
 
+    private Color color;
     /**
      * Creates new form FrmIngresar
      */
     private static FrmIngresarPartida frmIngresaP;
+    private ControlngresarPartida ctrlIngresarPartida;
 
     public FrmIngresarPartida() {
         initComponents();
         this.setLocationRelativeTo(this);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        this.ctrlIngresarPartida= new ControlngresarPartida();
         this.setResizable(false);
+        this.setVisible(false);
+        this.color = null;
     }
 
     public static FrmIngresarPartida createInstance() {
@@ -49,10 +58,11 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnColor = new javax.swing.JButton();
+        checkColor = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,10 +88,10 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm1.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(250, 203, 139));
-        jTextField1.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 240, 40));
+        txtNombre.setEditable(false);
+        txtNombre.setBackground(new java.awt.Color(250, 203, 139));
+        txtNombre.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 240, 40));
 
         jLabel5.setFont(new java.awt.Font("Algerian", 0, 28)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(131, 151, 8));
@@ -92,23 +102,37 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jButton1.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
         jButton1.setForeground(new java.awt.Color(247, 180, 93));
         jButton1.setText("Listo");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 170, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 170, -1));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("<Aqui va un colorPicker>");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, -1, -1));
+        btnColor.setText("Selecciona el color");
+        btnColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 240, 30));
+
+        checkColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkColorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(checkColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
         );
 
         pack();
@@ -119,18 +143,45 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void checkColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkColorActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    // End of variables declaration//GEN-END:variables
+    private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
+        if(seleccionaColor()){
+            System.out.println("El color es"+this.color.toString());
+        }else{
+            JOptionPane.showMessageDialog(this, "");
+        }
+    }//GEN-LAST:event_btnColorActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private boolean validarCampos(){
+        return true;
+    }
+    
+    private boolean seleccionaColor(){
+        //Ver que pasa un vez que ya has seleciona una vez
+        color = JColorChooser.showDialog(this, "Selecione un color", color);
+        if(color==null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    private void ingresarPartida(){
+        this.ctrlIngresarPartida.ingresarPartida(this.crearInstanciaJugador());
+    }
+    
+    private Jugador crearInstanciaJugador(){
+        Jugador j = new Jugador(this.txtNombre.getText(), color.toString());
+        return j;
+    }
+    
     @Override
     public void asignarEtiquetas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -150,4 +201,17 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     public void update(Observable arg0, Object arg1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnColor;
+    private javax.swing.JCheckBox checkColor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtNombre;
+    // End of variables declaration//GEN-END:variables
+
 }

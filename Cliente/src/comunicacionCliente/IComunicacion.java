@@ -5,6 +5,7 @@
  */
 package comunicacionCliente;
 
+import entidades.Jugador;
 import entidades.Partida;
 
 /**
@@ -13,13 +14,13 @@ import entidades.Partida;
  */
 public interface IComunicacion {        
     
-    public void crearPartida(Partida partida);    
+    public String crearPartida(Partida partida);    
     
     public void pagarApuesta();
     
     public void realizarMovimiento();
     
-    public void ingresarPartida();
+    public void ingresarPartida(Jugador jugador);
     
     public void actualizarModelo();
     

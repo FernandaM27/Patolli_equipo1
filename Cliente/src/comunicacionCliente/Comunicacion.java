@@ -6,6 +6,7 @@
 package comunicacionCliente;
 
 import controles.ControlComunicacion;
+import entidades.Jugador;
 import entidades.Partida;
 
 /**
@@ -21,9 +22,9 @@ public class Comunicacion implements IComunicacion {
     }    
 
     @Override
-    public void crearPartida(Partida partida) {
+    public String crearPartida(Partida partida) {
        ClienteSocket socket = new ClienteSocket();
-       
+       return "Create";
     }
 
     @Override
@@ -37,7 +38,7 @@ public class Comunicacion implements IComunicacion {
     }
 
     @Override
-    public void ingresarPartida() {
+    public void ingresarPartida(Jugador jugador) {
 
     }
 
