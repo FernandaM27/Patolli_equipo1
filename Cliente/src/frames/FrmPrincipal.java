@@ -4,21 +4,20 @@
  * and open the template in the editor.
  */
 package frames;
+
 import controles.ControlMnuPrincipal;
 import java.util.Observable;
-import java.util.Observer;
-import modelos.ModeloBase;
 import modelos.ModeloPrincipal;
 
- 
 /**
  *
  * @author fermi
  */
 public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<ControlMnuPrincipal, ModeloPrincipal> {
-
+    
     private static FrmPrincipal frmPrincipal;
     private ModeloPrincipal modeloPrincipal;
+
     /**
      * Creates new form Principal
      */
@@ -29,44 +28,46 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.inicializarComandos();
-        this.modeloPrincipal= new ModeloPrincipal();
+        this.modeloPrincipal = new ModeloPrincipal();
         this.modeloPrincipal.addObserver(this);
         this.setEtiquetas();
-        this.agregarActionLisneters(new ControlMnuPrincipal(this));
-    }
-    
-    private void setEtiquetas(){
-        this.lblTitulo.setText(modeloPrincipal.getEtiquetas().get(0));
-        this.btnCrearPartida.setText(modeloPrincipal.getEtiquetas().get(1));
-        this.btnIngresarPartida.setText(modeloPrincipal.getEtiquetas().get(2));
-        this.btnComoJugar.setText(modeloPrincipal.getEtiquetas().get(3));
-        this.btnSalir.setText(modeloPrincipal.getEtiquetas().get(4));
+        this.agregarActionLisneters(ControlMnuPrincipal.getInstance(this));
     }
 
-    private void inicializarComandos(){
-        this.btnComoJugar.setActionCommand("Como jugar");
-        this.btnCrearPartida.setActionCommand("CrearPartida");
-        this.btnIngresarPartida.setActionCommand("Ingresar partida");
-        this.btnSalir.setActionCommand("salir");
-    }
-    
-    private void agregarActionLisneters(ControlMnuPrincipal ctrlPrincipal){
-        this.btnComoJugar.addActionListener(ctrlPrincipal);
-        this.btnCrearPartida.addActionListener(ctrlPrincipal);
-        this.btnIngresarPartida.addActionListener(ctrlPrincipal);
-        this.btnSalir.addActionListener(ctrlPrincipal);
-    }
     /**
      * Contructor que crea el frame principal
+     *
      * @return regresa una instancia de frame principal, aplicando singleton
      */
-    public static FrmPrincipal createPrincipal() {
+    public static FrmPrincipal getInstance() {
         if (frmPrincipal == null) {
             return frmPrincipal = new FrmPrincipal();
         } else if (frmPrincipal != null) {
             return frmPrincipal;
         }
         return null;
+    }
+    
+    private void setEtiquetas() {
+        this.lblTitulo.setText(modeloPrincipal.getEtiquetas().get(0));
+        this.btnCrearPartida.setText(modeloPrincipal.getEtiquetas().get(1));
+        this.btnIngresarPartida.setText(modeloPrincipal.getEtiquetas().get(2));
+        this.btnComoJugar.setText(modeloPrincipal.getEtiquetas().get(3));
+        this.btnSalir.setText(modeloPrincipal.getEtiquetas().get(4));
+    }
+    
+    private void inicializarComandos() {
+        this.btnComoJugar.setActionCommand("Como jugar");
+        this.btnCrearPartida.setActionCommand("CrearPartida");
+        this.btnIngresarPartida.setActionCommand("Ingresar partida");
+        this.btnSalir.setActionCommand("salir");
+    }
+    
+    private void agregarActionLisneters(ControlMnuPrincipal ctrlPrincipal) {
+        this.btnComoJugar.addActionListener(ctrlPrincipal);
+        this.btnCrearPartida.addActionListener(ctrlPrincipal);
+        this.btnIngresarPartida.addActionListener(ctrlPrincipal);
+        this.btnSalir.addActionListener(ctrlPrincipal);
     }
 
     /**
@@ -143,9 +144,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        FrmPrincipal frm = FrmPrincipal.createPrincipal();
-        frm.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,17 +161,17 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
     public void update(Observable o, Object o1) {
         this.setEtiquetas();
     }
-
+    
     @Override
     public void asignarEtiquetas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void asignarComando() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void asignarEventos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
