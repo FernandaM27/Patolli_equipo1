@@ -16,19 +16,11 @@ import java.awt.event.ActionEvent;
 public class ControlComoJugar implements ControlBase {
 
     private FrmComoJugar frame;
-    private static ControlComoJugar ctrl;
-    
-    private ControlComoJugar(FrmComoJugar frame) {
+
+    public ControlComoJugar(FrmComoJugar frame) {
         this.frame = frame;
     }
 
-    public static ControlComoJugar getInstance(FrmComoJugar frame){
-        if (ctrl==null) {
-            return ctrl= new ControlComoJugar(frame);
-        }
-        return ctrl;
-    }
-    
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getActionCommand().equalsIgnoreCase("salir")) {
@@ -37,7 +29,7 @@ public class ControlComoJugar implements ControlBase {
     }
 
     private void salir() {
-        FrmPrincipal frm = FrmPrincipal.getInstance();
+        FrmPrincipal frm = FrmPrincipal.createPrincipal();
         frm.setVisible(true);
         frame.dispose();
     }

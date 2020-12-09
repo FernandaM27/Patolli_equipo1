@@ -22,9 +22,9 @@ public class Fachada implements IControl {
     private final CtrlPartida ctrlPartida;
 
     public Fachada() {
-        this.ctrlJugador = CtrlJugador.getInstance();
-        this.ctrlMovimiento = CtrlMovimiento.getInstance();
-        this.ctrlPartida = CtrlPartida.getInstance();
+        this.ctrlJugador = new CtrlJugador();
+        this.ctrlMovimiento = new CtrlMovimiento();
+        this.ctrlPartida = new CtrlPartida();
     }
 
     @Override

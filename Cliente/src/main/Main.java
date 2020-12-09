@@ -13,7 +13,7 @@ import frames.FrmPrincipal;
  */
 public class Main {
     public static void main(String[] args) {
-        FrmPrincipal frmPrincipal= FrmPrincipal.getInstance();
+        FrmPrincipal frmPrincipal= FrmPrincipal.createPrincipal();
         frmPrincipal.setVisible(true);
     }
 }

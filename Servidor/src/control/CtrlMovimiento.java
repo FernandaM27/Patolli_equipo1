@@ -14,16 +14,8 @@ import entidades.Movimiento;
  * @author Alfon
  */
 public class CtrlMovimiento {
-    private static CtrlMovimiento ctrl;
-    
-    private CtrlMovimiento() {
-    }
-    
-    public static CtrlMovimiento getInstance(){
-        if (ctrl==null) {
-            return ctrl= new CtrlMovimiento();
-        }
-        return ctrl;
+
+    public CtrlMovimiento() {
     }
     
     public void moverFicha(Movimiento movimiento) {

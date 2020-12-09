@@ -12,16 +12,8 @@ import entidades.Jugador;
  * @author Alfon
  */
 public class CtrlJugador {
-    private static CtrlJugador ctrl;
-    
-    private CtrlJugador() {
-    }
-    
-    public static CtrlJugador getInstance(){
-        if (ctrl==null) {
-            return ctrl= new CtrlJugador();
-        }
-        return ctrl;
+
+    public CtrlJugador() {
     }
     
     public void agregarJugador(Jugador jugador) {

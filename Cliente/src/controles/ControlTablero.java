@@ -16,18 +16,10 @@ import modelos.ModeloTablero;
  */
 public class ControlTablero extends ControlComunicacion{
     private ModeloTablero modeloTablero;
-    private static ControlTablero ctrl;
-    
-    private void tirarCanias(){
+   
+    public void tirarCanias(int i){
         super.comunicacion.notificarTurno();
         //this.modeloTablero.setCanias(canias);
-    }
-    
-    public static ControlTablero getInstance(){
-        if (ctrl==null) {
-            return ctrl= new ControlTablero();
-        }
-        return ctrl;
     }
     
     /**

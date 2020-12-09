@@ -26,17 +26,17 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     private static FrmIngresarPartida frmIngresaP;
     private ControlngresarPartida ctrlIngresarPartida;
 
-    private FrmIngresarPartida() {
+    public FrmIngresarPartida() {
         initComponents();
         this.setLocationRelativeTo(this);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.ctrlIngresarPartida= ControlngresarPartida.getInstance();
+        this.ctrlIngresarPartida= new ControlngresarPartida();
         this.setResizable(false);
         this.setVisible(false);
         this.color = null;
     }
 
-    public static FrmIngresarPartida getInstance() {
+    public static FrmIngresarPartida createInstance() {
         if (frmIngresaP == null) {
             return frmIngresaP = new FrmIngresarPartida();
         } else if (frmIngresaP != null) {
@@ -139,7 +139,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        FrmPrincipal frmPrincipal = FrmPrincipal.getInstance();
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 

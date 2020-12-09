@@ -17,25 +17,36 @@ import modelos.ModeloCrearPartida;
  *
  * @author fermi
  */
-public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<ControlCrearPartida, ModeloCrearPartida> {
+public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<ControlCrearPartida, ModeloCrearPartida>{
 
     private static FrmCrearPartida crearPartida;
     private ControlCrearPartida cCrearPartida;
     private ModeloCrearPartida modeloCrearPartida;
-
     /**
      * Creates new form FrmPartida
      */
-    private FrmCrearPartida() {
+    public FrmCrearPartida() {
         initComponents();
-        this.cCrearPartida = ControlCrearPartida.getInstance(this);
-        this.modeloCrearPartida = new ModeloCrearPartida();
+        this.cCrearPartida = new ControlCrearPartida(this);
+        this.modeloCrearPartida= new ModeloCrearPartida();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setResizable(false);
         this.inicializarComandos();
         this.agregarActionListeners(cCrearPartida);
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        this.asignarEtiquetas();
+    }
+    private void inicializarComandos() {
+        this.btnListo.setActionCommand("listo");
+    }
+
+    private void agregarActionListeners(ControlCrearPartida ctrlCrearPartida) {
+        this.btnListo.addActionListener(ctrlCrearPartida);
     }
 
     public static FrmCrearPartida getInstance() {
@@ -45,19 +56,6 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
             return crearPartida;
         }
         return null;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        this.asignarEtiquetas();
-    }
-
-    private void inicializarComandos() {
-        this.btnListo.setActionCommand("listo");
-    }
-
-    private void agregarActionListeners(ControlCrearPartida ctrlCrearPartida) {
-        this.btnListo.addActionListener(ctrlCrearPartida);
     }
 
     /**
@@ -204,36 +202,35 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        FrmPrincipal frmPrincipal = FrmPrincipal.getInstance();
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        if (validarCampos()) {
+        if(validarCampos()){
             this.crearInstanciaPartida();
-        } else {
+        }else{
             JOptionPane.showMessageDialog(this, "Todos los campos deben de estar llenos");
         }
     }//GEN-LAST:event_btnListoActionPerformed
-
+    
     /**
      * Verificar validaciones FERNANDA M
-     *
-     * @return
+     * @return 
      */
-    private boolean validarCampos() {
-        if (this.getNumCasillas() == 0) {
+    private boolean validarCampos(){
+        if(this.getNumCasillas()==0){
             return false;
         }
         return true;
     }
-
-    public void crearInstanciaPartida() {
+    
+    public void crearInstanciaPartida(){
         Partida partida = new Partida();
-        partida.setNumeroJugadores(this.cbxNumJugadores.getSelectedIndex() + 2);
-        partida.setNumeroFichas(this.cbxNumFichas.getSelectedIndex() + 2);
+        partida.setNumeroJugadores(this.cbxNumJugadores.getSelectedIndex()+2);
+        partida.setNumeroFichas(this.cbxNumFichas.getSelectedIndex()+2);
         partida.setMontoApuestas(Integer.valueOf(this.txtApuesta.getText()));
-        CreadorCasillas cc = new CreadorCasillas(this.getNumCasillas());
+        CreadorCasillas cc=new CreadorCasillas(this.getNumCasillas());
         Tablero tablero = new Tablero(this.getNumCasillas(), cc.crearCasillas(this.getNumCasillas()));
         partida.setTablero(tablero);
         cCrearPartida.crearPartida(partida);
@@ -241,7 +238,7 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         //frmTablero.setVisible(true);
         this.dispose();
     }
-
+    
     private int getNumCasillas() {
         if (this.cuatroC.isSelected()) {
             return 4;
