@@ -18,11 +18,19 @@ import java.awt.event.ActionEvent;
 public class ControlMnuPrincipal implements ControlBase {
 
     private FrmPrincipal principal;
-
-    public ControlMnuPrincipal(FrmPrincipal principal) {
+    private static ControlMnuPrincipal ctrl;
+    
+    private ControlMnuPrincipal(FrmPrincipal principal) {
         this.principal = principal;
     }
 
+    public static ControlMnuPrincipal getInstance(FrmPrincipal principal){
+        if (ctrl==null) {
+            return ctrl= new ControlMnuPrincipal(principal);
+        }
+        return ctrl;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getActionCommand().equalsIgnoreCase("CrearPartida")) {
@@ -47,13 +55,13 @@ public class ControlMnuPrincipal implements ControlBase {
     }
     
     private void comoJugar(){
-        FrmComoJugar frmCJ = new FrmComoJugar();
+        FrmComoJugar frmCJ =  FrmComoJugar.getInstance();
         frmCJ.setVisible(true);
         this.salir();
     }
     
     private void ingresarPartida(){
-    FrmIngresarPartida frmIP = new FrmIngresarPartida();
+    FrmIngresarPartida frmIP = FrmIngresarPartida.getInstance();
         frmIP.setVisible(true);
         this.salir();
     }
