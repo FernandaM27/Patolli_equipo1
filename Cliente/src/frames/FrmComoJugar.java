@@ -13,34 +13,39 @@ import modelos.ModeloComoJugar;
  *
  * @author fermi
  */
-public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<ControlComoJugar, ModeloComoJugar>{
-    
-    private ModeloComoJugar modeloComoJugar;
-   
-    /**
-     * Singletoon pendiente de hacer 
-     * @return 
-     */
-    public static FrmComoJugar createPrincipal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<ControlComoJugar, ModeloComoJugar> {
 
-    public FrmComoJugar() {
+    private static FrmComoJugar frm;
+    private ModeloComoJugar modeloComoJugar;
+
+    /**
+     * Singletoon pendiente de hacer
+     *
+     * @return
+     */
+    private FrmComoJugar() {
         initComponents();
         this.setLocationRelativeTo(this);
         this.setResizable(false);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.modeloComoJugar= new ModeloComoJugar();
+        this.modeloComoJugar = new ModeloComoJugar();
         this.asignarEventos();
+        this.inicializarComandos();
         this.asignarEtiquetas();
     }
 
-    
-    private void inicializarComandos(){
+    public static FrmComoJugar getInstance() {
+        if (frm == null) {
+            frm = new FrmComoJugar();
+        }
+        return frm;
+    }
+
+    private void inicializarComandos() {
         this.btnSalir.setActionCommand("Salir");
     }
-    
-      @Override
+
+    @Override
     public void update(Observable o, Object arg) {
         this.asignarEtiquetas();
     }
@@ -63,10 +68,9 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
 
     @Override
     public void asignarEventos() {
-        this.btnSalir.addActionListener(new ControlComoJugar(this));
+        this.btnSalir.addActionListener(ControlComoJugar.getInstance(this));
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -148,7 +152,7 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
+        FrmPrincipal frmPrincipal = FrmPrincipal.getInstance();
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
@@ -163,5 +167,5 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
     private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
-    
+
 }
