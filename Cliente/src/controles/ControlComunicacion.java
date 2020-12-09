@@ -16,19 +16,11 @@ import java.awt.event.ActionEvent;
 public class ControlComunicacion implements ControlBase {
 
     protected IComunicacion comunicacion;    
-    private static ControlComunicacion ctrl;
-   
-    protected ControlComunicacion() {
+
+    public ControlComunicacion() {
         this.comunicacion = new Comunicacion(this);
     }
 
-    public static ControlComunicacion getInstance(){
-        if (ctrl==null) {
-            return ctrl= new ControlComunicacion();
-        }
-        return ctrl;
-    }
-    
     @Override
     public void mostrarPantalla() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

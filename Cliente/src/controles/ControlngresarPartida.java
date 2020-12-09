@@ -8,7 +8,8 @@ package controles;
 import entidades.Jugador;
 import frames.FrmTablero;
 import java.awt.event.ActionEvent;
- 
+import modelos.ModeloTablero;
+
 /**
  *
  * @author Alfon
@@ -16,19 +17,12 @@ import java.awt.event.ActionEvent;
 public class ControlngresarPartida extends ControlComunicacion implements ControlBase{
     
     private FrmTablero frmTablero;
-    private static ControlngresarPartida ctrl;
-    
-    private ControlngresarPartida() {
-        this.frmTablero= FrmTablero.getInstance();
+
+    public ControlngresarPartida() {
+        this.frmTablero= new FrmTablero();
     }
     
-    public static ControlngresarPartida getInstance(){
-        if (ctrl==null) {
-            return ctrl= new ControlngresarPartida();
-        }
-        return ctrl;
-    }
- 
+    
     @Override
     public void mostrarPantalla() {
          

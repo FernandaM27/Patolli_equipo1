@@ -20,21 +20,14 @@ public class ControlCrearPartida extends ControlComunicacion implements ControlB
     
     private FrmCrearPartida fCrearPartida;
     private FrmIngresarPartida fIngresarPartida;
-    private static ControlCrearPartida ctrl;
+    
     /**
      * NOTA: Aplicar singleton para evitar crear n intancias de los frame
      * @param crear 
      */
-    private ControlCrearPartida(FrmCrearPartida crear) {
+    public ControlCrearPartida(FrmCrearPartida crear) {
         this.fCrearPartida = crear;
-        this.fIngresarPartida = FrmIngresarPartida.getInstance();
-    }
-    
-    public static ControlCrearPartida getInstance(FrmCrearPartida crear){
-        if (ctrl==null) {
-            return ctrl= new ControlCrearPartida(crear);
-        }
-        return ctrl;
+        this.fIngresarPartida = new FrmIngresarPartida();
     }
     
     public void crearPartida(Partida partida) {
@@ -44,6 +37,7 @@ public class ControlCrearPartida extends ControlComunicacion implements ControlB
         }else{
             this.mostrarError("Ocurrio un error al momento de crear la partida intenlo más tarde");
         }
+        
     }
 
     @Override

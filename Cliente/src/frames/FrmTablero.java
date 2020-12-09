@@ -8,7 +8,14 @@ package frames;
 import controles.ControlTablero;
 import dibujos.Fachada;
 import dibujos.IDibujoTablero;
+import entidades.Cania;
+import entidades.Jugador;
+import java.util.List;
 import java.util.Observable;
+import java.util.Random;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import modelos.ModeloBase;
 import modelos.ModeloTablero;
 
 /**
@@ -21,9 +28,8 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     private static int numTablero;
     private ModeloTablero modeloTablero;
     private int i=0;
-    private static FrmTablero frmTablero;
     
-    private FrmTablero() {
+    public FrmTablero() {
 //        canvas = new CnvDibujo(numTablero);
 //        canvas.setBounds(160, 50, 500, 500);
 //        canvas.setBackground(Color.white);      
@@ -35,13 +41,6 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.agregarElementoPantalla();
-    }
-    
-    public static FrmTablero getInstance(){
-        if (frmTablero==null) {
-            return frmTablero= new FrmTablero();
-        }
-        return frmTablero;
     }
     
     public void agregarElementoPantalla(){
@@ -204,7 +203,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        FrmPrincipal frmPrincipal = FrmPrincipal.getInstance();
+        FrmPrincipal frmPrincipal = FrmPrincipal.createPrincipal();
         frmPrincipal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 

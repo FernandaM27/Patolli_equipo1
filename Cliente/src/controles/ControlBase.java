@@ -16,4 +16,6 @@ public interface ControlBase extends ActionListener{
     public abstract void mostrarPantalla();
     public abstract void mostrarError(String mensaje);
     public abstract void mostrarExito(String mensaje); 
- }
+
+    
+}

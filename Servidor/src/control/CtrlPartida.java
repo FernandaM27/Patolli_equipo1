@@ -12,18 +12,10 @@ import entidades.Partida;
  * @author Alfon
  */
 public class CtrlPartida {
-    private static CtrlPartida ctrl;
-    
-    private CtrlPartida() {
+
+    public CtrlPartida() {
     }
 
-    public static CtrlPartida getInstance(){
-        if (ctrl==null) {
-            return ctrl= new CtrlPartida();
-        }
-        return ctrl;
-    }
-    
     public void crearPartida(Partida partida) {
     
     }
