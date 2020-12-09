@@ -35,7 +35,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         this.setVisible(false);
         this.color = null;
     }
-
+    
     public static FrmIngresarPartida getInstance() {
         if (frmIngresaP == null) {
             return frmIngresaP = new FrmIngresarPartida();
@@ -45,6 +45,8 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         return null;
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +62,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnListo = new javax.swing.JButton();
         btnColor = new javax.swing.JButton();
         checkColor = new javax.swing.JCheckBox();
 
@@ -88,7 +90,6 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm1.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
 
-        txtNombre.setEditable(false);
         txtNombre.setBackground(new java.awt.Color(250, 203, 139));
         txtNombre.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 240, 40));
@@ -98,16 +99,16 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jLabel5.setText("Color");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(177, 6, 7));
-        jButton1.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(247, 180, 93));
-        jButton1.setText("Listo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnListo.setBackground(new java.awt.Color(177, 6, 7));
+        btnListo.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
+        btnListo.setForeground(new java.awt.Color(247, 180, 93));
+        btnListo.setText("Listo");
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnListoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 170, -1));
+        jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 170, -1));
 
         btnColor.setText("Selecciona el color");
         btnColor.addActionListener(new java.awt.event.ActionListener() {
@@ -151,13 +152,15 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         if(seleccionaColor()){
             System.out.println("El color es"+this.color.toString());
         }else{
-            JOptionPane.showMessageDialog(this, "");
+            JOptionPane.showMessageDialog(this, "Seleccione un color");
         }
     }//GEN-LAST:event_btnColorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+        if (this.validarCampos()) {
+            this.ingresarPartida();
+        } 
+    }//GEN-LAST:event_btnListoActionPerformed
     
     private boolean validarCampos(){
         return true;
@@ -204,8 +207,8 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnColor;
+    private javax.swing.JButton btnListo;
     private javax.swing.JCheckBox checkColor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

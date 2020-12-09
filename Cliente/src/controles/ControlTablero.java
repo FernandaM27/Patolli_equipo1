@@ -42,20 +42,7 @@ public class ControlTablero extends ControlComunicacion{
         this.modeloTablero.eliminarJugador(jugador);
     }
             
-    @Override
-    public void mostrarExito(String mensaje) {
-        super.mostrarExito(mensaje); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mostrarError(String mensaje) {
-        super.mostrarError(mensaje); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mostrarPantalla() {
-        super.mostrarPantalla(); //To change body of generated methods, choose Tools | Templates.
-    }
+  
     
     
 }

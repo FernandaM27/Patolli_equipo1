@@ -35,6 +35,7 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setResizable(false);
         this.inicializarComandos();
+        this.asignarEtiquetas();
         this.agregarActionListeners(cCrearPartida);
     }
 
@@ -210,7 +211,7 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         if (validarCampos()) {
-            this.crearInstanciaPartida();
+            this.crearPartida();
         } else {
             JOptionPane.showMessageDialog(this, "Todos los campos deben de estar llenos");
         }
@@ -228,7 +229,11 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         return true;
     }
 
-    public void crearInstanciaPartida() {
+    private void crearPartida(){
+         cCrearPartida.crearPartida(this.crearInstanciaPartida());
+    }
+    
+    private Partida crearInstanciaPartida() {
         Partida partida = new Partida();
         partida.setNumeroJugadores(this.cbxNumJugadores.getSelectedIndex() + 2);
         partida.setNumeroFichas(this.cbxNumFichas.getSelectedIndex() + 2);
@@ -236,10 +241,10 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         CreadorCasillas cc = new CreadorCasillas(this.getNumCasillas());
         Tablero tablero = new Tablero(this.getNumCasillas(), cc.crearCasillas(this.getNumCasillas()));
         partida.setTablero(tablero);
-        cCrearPartida.crearPartida(partida);
+        
         //FrmTablero frmTablero= new FrmTablero(6);
         //frmTablero.setVisible(true);
-        this.dispose();
+        return partida;
     }
 
     private int getNumCasillas() {

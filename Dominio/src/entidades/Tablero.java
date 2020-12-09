@@ -37,5 +37,10 @@ public class Tablero implements Serializable{
     public List<Casilla> getCasillas(){
         return casillas;
     }
+
+    @Override
+    public String toString() {
+        return "Tablero{" + "numCasillas=" + numCasillas + ", casillas=" + casillas + '}';
+    }
     
 }

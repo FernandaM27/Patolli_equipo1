@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
  */
 public class ControlngresarPartida extends ControlComunicacion implements ControlBase{
     
-    private FrmTablero frmTablero;
+    private FrmTablero frmTablero=null;
     private static ControlngresarPartida ctrl;
     
     private ControlngresarPartida() {
@@ -28,30 +28,21 @@ public class ControlngresarPartida extends ControlComunicacion implements Contro
         }
         return ctrl;
     }
- 
-    @Override
-    public void mostrarPantalla() {
-         
-    }
 
-  @Override
-    public void mostrarError(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mostrarExito(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
     }
     
     public void ingresarPartida(Jugador jugador){
         super.comunicacion.ingresarPartida(jugador);
-        this.mostrarExito("");
-        this.frmTablero.setVisible(true);
+        try {
+            super.mostrarPantalla(frmTablero);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+        
     }
 }

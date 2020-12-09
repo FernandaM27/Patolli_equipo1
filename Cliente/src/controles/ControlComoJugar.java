@@ -8,6 +8,7 @@ package controles;
 import frames.FrmComoJugar;
 import frames.FrmPrincipal;
 import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
 
 /**
  *
@@ -43,7 +44,7 @@ public class ControlComoJugar implements ControlBase {
     }
 
     @Override
-    public void mostrarPantalla() {
+    public void mostrarPantalla(JFrame frm) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -56,4 +57,6 @@ public class ControlComoJugar implements ControlBase {
     public void mostrarExito(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 }

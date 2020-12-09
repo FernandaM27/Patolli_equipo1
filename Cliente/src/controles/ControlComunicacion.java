@@ -7,7 +7,10 @@ package controles;
 
 import comunicacionCliente.Comunicacion;
 import comunicacionCliente.IComunicacion;
+import frames.FrameBase;
 import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,23 +33,23 @@ public class ControlComunicacion implements ControlBase {
     }
     
     @Override
-    public void mostrarPantalla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mostrarPantalla(JFrame frm) {
+        frm.setVisible(true);
     }
 
     @Override
-    public void mostrarError(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void  mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Error",JOptionPane.ERROR_MESSAGE);
     }
 
     @Override
     public void mostrarExito(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(null, mensaje, "Éxito",JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
     }
 
 }

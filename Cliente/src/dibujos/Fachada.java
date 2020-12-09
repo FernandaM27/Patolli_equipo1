@@ -24,8 +24,7 @@ public class Fachada implements IDibujoTablero{
             
     @Override
     public void dibujarTablero() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     }
 
     @Override
     public void dibujarFichas() {

@@ -10,6 +10,7 @@ import frames.FrmCrearPartida;
 import frames.FrmIngresarPartida;
 import frames.FrmPrincipal;
 import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
  
 /**
  *
@@ -67,11 +68,11 @@ public class ControlMnuPrincipal implements ControlBase {
     }
 
     @Override
-    public void mostrarPantalla() {
+    public void mostrarPantalla(JFrame frm) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   @Override
+    @Override
     public void mostrarError(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -80,4 +81,6 @@ public class ControlMnuPrincipal implements ControlBase {
     public void mostrarExito(String mensaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
 }

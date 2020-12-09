@@ -6,6 +6,7 @@
 package controles;
 
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
  
 /**
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
  * @author Alfon
  */
 public interface ControlBase extends ActionListener{
-    public abstract void mostrarPantalla();
-    public abstract void mostrarError(String mensaje);
-    public abstract void mostrarExito(String mensaje); 
+    public void mostrarPantalla(JFrame frm);
+    public void mostrarError(String mensaje);
+    public void mostrarExito(String mensaje); 
  }

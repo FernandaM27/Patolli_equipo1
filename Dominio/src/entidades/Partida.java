@@ -48,5 +48,10 @@ public class Partida implements Serializable{
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
     }
+
+    @Override
+    public String toString() {
+        return "Partida{" + "canias=" + canias + ", numeroJugadores=" + numeroJugadores + ", numeroFichas=" + numeroFichas + ", montoApuestas=" + montoApuestas + ", tablero=" + tablero + '}';
+    }
     
 }

@@ -24,6 +24,7 @@ public class ModeloTablero extends ModeloBase{
     }
 
     public ModeloTablero(Tablero tablero, List<Jugador> jugadores) {
+        
         this.tablero = tablero;
         this.jugadores = jugadores;
     }

@@ -144,7 +144,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        
+        System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

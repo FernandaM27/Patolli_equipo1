@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Alfonso Sempoalt
  */
-public class ControlCrearPartida extends ControlComunicacion implements ControlBase{
+public class ControlCrearPartida extends ControlComunicacion{
     
     private FrmCrearPartida fCrearPartida;
     private FrmIngresarPartida fIngresarPartida;
@@ -40,30 +40,14 @@ public class ControlCrearPartida extends ControlComunicacion implements ControlB
     public void crearPartida(Partida partida) {
         if(super.comunicacion.crearPartida(partida).equalsIgnoreCase("Create")){
             this.mostrarExito("Partida Creada con éxito");
-            this.fCrearPartida.setVisible(true);
+            this.fIngresarPartida= FrmIngresarPartida.getInstance();
+            fCrearPartida.dispose();
+            super.mostrarPantalla(this.fIngresarPartida);
         }else{
-            this.mostrarError("Ocurrio un error al momento de crear la partida intenlo más tarde");
+            super.mostrarError("Ocurrio un error al momento de crear la partida intenlo más tarde");
         }
     }
 
-    @Override
-    public void mostrarPantalla() {
-        
-    }
-
-   @Override
-    public void mostrarError(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mostrarExito(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-    }
+    
     
 }
