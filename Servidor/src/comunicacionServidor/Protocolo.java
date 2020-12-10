@@ -11,8 +11,11 @@ import entidades.Jugador;
 import entidades.Movimiento;
 import entidades.Partida;
 import entidades.Tablero;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.ModeloPartida;
 
 /**
@@ -23,18 +26,13 @@ public class Protocolo implements Observer {
 
     private IControl fachada;
     private ModeloPartida modeloPartida;
-    HiloSocket hilo;
+    Server server;
 
-    public Protocolo(HiloSocket hilo) {
+    public Protocolo(Server hilo) {
         fachada = new Fachada();
-        this.hilo = hilo;
+        this.server = hilo;
         this.modeloPartida = ModeloPartida.getInstance();
         this.modeloPartida.addObserver(this);
-    }
-
-    @Override
-    public void update(Observable mPartida, Object mensaje) {
-         
     }
 
     /**
@@ -43,7 +41,6 @@ public class Protocolo implements Observer {
      * @param input
      */
     public void processInput(Object input) {
-
         if (input instanceof Movimiento) {
             Movimiento movimiento = (Movimiento) input;
             this.manejarMovimiento(movimiento);
@@ -64,10 +61,12 @@ public class Protocolo implements Observer {
     }
 
     public void manejarPartida(Partida partida) {
+        System.out.println("aquí");
         fachada.crearPartida(partida);
     }
 
     public void manejarMovimiento(Movimiento movimiento) {
+        //Verificar que hacer
         fachada.moverFichas(movimiento);
     }
 
@@ -79,4 +78,18 @@ public class Protocolo implements Observer {
         ### checar
        Si las notificaciones a los demás jugadores se van a manejar en los methods de arriba 
      */
+     @Override
+    public void update(Observable mPartida, Object mensaje) {
+         if(((String)mensaje).equalsIgnoreCase("partida creada")){
+             try {
+                 this.notificarPartidaCreada("partida creada");
+             } catch (IOException ex) {
+                 Logger.getLogger(Protocolo.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
+    }
+    
+    private void notificarPartidaCreada(String mensaje) throws IOException{
+        this.server.notificarCliente(mensaje);
+    }
 }

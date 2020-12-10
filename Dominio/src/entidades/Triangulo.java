@@ -1,6 +1,10 @@
 package entidades;
 
-public class Triangulo extends Casilla {
+import java.io.Serializable;
+
+public class Triangulo extends Casilla implements Serializable {
+
+    private static final long serialVersionUID = 4094741646027454008L;
 
     /**
      * Casilla especial del tablero en donde se paga doble apuesta

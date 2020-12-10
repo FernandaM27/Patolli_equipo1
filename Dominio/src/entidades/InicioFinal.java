@@ -5,11 +5,15 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Alfonso Sempoalt
  */
-public class InicioFinal extends Casilla{
+public class InicioFinal extends Casilla implements Serializable{
+
+    private static final long serialVersionUID = 5368681532413255406L;
 
     public InicioFinal(boolean disponible) {
         super(disponible);

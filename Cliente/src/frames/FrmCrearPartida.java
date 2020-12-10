@@ -117,6 +117,11 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         btnListo.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
         btnListo.setForeground(new java.awt.Color(248, 228, 180));
         btnListo.setText("Listo");
+        btnListo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnListoMouseClicked(evt);
+            }
+        });
         btnListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListoActionPerformed(evt);
@@ -217,20 +222,29 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         }
     }//GEN-LAST:event_btnListoActionPerformed
 
+    private void btnListoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListoMouseClicked
+        if (validarCampos()) {
+            this.crearPartida();
+        } else {
+            JOptionPane.showMessageDialog(this, "Todos los campos deben de estar llenos");
+        }
+    }//GEN-LAST:event_btnListoMouseClicked
+
     /**
      * Verificar validaciones FERNANDA M
      *
      * @return
      */
     private boolean validarCampos() {
-        if (this.getNumCasillas() == 0) {
-            return false;
-        }
+//        if (this.getNumCasillas() == 0) {
+//            return false;
+//        }
         return true;
     }
 
     private void crearPartida(){
-         cCrearPartida.crearPartida(this.crearInstanciaPartida());
+         cCrearPartida.crearPartida("localhost",this.crearInstanciaPartida());
+         
     }
     
     private Partida crearInstanciaPartida() {

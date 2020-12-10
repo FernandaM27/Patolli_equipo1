@@ -60,7 +60,8 @@ public class ModeloPartida extends Observable {
     }
     
     public void crearPartida(Partida partida){
-        if (this.partidaCreada()) {
+        //System.out.println("Simon aquí modelo");
+        if (!this.partidaCreada()) {
             this.partida=partida;
             this.estado="listo";
             super.setChanged();

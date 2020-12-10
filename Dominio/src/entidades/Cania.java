@@ -1,6 +1,10 @@
 package entidades;
 
-public class Cania {
+import java.io.Serializable;
+
+public class Cania implements Serializable{
+
+    private static final long serialVersionUID = -7363507512342303987L;
 
     private Boolean valor;
 

@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Tablero implements Serializable{
 
+    private static final long serialVersionUID = 6545490717344550556L;
+
     private int numCasillas;
     //Cambiar Linked list
     private List<Casilla> casillas;

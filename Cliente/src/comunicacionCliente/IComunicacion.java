@@ -14,7 +14,7 @@ import entidades.Partida;
  */
 public interface IComunicacion {        
     
-    public String crearPartida(Partida partida);    
+    public void crearPartida(String ip, Partida partida);    
     
     public void pagarApuesta();
     
@@ -26,5 +26,6 @@ public interface IComunicacion {
     
     public void notificarTurno();
     
+    public void notificarCliente(String mensaje);
     
 }

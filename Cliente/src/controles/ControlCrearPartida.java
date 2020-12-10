@@ -37,15 +37,8 @@ public class ControlCrearPartida extends ControlComunicacion{
         return ctrl;
     }
     
-    public void crearPartida(Partida partida) {
-        if(super.comunicacion.crearPartida(partida).equalsIgnoreCase("Create")){
-            this.mostrarExito("Partida Creada con éxito");
-            this.fIngresarPartida= FrmIngresarPartida.getInstance();
-            fCrearPartida.dispose();
-            super.mostrarPantalla(this.fIngresarPartida);
-        }else{
-            super.mostrarError("Ocurrio un error al momento de crear la partida intenlo más tarde");
-        }
+    public void crearPartida(String ip,Partida partida) {
+        comunicacion.crearPartida(ip,partida);
     }
 
     

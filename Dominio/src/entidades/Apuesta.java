@@ -1,6 +1,10 @@
 package entidades;
 
-public class Apuesta {
+import java.io.Serializable;
+
+public class Apuesta implements Serializable{
+
+    private static final long serialVersionUID = 8487873446876610838L;
 
     private int cantidad;
 
