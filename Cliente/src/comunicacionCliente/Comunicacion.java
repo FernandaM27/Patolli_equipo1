@@ -29,7 +29,7 @@ public class Comunicacion implements IComunicacion {
 
     @Override
     public void pagarApuesta() {
-
+        
     }
 
     @Override

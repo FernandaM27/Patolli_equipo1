@@ -6,6 +6,7 @@
 package control;
 
 import entidades.Jugador;
+import modelo.ModeloPartida;
 
 /**
  *
@@ -13,8 +14,10 @@ import entidades.Jugador;
  */
 public class CtrlJugador {
     private static CtrlJugador ctrl;
+    private ModeloPartida modeloPartida;
     
     private CtrlJugador() {
+        this.modeloPartida= ModeloPartida.getInstance();
     }
     
     public static CtrlJugador getInstance(){
@@ -25,11 +28,11 @@ public class CtrlJugador {
     }
     
     public void agregarJugador(Jugador jugador) {
-
-    }
+        this.modeloPartida.addJugador(jugador);
+     }
 
     public void eliminarJugador(Jugador jugador) {
-
-    }
+        this.modeloPartida.deleteJugador(jugador);
+     }
 
 }

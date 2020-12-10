@@ -16,26 +16,27 @@ import java.util.logging.Logger;
  *
  * @author jc
  */
-public class ClienteSocket{
+public class ClienteSocket extends Thread {
 
-    public static void main(String[] args) throws ClassNotFoundException {
-        Socket socket = null;
-        ObjectOutputStream out = null;
-        ObjectInputStream in = null;
+    private Socket socket = null;
+    private ObjectOutputStream out = null;
+    private ObjectInputStream in = null;
+    @Override
+    public void run() {
 
         try {
-            socket = new Socket("localhost", 4444);
-            out = new ObjectOutputStream(socket.getOutputStream());            
+            socket = new Socket("localhost", 3312);
+            out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
-            int num = 1;
-            while(num == 1){
-                
+            
+            while (true) {
+              
+                break;
             }
-            
             out.close();
-            in.close();            
+            in.close();
             socket.close();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
         }

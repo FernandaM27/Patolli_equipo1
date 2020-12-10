@@ -18,30 +18,34 @@ import java.util.logging.Logger;
  */
 public class HiloSocket extends Thread {
 
+    private Protocolo protocol = new Protocolo(this);
     Socket socket;
+    boolean salir=true;
 
     @Override
     public void run() {
-
         try {
             ObjectOutputStream out = null;
             ObjectInputStream in = null;
-            String ip;
 
+            if (protocol.hilo.salir == false) {
+                out.close();
+                in.close();
+                socket.close();
+            }
             out = new ObjectOutputStream(socket.getOutputStream());
-            in = new ObjectInputStream(socket.getInputStream());           
-            
+            //revisar como enviar apartir del protocolo
+            //in = new ObjectInputStream(socket.getInputStream());
 
-            
-
-            out.close();
-            in.close();
-            socket.close();
-
+            while (in.readBoolean()) {
+                protocol.processInput(in.readObject());
+            }
+            this.run();
         } catch (IOException ex) {
             Logger.getLogger(HiloSocket.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HiloSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public HiloSocket(Socket socket) {

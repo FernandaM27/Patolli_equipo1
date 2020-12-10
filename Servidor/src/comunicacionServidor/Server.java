@@ -23,9 +23,9 @@ public class Server {
 
         try {
             ServerSocket serverSocket = null;
-            serverSocket = new ServerSocket(4444);
+            serverSocket = new ServerSocket(3312);
             System.out.println("Listo para conectarse");
-
+            
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 new HiloSocket(clientSocket).start();

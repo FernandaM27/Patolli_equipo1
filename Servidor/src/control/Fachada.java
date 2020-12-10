@@ -10,6 +10,7 @@ import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Movimiento;
 import entidades.Partida;
+import modelo.ModeloPartida;
 
 /**
  *
