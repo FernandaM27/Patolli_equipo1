@@ -30,4 +30,14 @@ public class Casilla implements ICasilla, Serializable {
         return "Casilla{" + "disponible=" + disponible + ", ficha=" + ficha + '}';
     }
 
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
+    
+    
+
 }

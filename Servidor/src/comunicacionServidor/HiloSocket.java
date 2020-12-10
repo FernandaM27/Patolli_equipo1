@@ -51,7 +51,6 @@ public class HiloSocket extends Observable implements Runnable {
                 try {
                     Object object;
                     if ((object = in.readObject()) != null) {
-                        System.out.println(object.toString());
                         this.notificarServer(object);
                     } else {
                         ///Dejar ....

@@ -40,7 +40,7 @@ public class Fachada implements IControl {
 
     @Override
     public void eliminarFicha(Ficha ficha) {
-        this.ctrlMovimiento.eliminarFicha(ficha);
+        //this.ctrlMovimiento.eliminarFicha(ficha);
     }
 
     @Override

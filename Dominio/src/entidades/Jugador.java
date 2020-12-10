@@ -9,6 +9,7 @@ public class Jugador implements Serializable{
 
     private String nombre;
     private String color;
+    private int monto;
     private ArrayList<Ficha> fichas;
 
     /**
@@ -35,6 +36,22 @@ public class Jugador implements Serializable{
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getMonto() {
+        return monto;
+    }
+
+    public void setMonto(int monto) {
+        this.monto = monto;
+    }
+
+    public ArrayList<Ficha> getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(ArrayList<Ficha> fichas) {
+        this.fichas = fichas;
     }
 
 }

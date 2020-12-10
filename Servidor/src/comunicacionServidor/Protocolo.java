@@ -61,7 +61,6 @@ public class Protocolo implements Observer {
     }
 
     public void manejarPartida(Partida partida) {
-        System.out.println("aquí");
         fachada.crearPartida(partida);
     }
 

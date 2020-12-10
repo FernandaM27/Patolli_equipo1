@@ -6,8 +6,10 @@
 package control;
 
 import entidades.Apuesta;
+import entidades.Casilla;
 import entidades.Ficha;
 import entidades.Movimiento;
+import modelo.ModeloPartida;
 
 /**
  *
@@ -15,8 +17,9 @@ import entidades.Movimiento;
  */
 public class CtrlMovimiento {
     private static CtrlMovimiento ctrl;
-    
+    private ModeloPartida modeloPartida;
     private CtrlMovimiento() {
+        this.modeloPartida= ModeloPartida.getInstance();
     }
     
     public static CtrlMovimiento getInstance(){
@@ -27,15 +30,23 @@ public class CtrlMovimiento {
     }
     
     public void moverFicha(Movimiento movimiento) {
-
+        if(movimiento.getApuesta()!=null){
+            this.modeloPartida.pagarApuesta(movimiento.getFicha().getJugador(), movimiento.getApuesta());
+        }else{
+            
+        }
+        this.moverFicha(movimiento);
+        
     }
 
     public void tirarCanias(int resultado) {
-
+        this.modeloPartida.tirarCanias(resultado);
     }
 
-    public void eliminarFicha(Ficha ficha) {
-
+    public void eliminarFicha(Casilla casilla) {
+        if(!casilla.isDisponible()){
+            modeloPartida.eliminarFicha(casilla);
+        }
     }
 
     public void apuestaRealizada(Apuesta apuesta) {

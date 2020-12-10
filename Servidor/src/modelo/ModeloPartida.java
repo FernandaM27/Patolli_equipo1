@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import entidades.Apuesta;
+import entidades.Casilla;
+import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
 import java.util.ArrayList;
@@ -23,7 +26,6 @@ public class ModeloPartida extends Observable {
     private String estado;
     
     private ModeloPartida() {
-        this.partida = new Partida();
         this.jugadores = new ArrayList<>();
     }
 
@@ -35,7 +37,9 @@ public class ModeloPartida extends Observable {
     }
 
     public boolean partidaCreada() {
-        return partida == null;
+        if(this.partida==null){
+            return false;
+        }return true;
     }
 
     public void addJugador(Jugador jugador) {
@@ -60,13 +64,13 @@ public class ModeloPartida extends Observable {
     }
     
     public void crearPartida(Partida partida){
-        //System.out.println("Simon aquí modelo");
         if (!this.partidaCreada()) {
             this.partida=partida;
             this.estado="listo";
+            System.out.println("se creo con éxito");
             super.setChanged();
             super.notifyObservers("partida creada");
-            System.out.println("se creo con éxito");
+            
         } else{
             super.notifyObservers("Ya hay una partida creada");
         }
@@ -81,5 +85,30 @@ public class ModeloPartida extends Observable {
             super.notifyObservers("Ya hay una partida creada");
         }
     }
+    
+    public void pagarApuesta(Jugador jugador, Apuesta apuesta){
+        int i=this.jugadores.indexOf(jugador);
+        if(i!=-1){
+            Jugador j = this.jugadores.get(i);
+            j.setMonto(j.getMonto()-apuesta.getCantidad());
+            this.validarFondos(j);
+        }
+    }
+    
+    private void validarFondos(Jugador j){
+        if(j.getMonto()<=0){
+            this.jugadores.remove(j);
+            this.setChanged();
+            this.notifyObservers("Jugador eliminado");
+        }
+    }
+    
+    public void tirarCanias(int resultado){
+        this.setChanged();
+        this.notifyObservers("Resultado fue"+resultado);
+    }
 
+    public void eliminarFicha(Casilla casilla){
+       // t//his.ta
+    }
 }

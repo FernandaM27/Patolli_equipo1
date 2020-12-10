@@ -2,21 +2,36 @@ package entidades;
 
 import java.io.Serializable;
 
-public class Movimiento implements Serializable{
+public class Movimiento implements Serializable {
 
     private static final long serialVersionUID = -4175647374884078757L;
 
-    private int id;
+    private Apuesta apuesta;
+
+    private Ficha ficha;
 
     public Movimiento() {
     }
 
-    public int getId() {
-        return id;
+    public Movimiento(Apuesta apuesta, Ficha ficha) {
+        this.apuesta = apuesta;
+        this.ficha = ficha;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Apuesta getApuesta() {
+        return apuesta;
+    }
+
+    public void setApuesta(Apuesta apuesta) {
+        this.apuesta = apuesta;
+    }
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
     }
 
 }

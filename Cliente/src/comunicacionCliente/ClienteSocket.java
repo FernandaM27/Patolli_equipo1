@@ -59,7 +59,7 @@ public class ClienteSocket extends Observable implements Runnable {
                 Object obj;
                 if ((obj = in.readObject()) != null) {
                     //usar el update
-                    this.comunicacion.notificarCliente((String) obj);
+                    this.comunicacion.notificarCliente((String)obj);
                 }
             } catch (Exception e) {
                 System.out.println("ERRROR al conectar");

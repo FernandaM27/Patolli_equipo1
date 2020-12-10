@@ -27,7 +27,7 @@ public class Server implements Observer {
     private void escuchar() {
          try{
              HiloSocket cliente = new HiloSocket(new ServerSocket(4444), this);
-             System.out.println("Llega aquí");
+             System.out.println("Listo para conectarse");
              cliente.addObserver(this);
              new Thread(cliente).start();
          }catch(Exception e){   
