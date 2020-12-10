@@ -25,12 +25,20 @@ public class ClienteSocket extends Observable implements Runnable {
     private Socket cliente;
     private String ip;
     private Comunicacion comunicacion;
-
+    /**
+     * 
+     * @param ip
+     * @param comunicacion 
+     */
     public ClienteSocket(String ip, Comunicacion comunicacion) {
         this.ip = ip;
         this.comunicacion = comunicacion;
     }
-
+    /**ç
+     * metodo que se encarga de conectar el cliente con el servidor 
+     * @param ip
+     * @throws IOException 
+     */
     public void conectar(String ip) throws IOException {
         if (this.cliente == null) {
             this.cliente = new Socket(ip, 4444);
@@ -64,7 +72,9 @@ public class ClienteSocket extends Observable implements Runnable {
 //    public static void main(String[] args) {
 //     
 //    }
-
+    /**
+     * 
+     */
     @Override
     public void run() {
         try {

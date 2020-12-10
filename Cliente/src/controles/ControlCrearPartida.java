@@ -21,8 +21,8 @@ public class ControlCrearPartida extends ControlComunicacion{
     private FrmCrearPartida fCrearPartida;
     private FrmIngresarPartida fIngresarPartida;
     private static ControlCrearPartida ctrl;
-    /**
-     * NOTA: Aplicar singleton para evitar crear n intancias de los frame
+   /**
+     *  método constructor que inicializa sus valores
      * @param crear 
      */
     private ControlCrearPartida(FrmCrearPartida crear) {
@@ -30,6 +30,12 @@ public class ControlCrearPartida extends ControlComunicacion{
         this.fIngresarPartida = FrmIngresarPartida.getInstance();
     }
     
+    
+    /**
+     * Método singleton que regresa una instancai de controlCrearPartida
+     * @param crear
+     * @return 
+     */
     public static ControlCrearPartida getInstance(FrmCrearPartida crear){
         if (ctrl==null) {
             return ctrl= new ControlCrearPartida(crear);
@@ -37,6 +43,10 @@ public class ControlCrearPartida extends ControlComunicacion{
         return ctrl;
     }
     
+     /**
+     * Método que se encarga de crear la partida 
+     * @param partida 
+     */
     public void crearPartida(String ip,Partida partida) {
         comunicacion.crearPartida(ip,partida);
     }

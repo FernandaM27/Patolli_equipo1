@@ -28,7 +28,7 @@ public abstract class ModeloBase extends Observable{
         return this.etiquetas.get(index);
     }
 
-    protected void setEtiquetas(List<String> etiquetas) {
+    protected void setEtiquetas() {
         this.etiquetas = etiquetas;
     }
     

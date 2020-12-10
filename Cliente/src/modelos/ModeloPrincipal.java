@@ -12,7 +12,9 @@ package modelos;
  *
  */
 public class ModeloPrincipal extends ModeloBase{
-     
+     /**
+     * Método constructor que inicializa los valores de la lista heredada de ModeloBase y corresponden a frmPrincipal
+     */   
     public ModeloPrincipal(){
         super.addEtiqueta("PATOLLI");
         super.addEtiqueta("CREAR PARTIDA");
@@ -20,12 +22,16 @@ public class ModeloPrincipal extends ModeloBase{
         super.addEtiqueta("COMO JUGAR");
         super.addEtiqueta("SALIR");
     }
-    //Pendiente un cambiar
+    /**
+     * método que regresa la lista de etiquetas heredada de modeloBase
+     * @return 
+     */
     public List <String> getEtiquetas(){
         return super.getEtiquetas();
     }
     
-    /*Metodo creado para probar el concepto observer*/
+    /**
+     * Metodo creado para probar el concepto observer*/
     public void cambiarEtiqueta(int i, String etiqueta){
         super.etiquetas.set(i, etiqueta);
         setChanged(); 

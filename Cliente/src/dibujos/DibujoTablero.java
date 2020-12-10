@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class DibujoTablero {
 
-    /**
+   /**
      * Se utiliza la referencia de memoria para modificar esta instancia nota
      * para desarrollador: En dado caso no funcionen los cambios, implementar
      * observer.
@@ -33,24 +33,43 @@ public class DibujoTablero {
     private int contador = 0;
     private String movimiento = null;
     private List<DibujoCasilla> casillas;
-
+    
+    /**
+     * Método constructor que se encarga de iniciaizar los valores
+     * @param tablero 
+     */
     public DibujoTablero(Tablero tablero) {
         this.tablero = tablero;
         this.casillas = new ArrayList<>();
     }
-
+    
+    /**
+     * méotodo que nos regresa la lista de casillas
+     * @return 
+     */
     public List<DibujoCasilla> getCasillas() {
         return casillas;
     }
-
+    
+    /**
+     * métodos que inicializa la lista de casillas con la lista pasada por el parametro 
+     * @param casillas 
+     */
     public void setCasillas(List<DibujoCasilla> casillas) {
         this.casillas = casillas;
     }
-
+    
+    /**
+     * método que se encarga crear el tablero 
+     */
     public void crearTablero() {
 
     }
-
+    
+    /**
+     * método que se encarga crear las coordenadas de las casillas 
+     * @param size 
+     */
     private void crearCoordenadasCasillas(int size) {
 
         for (Casilla c : tablero.getCasillas()) {
@@ -62,6 +81,7 @@ public class DibujoTablero {
             contador++;
             
         }
+        
     }
 
 //    private void guardarNormal(String movimiento, int size, int i) {
@@ -79,6 +99,10 @@ public class DibujoTablero {
 //            this.guardarC(x, y, "Triangular");
 //        }
 //    }
+    /**
+     * método utilizado para calcular las coordenadas donde se dibujaran las casillas
+     * @param movimiento 
+     */
     private void calcularXY(String movimiento) {
         if (movimiento.equals("L")) {
             this.x -= 20;
@@ -91,17 +115,22 @@ public class DibujoTablero {
         }
     }
 
-
+    /**
+     * método que se encarga de agregar una ficha
+     */
     public void agregarFichas() {
 
     }
-
+    /**
+     * método que se encarga de eliminar una ficha
+     */
     public void eliminarFicha() {
 
     }
-
+    /**
+     * método que se encarga de mover ficha una ficha de casilla
+     */
     public void moverFicha() {
 
     }
-
 }

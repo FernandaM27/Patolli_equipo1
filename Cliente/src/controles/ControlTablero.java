@@ -18,11 +18,18 @@ public class ControlTablero extends ControlComunicacion{
     private ModeloTablero modeloTablero;
     private static ControlTablero ctrl;
     
+    /**
+     * método que permite el tirar cañas
+     */
     private void tirarCanias(){
         super.comunicacion.notificarTurno();
         //this.modeloTablero.setCanias(canias);
     }
     
+    /**
+     * método singleton que regresa una instancia de ControlTablero
+     * @return 
+     */
     public static ControlTablero getInstance(){
         if (ctrl==null) {
             return ctrl= new ControlTablero();
@@ -31,18 +38,18 @@ public class ControlTablero extends ControlComunicacion{
     }
     
     /**
-     * Mismo metodo para movimiento normal y pagar apuesta ya que estas suceden despues de moverse.
+     * Metodo para movimiento normal y pagar apuesta ya que estas suceden despues de moverse.
      */
     public void realizarMovimiento(Movimiento movimiento){   
         super.comunicacion.pagarApuesta();
     }
 
-     //Decidir si va a regresar booleano o no al server
+     /**
+      * método que se encarga de eliminar un jugador del modeloTablero
+      * @param jugador 
+      */
     public void eliminarJugador(Jugador jugador){
         this.modeloTablero.eliminarJugador(jugador);
     }
-            
   
-    
-    
 }

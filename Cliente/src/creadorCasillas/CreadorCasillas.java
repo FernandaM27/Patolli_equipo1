@@ -18,6 +18,12 @@ public class CreadorCasillas {
     private List<Casilla> casillas;
     private int size;
 
+    /**
+     * Método constructor que se encarga de inicializar el valor pasado por
+     * parametro y la lista de casillas
+     *
+     * @param size
+     */
     public CreadorCasillas(int size) {
         this.casillas = new LinkedList<>();
         this.size = size;
@@ -45,12 +51,21 @@ public class CreadorCasillas {
         return casillas;
     }
 
+    /**
+     * Método que se encarga de generar las casillas de tipo normal
+     *
+     * @param size
+     * @param i
+     */
     private void guardarNormal(int size, int i) {
         for (int j = 0; j < size - i; j++) {
             this.guardarC("Normal");
         }
     }
 
+    /**
+     * Método que se encarga de generar las casilals triangululares
+     */
     private void guardarTriangular() {
         for (int k = 0; k < 2; k++) {
             this.guardarC("Triangular");

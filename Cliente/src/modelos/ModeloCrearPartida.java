@@ -13,13 +13,19 @@ import java.util.List;
  */
 public class ModeloCrearPartida extends ModeloBase{
     
+    /**
+     * Método constructor vacío que ejecuta el método set etiquetas que es heredado de modeloBase
+     */
     public ModeloCrearPartida() {
         super();
-        this.setEtiquetas(etiquetas);
+        this.setEtiquetas();
     }
-
+    /**
+     * Método heredado y sobreescrito que asigna valores a la lista que es heredada 
+     * de modeloBase, cuyos valores corresponen al frmCrarPartida
+     */
     @Override
-    protected void setEtiquetas(List<String> etiquetas) {
+    protected void setEtiquetas() {
        super.etiquetas.add("crear partida");
        super.etiquetas.add("Tamaño del tablero");
        super.etiquetas.add("casillas");

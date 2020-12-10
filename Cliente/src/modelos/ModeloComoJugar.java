@@ -13,6 +13,10 @@ import java.util.List;
  */
 public class ModeloComoJugar extends ModeloBase {
      
+  /**
+     * Método constructor vacío que ejecuta el constructor vacío de modelo base y asigna 
+     * los valores a la lista de etiquetas que corresponden al frmComoJugar heredada de ModeloBase
+     */
     public ModeloComoJugar(){
         super();
         super.addEtiqueta("Como Jugar");
@@ -27,7 +31,11 @@ public class ModeloComoJugar extends ModeloBase {
     public List <String> getEtiquetas(){
         return super.getEtiquetas();
     }
-    
+    /**
+     * metodo que cambia el valor de la etiqueta
+     * @param i
+     * @param etiqueta 
+     */
     public void cambiarEtiqueta(int i, String etiqueta){
         super.etiquetas.set(i, etiqueta);
         super.setChanged(); 

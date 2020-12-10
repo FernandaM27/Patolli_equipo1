@@ -30,10 +30,8 @@ public class Server implements Observer {
              System.out.println("Llega aquí");
              cliente.addObserver(this);
              new Thread(cliente).start();
-         }catch(Exception e){
-             
+         }catch(Exception e){   
          }
-          
     }
 
     @Override

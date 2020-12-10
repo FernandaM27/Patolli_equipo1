@@ -27,17 +27,25 @@ import java.util.List;
  */
 public class CanvasTablero extends Canvas {
 
-    private int numTablero;
+   private int numTablero;
     private DibujoTablero dibujoTablero;
     private final int centro = 230;
     private final int tamanioCasilla = 20;
     private Graphics2D g2d;
-
+    
+    /**
+     * método constructor que se encarga de inicializar los parametros
+     * @param numTablero
+     * @param dibujoTablero 
+     */
     public CanvasTablero(int numTablero, DibujoTablero dibujoTablero) {
         this.numTablero = numTablero - 1;
         this.dibujoTablero = dibujoTablero;
     }
-
+    /**
+     * método paint que se encarga de dibujar
+     * @param g 
+     */
     @Override
     public void paint(Graphics g) {
         g2d = (Graphics2D) g;
@@ -50,7 +58,9 @@ public class CanvasTablero extends Canvas {
         this.dTablero();
         this.dFichas();
     }
-
+    /**
+     * Método que se encarga de dibujar el tablero
+     */
     private void dTablero() {
         List<DibujoCasilla> dCasillas = this.dibujoTablero.getCasillas();
 
@@ -71,6 +81,9 @@ public class CanvasTablero extends Canvas {
         this.dibujarLinea(this.centro, this.centro, g2d);
     }
     
+    /**
+     * método que se encarga de actualizar el tablero con los cambios ocurridos en partida
+     */
     //Metodos visibles desde una clase externa
     public void actualizarTablero() {
         this.repaint();
@@ -94,11 +107,17 @@ public class CanvasTablero extends Canvas {
             } 
         }
      }
-    
-//    public void dibujarFichas() {
-//        this.repaint();
-//    }
-    
+    /**
+     * método que se encarga de dibujar fichas
+     */
+    public void dibujarFichas() {
+        this.repaint();
+    }
+    /**
+     * método encargado de dibujar las casillas
+     * @param dCasilla
+     * @param g 
+     */
     private void dCasillas(DibujoCasilla dCasilla, Graphics2D g) {
         Rectangle rect = new Rectangle();
         rect.setBounds(dCasilla.getX(), dCasilla.getY(), this.tamanioCasilla, this.tamanioCasilla);
@@ -131,7 +150,10 @@ public class CanvasTablero extends Canvas {
         g2d.drawLine(x + this.tamanioCasilla, y - (this.numTablero * this.tamanioCasilla) - 17, x + this.tamanioCasilla, y);
         g2d.drawLine(x + this.tamanioCasilla, y + (this.numTablero * this.tamanioCasilla) + 57, x + this.tamanioCasilla, y);
     }
-
+    /**
+     * método encargado de dibujar todos los triangulos en el canvas
+     * @param g2d 
+     */
     private void dibujarTriangulos(Graphics2D g2d) {
         this.dibujarTriangulosIzquierda(g2d);
         this.dibujarTriangulosDerecha(g2d);

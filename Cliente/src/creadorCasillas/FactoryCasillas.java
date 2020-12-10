@@ -18,8 +18,8 @@ import entidades.Triangulo;
  */
 public class FactoryCasillas {
 
-    /**
-     * No castear
+   /**
+     * Método que se encarga de generar una instancia dependiendo del tipo que se pasado por parametro
      * @param type
      * @return
      */  
