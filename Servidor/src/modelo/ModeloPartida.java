@@ -15,15 +15,47 @@ import java.util.Observable;
  *
  * @author Alfon
  */
-
 public class ModeloPartida extends Observable {
+
     private Partida partida;
     private List<Jugador> jugadores;
-    
-    public ModeloPartida() {
-        this.partida= new Partida();
-        this.jugadores= new ArrayList<>();
+    private static ModeloPartida modeloPartida;
+
+    private ModeloPartida() {
+        this.partida = new Partida();
+        this.jugadores = new ArrayList<>();
     }
-    
-    
+
+    public static ModeloPartida getInstance() {
+        if (modeloPartida == null) {
+            return modeloPartida = new ModeloPartida();
+        }
+        return modeloPartida;
+    }
+
+    public boolean partidaCreada() {
+        return partida == null;
+    }
+
+    public void addJugador(Jugador jugador) {
+        if (this.partidaCreada()) {
+            jugadores.add(jugador);
+            super.setChanged();
+            super.notifyObservers("jugadorAgregado");
+        } else {
+            super.notifyObservers("PartidaNoExistente");
+        }
+    }
+
+    public void deleteJugador(Jugador jugador) {
+        if (this.partidaCreada()) {
+            jugadores.remove(jugador);
+            super.setChanged();
+            super.notifyObservers("jugadorEliminado");
+        } else {
+            super.notifyObservers("PartidaNoExistente");
+        }
+
+    }
+
 }

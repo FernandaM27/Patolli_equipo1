@@ -17,10 +17,10 @@ public class ModeloComoJugar extends ModeloBase {
         super();
         super.addEtiqueta("Como Jugar");
         super.addEtiqueta("1. crear partida");
-        super.addEtiqueta(" - INGRESAR datos de la partida");
-        super.addEtiqueta("- guardar datos");
-        super.addEtiqueta("2. ingresar a partida");
-        super.addEtiqueta(" - INGRESAR datos");
+        super.addEtiqueta("2. INGRESAR datos de la partida");
+        super.addEtiqueta("3. guardar datos");
+        super.addEtiqueta("4. ingresar a partida");
+        super.addEtiqueta("5. INGRESAR datos");
         super.addEtiqueta("SALIR");
     }
     //Pendiente un cambiar
@@ -30,7 +30,7 @@ public class ModeloComoJugar extends ModeloBase {
     
     public void cambiarEtiqueta(int i, String etiqueta){
         super.etiquetas.set(i, etiqueta);
-        setChanged(); 
-        this.notifyObservers();
+        super.setChanged(); 
+        super.notifyObservers();
     }
 }

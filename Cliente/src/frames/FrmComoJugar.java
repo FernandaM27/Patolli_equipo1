@@ -98,13 +98,11 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
 
         lblTitulo.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(58, 162, 113));
-        lblTitulo.setText("title");
         jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         lbl3.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
         lbl3.setForeground(new java.awt.Color(9, 17, 6));
-        lbl3.setText("3");
-        jPanel1.add(lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 300, -1));
+        jPanel1.add(lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 300, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm4.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 400));
@@ -112,27 +110,22 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
         btnSalir.setBackground(new java.awt.Color(58, 162, 113));
         btnSalir.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(247, 180, 93));
-        btnSalir.setText("s");
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 140, 40));
 
         lbl4.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
         lbl4.setForeground(new java.awt.Color(9, 17, 6));
-        lbl4.setText("4");
         jPanel1.add(lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 280, -1));
 
         lbl5.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
         lbl5.setForeground(new java.awt.Color(9, 17, 6));
-        lbl5.setText("5");
-        jPanel1.add(lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 330, -1));
+        jPanel1.add(lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 330, -1));
 
         lbl1.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
         lbl1.setForeground(new java.awt.Color(9, 17, 6));
-        lbl1.setText("1");
         jPanel1.add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 280, -1));
 
         lbl2.setFont(new java.awt.Font("Algerian", 0, 19)); // NOI18N
         lbl2.setForeground(new java.awt.Color(9, 17, 6));
-        lbl2.setText("2");
         jPanel1.add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 330, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
