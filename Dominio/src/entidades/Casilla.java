@@ -1,6 +1,10 @@
 package entidades;
 
-public class Casilla implements ICasilla {
+import java.io.Serializable;
+
+public class Casilla implements ICasilla, Serializable {
+
+    private static final long serialVersionUID = -2801164631629048638L;
 
     private boolean disponible;
     private Ficha ficha;

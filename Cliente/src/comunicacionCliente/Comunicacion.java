@@ -8,28 +8,40 @@ package comunicacionCliente;
 import controles.ControlComunicacion;
 import entidades.Jugador;
 import entidades.Partida;
+import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author jc
  */
-public class Comunicacion implements IComunicacion {
-    
-    private ControlComunicacion comunicacion;
+public class Comunicacion implements IComunicacion, Observer {
 
+    private ClienteSocket cliente;
+
+    private ControlComunicacion ctrlComunicacion;
+ 
     public Comunicacion(ControlComunicacion comunicacion) {
-        this.comunicacion = comunicacion;
-    }    
+        this.ctrlComunicacion = comunicacion;
+        this.cliente = new ClienteSocket("localhost", this);
+        new Thread(this.cliente).start();
+    }
 
     @Override
-    public String crearPartida(Partida partida) {
-       ClienteSocket socket = new ClienteSocket();
-       return "Create";
+    public void crearPartida(String ip, Partida partida) {
+        try {
+            this.cliente.enviar(partida);
+        } catch (IOException ex) {
+            Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void pagarApuesta() {
-        
+
     }
 
     @Override
@@ -50,6 +62,16 @@ public class Comunicacion implements IComunicacion {
     @Override
     public void notificarTurno() {
 
+    }
+
+    @Override
+    public void notificarCliente(String mensaje) {
+        this.ctrlComunicacion.mostrarExito(mensaje);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
     }
 
 }

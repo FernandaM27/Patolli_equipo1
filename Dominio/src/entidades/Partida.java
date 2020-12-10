@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class Partida implements Serializable{
 
+    private static final long serialVersionUID = 3931645525716260135L;
+    
     private final List<Cania> canias;
     private int numeroJugadores;
     private int numeroFichas;

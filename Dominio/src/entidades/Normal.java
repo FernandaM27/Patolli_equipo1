@@ -1,6 +1,10 @@
 package entidades;
 
-public class Normal extends Casilla {
+import java.io.Serializable;
+
+public class Normal extends Casilla  implements Serializable{
+
+    private static final long serialVersionUID = -8460970944268130788L;
 
     /**
      * Casillas normales del juego, sin nada especial

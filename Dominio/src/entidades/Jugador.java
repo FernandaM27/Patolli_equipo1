@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Jugador implements Serializable{
 
+    private static final long serialVersionUID = -5149299437684139825L;
+
     private String nombre;
     private String color;
     private ArrayList<Ficha> fichas;

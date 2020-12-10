@@ -1,6 +1,10 @@
 package entidades;
 
-public class Central extends Casilla {
+import java.io.Serializable;
+
+public class Central extends Casilla implements Serializable{
+
+    private static final long serialVersionUID = 7416955555827437182L;
 
     /**
      * Casilla especial del tablero, las 4 del centro, hereda de Casilla

@@ -1,6 +1,10 @@
 package entidades;
 
-public class Ficha {
+import java.io.Serializable;
+
+public class Ficha implements Serializable{
+
+    private static final long serialVersionUID = -1543394243285328423L;
 
     private String color;
     private Jugador jugador;
