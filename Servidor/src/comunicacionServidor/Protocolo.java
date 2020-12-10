@@ -34,7 +34,7 @@ public class Protocolo implements Observer {
 
     @Override
     public void update(Observable mPartida, Object mensaje) {
-
+         
     }
 
     /**

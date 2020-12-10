@@ -20,7 +20,8 @@ public class ModeloPartida extends Observable {
     private Partida partida;
     private List<Jugador> jugadores;
     private static ModeloPartida modeloPartida;
-
+    private String estado;
+    
     private ModeloPartida() {
         this.partida = new Partida();
         this.jugadores = new ArrayList<>();
@@ -56,6 +57,28 @@ public class ModeloPartida extends Observable {
             super.notifyObservers("PartidaNoExistente");
         }
 
+    }
+    
+    public void crearPartida(Partida partida){
+        if (this.partidaCreada()) {
+            this.partida=partida;
+            this.estado="listo";
+            super.setChanged();
+            super.notifyObservers("partida creada");
+            System.out.println("se creo con éxito");
+        } else{
+            super.notifyObservers("Ya hay una partida creada");
+        }
+    }
+   
+    public void iniciarPartida(){
+        if (!this.partidaCreada() && this.partida.getNumeroJugadores()==this.jugadores.size()) {
+            this.estado="iniciado";
+            super.setChanged();
+            super.notifyObservers("partida inicializada");
+        } else{
+            super.notifyObservers("Ya hay una partida creada");
+        }
     }
 
 }

@@ -6,33 +6,37 @@
 package control;
 
 import entidades.Partida;
+import modelo.ModeloPartida;
 
 /**
  *
  * @author Alfon
  */
 public class CtrlPartida {
+
     private static CtrlPartida ctrl;
-    
+    private ModeloPartida modeloPartida;
+
     private CtrlPartida() {
+        this.modeloPartida = ModeloPartida.getInstance();
     }
 
-    public static CtrlPartida getInstance(){
-        if (ctrl==null) {
-            return ctrl= new CtrlPartida();
+    public static CtrlPartida getInstance() {
+        if (ctrl == null) {
+            return ctrl = new CtrlPartida();
         }
         return ctrl;
     }
-    
+
     public void crearPartida(Partida partida) {
-    
+        this.modeloPartida.crearPartida(partida);
     }
 
     public void iniciarPartida() {
-    
+        this.modeloPartida.iniciarPartida();
     }
 
     public void terminarPartida() {
-    
+        
     }
 }

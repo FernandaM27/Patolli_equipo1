@@ -20,7 +20,7 @@ public class HiloSocket extends Thread {
 
     private Protocolo protocol = new Protocolo(this);
     Socket socket;
-    boolean salir;
+    boolean salir=true;
 
     @Override
     public void run() {
@@ -39,8 +39,8 @@ public class HiloSocket extends Thread {
 
             while (in.readBoolean()) {
                 protocol.processInput(in.readObject());
-                this.run();
             }
+            this.run();
         } catch (IOException ex) {
             Logger.getLogger(HiloSocket.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
