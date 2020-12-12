@@ -15,11 +15,19 @@ public class Apuesta implements Serializable{
     public Apuesta(int cantidad) {
         this.cantidad = cantidad;
     }
-
+    
+    /**
+     * método get que regresa la cantida de apuesta
+     * @return 
+     */
     public int getCantidad() {
         return cantidad;
     }
-
+    
+    /**
+     * método set que asigna la cantidad de la apuesta
+     * @param cantidad 
+     */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }

@@ -67,14 +67,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTittle" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="112" max="32767" attributes="0"/>
+                  <EmptySpace pref="136" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="JPJugador4" min="-2" max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
                       </Group>
                       <Component id="JPJugador2" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="61" max="-2" attributes="0"/>
+                          <Component id="lblTittle" min="-2" pref="61" max="-2" attributes="0"/>
                           <Component id="JPJugador1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -238,7 +238,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblTittle">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Algerian" size="36" style="0"/>
@@ -246,7 +246,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7f" green="cf" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Patolli"/>
           </Properties>
         </Component>
       </SubComponents>

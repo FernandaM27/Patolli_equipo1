@@ -5,6 +5,7 @@
  */
 package frames;
 
+import controles.ControlBase;
 import controles.ControlComoJugar;
 import java.util.Observable;
 import modelos.ModeloComoJugar;
@@ -29,7 +30,7 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
         this.setResizable(false);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.modeloComoJugar = new ModeloComoJugar();
-        this.asignarEventos();
+        this.asignarEventos(ControlComoJugar.getInstance(this));
         this.inicializarComandos();
         this.asignarEtiquetas();
     }
@@ -67,8 +68,8 @@ public class FrmComoJugar extends javax.swing.JFrame implements FrameBase<Contro
     }
 
     @Override
-    public void asignarEventos() {
-        this.btnSalir.addActionListener(ControlComoJugar.getInstance(this));
+    public void asignarEventos(ControlBase control) {
+        this.btnSalir.addActionListener(control);
     }
 
     @SuppressWarnings("unchecked")

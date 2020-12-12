@@ -5,6 +5,7 @@
  */
 package frames;
 
+import controles.ControlBase;
 import controles.ControlngresarPartida;
 import entidades.Jugador;
 import java.awt.Color;
@@ -25,14 +26,16 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
      */
     private static FrmIngresarPartida frmIngresaP;
     private ControlngresarPartida ctrlIngresarPartida;
-
+    private ModeloIngresarPartida modeloIngresarP;
     private FrmIngresarPartida() {
         initComponents();
+        this.modeloIngresarP = new ModeloIngresarPartida();
         this.setLocationRelativeTo(this);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.ctrlIngresarPartida= ControlngresarPartida.getInstance();
         this.setResizable(false);
         this.setVisible(false);
+        this.asignarEtiquetas();
         this.color = null;
     }
     
@@ -57,11 +60,11 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblTittle = new javax.swing.JLabel();
+        lblusername = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblColor = new javax.swing.JLabel();
         btnListo = new javax.swing.JButton();
         btnColor = new javax.swing.JButton();
         checkColor = new javax.swing.JCheckBox();
@@ -77,15 +80,15 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(69, 38, 29), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 207, 127));
-        jLabel3.setText("Ingresar a partida");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        lblTittle.setFont(new java.awt.Font("Algerian", 0, 34)); // NOI18N
+        lblTittle.setForeground(new java.awt.Color(255, 207, 127));
+        lblTittle.setText(" ");
+        jPanel1.add(lblTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Algerian", 0, 29)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(131, 151, 8));
-        jLabel4.setText("Nombre de usuario");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 280, -1));
+        lblusername.setFont(new java.awt.Font("Algerian", 0, 29)); // NOI18N
+        lblusername.setForeground(new java.awt.Color(131, 151, 8));
+        lblusername.setText(" ");
+        jPanel1.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 280, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mm1.PNG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
@@ -94,15 +97,15 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         txtNombre.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 240, 40));
 
-        jLabel5.setFont(new java.awt.Font("Algerian", 0, 28)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(131, 151, 8));
-        jLabel5.setText("Color");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
+        lblColor.setFont(new java.awt.Font("Algerian", 0, 28)); // NOI18N
+        lblColor.setForeground(new java.awt.Color(131, 151, 8));
+        lblColor.setText(" ");
+        jPanel1.add(lblColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
 
         btnListo.setBackground(new java.awt.Color(177, 6, 7));
         btnListo.setFont(new java.awt.Font("Algerian", 0, 26)); // NOI18N
         btnListo.setForeground(new java.awt.Color(247, 180, 93));
-        btnListo.setText("Listo");
+        btnListo.setText(" ");
         btnListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListoActionPerformed(evt);
@@ -110,7 +113,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
         });
         jPanel1.add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 170, -1));
 
-        btnColor.setText("Selecciona el color");
+        btnColor.setText(" ");
         btnColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColorActionPerformed(evt);
@@ -187,7 +190,11 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     
     @Override
     public void asignarEtiquetas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.lblTittle.setText(this.modeloIngresarP.getEtiqueta(0));
+        this.lblusername.setText(this.modeloIngresarP.getEtiqueta(1));
+        this.lblColor.setText(this.modeloIngresarP.getEtiqueta(2));
+        this.btnColor.setText(this.modeloIngresarP.getEtiqueta(3));
+        this.btnListo.setText(this.modeloIngresarP.getEtiqueta(4));
     }
 
     @Override
@@ -196,7 +203,7 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     }
 
     @Override
-    public void asignarEventos() {
+    public void asignarEventos(ControlBase control) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -210,10 +217,10 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     private javax.swing.JButton btnListo;
     private javax.swing.JCheckBox checkColor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblColor;
+    private javax.swing.JLabel lblTittle;
+    private javax.swing.JLabel lblusername;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 

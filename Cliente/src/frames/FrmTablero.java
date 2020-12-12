@@ -5,6 +5,7 @@
  */
 package frames;
 
+import controles.ControlBase;
 import controles.ControlTablero;
 import dibujos.Fachada;
 import dibujos.IDibujoTablero;
@@ -32,7 +33,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.agregarElementoPantalla();
-        
+        this.asignarEtiquetas();
     }
     
     public static FrmTablero getInstance(){
@@ -92,7 +93,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
         JPJugador3 = new javax.swing.JPanel();
         JPJugador2 = new javax.swing.JPanel();
         JPJugador4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTittle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -167,9 +168,8 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jLabel3.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 207, 127));
-        jLabel3.setText("Patolli");
+        lblTittle.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
+        lblTittle.setForeground(new java.awt.Color(255, 207, 127));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,11 +187,11 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(jLabel3))
+                        .addComponent(lblTittle))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(JPJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +213,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
                         .addComponent(jugador3))
                     .addComponent(JPJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTittle, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(JPJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +275,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
 //        }
 //        System.out.println(this.modeloTablero.canias);
 //        return canias;
-//    }
+//    }UnsupportedOperationException
 //
 //    public Integer contarCanias() {
 //        List<Cania> turno = tirarCanias();
@@ -299,7 +299,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
 
     @Override
     public void asignarEtiquetas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.lblTittle.setText(this.modeloTablero.getEtiqueta(0));
     }
 
     @Override
@@ -308,7 +308,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     }
 
     @Override
-    public void asignarEventos() {
+    public void asignarEventos(ControlBase control) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -322,12 +322,12 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     private javax.swing.JPanel JPJugador3;
     private javax.swing.JPanel JPJugador4;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jugador1;
     private javax.swing.JLabel jugador2;
     private javax.swing.JLabel jugador3;
     private javax.swing.JLabel jugador4;
+    private javax.swing.JLabel lblTittle;
     // End of variables declaration//GEN-END:variables
 
 }

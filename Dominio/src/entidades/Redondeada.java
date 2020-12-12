@@ -14,7 +14,10 @@ public class Redondeada extends Casilla implements Serializable {
     public Redondeada(boolean disponible) {
         super(disponible);
     }
-
+    /**
+     * método que regresa los valores del objeto en un string
+     * @return 
+     */
     @Override
     public String toString() {
         return "Redondeada{" + '}';

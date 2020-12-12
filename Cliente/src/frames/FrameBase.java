@@ -18,5 +18,5 @@ import modelos.ModeloBase;
 public interface FrameBase<C,M> extends Observer{
     public void asignarEtiquetas();
     public void asignarComando();
-    public void asignarEventos();
+    public void asignarEventos(ControlBase control);
 }

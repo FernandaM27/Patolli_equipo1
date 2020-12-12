@@ -14,7 +14,10 @@ public class Normal extends Casilla  implements Serializable{
     public Normal(boolean disponible) {
         super(disponible);
     }
-
+    /**
+     * método que nos regresa el valor del objeto en un string
+     * @return 
+     */
     @Override
     public String toString() {
         return "Normal{" + '}';

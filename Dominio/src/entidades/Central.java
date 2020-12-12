@@ -13,7 +13,10 @@ public class Central extends Casilla implements Serializable{
     public Central(boolean disponible) {
         super(disponible);
     }
-
+    /**
+     * método que nos regresa el valor del tipo de casilla en un string
+     * @return 
+     */
     @Override
     public String toString() {
         return "Central{" + '}';

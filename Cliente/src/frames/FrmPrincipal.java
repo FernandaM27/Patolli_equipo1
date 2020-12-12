@@ -5,6 +5,7 @@
  */
 package frames;
 
+import controles.ControlBase;
 import controles.ControlMnuPrincipal;
 import java.util.Observable;
 import modelos.ModeloPrincipal;
@@ -14,7 +15,7 @@ import modelos.ModeloPrincipal;
  * @author fermi
  */
 public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<ControlMnuPrincipal, ModeloPrincipal> {
-    
+
     private static FrmPrincipal frmPrincipal;
     private ModeloPrincipal modeloPrincipal;
 
@@ -27,11 +28,11 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
-        this.inicializarComandos();
+        this.asignarComando();
         this.modeloPrincipal = new ModeloPrincipal();
         this.modeloPrincipal.addObserver(this);
-        this.setEtiquetas();
-        this.agregarActionLisneters(ControlMnuPrincipal.getInstance(this));
+        this.asignarEtiquetas();
+        this.asignarEventos(ControlMnuPrincipal.getInstance(this));
     }
 
     /**
@@ -47,28 +48,8 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
         }
         return null;
     }
+
     
-    private void setEtiquetas() {
-        this.lblTitulo.setText(modeloPrincipal.getEtiquetas().get(0));
-        this.btnCrearPartida.setText(modeloPrincipal.getEtiquetas().get(1));
-        this.btnIngresarPartida.setText(modeloPrincipal.getEtiquetas().get(2));
-        this.btnComoJugar.setText(modeloPrincipal.getEtiquetas().get(3));
-        this.btnSalir.setText(modeloPrincipal.getEtiquetas().get(4));
-    }
-    
-    private void inicializarComandos() {
-        this.btnComoJugar.setActionCommand("Como jugar");
-        this.btnCrearPartida.setActionCommand("CrearPartida");
-        this.btnIngresarPartida.setActionCommand("Ingresar partida");
-        this.btnSalir.setActionCommand("salir");
-    }
-    
-    private void agregarActionLisneters(ControlMnuPrincipal ctrlPrincipal) {
-        this.btnComoJugar.addActionListener(ctrlPrincipal);
-        this.btnCrearPartida.addActionListener(ctrlPrincipal);
-        this.btnIngresarPartida.addActionListener(ctrlPrincipal);
-        this.btnSalir.addActionListener(ctrlPrincipal);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,21 +140,31 @@ public class FrmPrincipal extends javax.swing.JFrame implements FrameBase<Contro
 
     @Override
     public void update(Observable o, Object o1) {
-        this.setEtiquetas();
+        this.asignarEtiquetas();
     }
-    
+
     @Override
     public void asignarEtiquetas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.lblTitulo.setText(modeloPrincipal.getEtiquetas().get(0));
+        this.btnCrearPartida.setText(modeloPrincipal.getEtiquetas().get(1));
+        this.btnIngresarPartida.setText(modeloPrincipal.getEtiquetas().get(2));
+        this.btnComoJugar.setText(modeloPrincipal.getEtiquetas().get(3));
+        this.btnSalir.setText(modeloPrincipal.getEtiquetas().get(4));
     }
-    
+
     @Override
     public void asignarComando() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.btnComoJugar.setActionCommand("Como jugar");
+        this.btnCrearPartida.setActionCommand("CrearPartida");
+        this.btnIngresarPartida.setActionCommand("Ingresar partida");
+        this.btnSalir.setActionCommand("salir");
     }
     
     @Override
-    public void asignarEventos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void asignarEventos(ControlBase control) {
+        this.btnComoJugar.addActionListener(control);
+        this.btnCrearPartida.addActionListener(control);
+        this.btnIngresarPartida.addActionListener(control);
+        this.btnSalir.addActionListener(control);
     }
 }

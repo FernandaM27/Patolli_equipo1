@@ -5,6 +5,7 @@
  */
 package frames;
 
+import controles.ControlBase;
 import controles.ControlCrearPartida;
 import creadorCasillas.CreadorCasillas;
 import entidades.Partida;
@@ -315,7 +316,7 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
     }
 
     @Override
-    public void asignarEventos() {
+    public void asignarEventos(ControlBase control) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

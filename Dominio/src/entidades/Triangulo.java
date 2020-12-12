@@ -13,7 +13,10 @@ public class Triangulo extends Casilla implements Serializable {
     public Triangulo(boolean disponible) {
         super(disponible);
     }
-
+    /**
+     * método que regresa los valores de un string 
+     * @return 
+     */
     @Override
     public String toString() {
         return "Triangulo{" + '}';

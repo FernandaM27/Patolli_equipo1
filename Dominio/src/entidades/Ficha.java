@@ -17,27 +17,46 @@ public class Ficha implements Serializable{
     public Ficha(int orden) {
         this.orden=orden;
     }
-
+    /**
+     * método que nos regresa el jugador que es dueño de la casilla
+     * @return 
+     */
     public Jugador getJugador() {
         return jugador;
     }
-
+    
+    /**
+     * método que asigna el jugador a una ficha
+     * @param jugador 
+     */
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
-
+    /**
+     * método que regresa el color de la ficha
+     * @return 
+     */
     public String getColor() {
         return color;
     }
-
+    /**
+     * método que asigna el color a la ficha
+     * @param color 
+     */
     public void setColor(String color) {
         this.color = color;
     }
-
+    /**
+     * método que retorna el orden de la ficha
+     * @return 
+     */
     public int getOrden() {
         return orden;
     }
-
+    /**
+     * método que nos sirve para asignar orden a la ficha
+     * @param orden 
+     */
     public void setOrden(int orden) {
         this.orden = orden;
     }
