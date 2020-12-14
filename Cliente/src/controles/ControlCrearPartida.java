@@ -42,13 +42,17 @@ public class ControlCrearPartida extends ControlComunicacion{
         }
         return ctrl;
     }
+       
+    public void notificarCliente(){
+        
+    }
     
      /**
      * Método que se encarga de crear la partida 
      * @param partida 
      */
-    public void crearPartida(String ip,Partida partida) {
-        comunicacion.crearPartida(ip,partida);
+    public void crearPartida(Partida partida) {
+        comunicacion.crearPartida(partida);
     }
 
     

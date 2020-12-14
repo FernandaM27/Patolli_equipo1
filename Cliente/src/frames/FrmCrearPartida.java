@@ -244,7 +244,7 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
     }
 
     private void crearPartida(){
-         cCrearPartida.crearPartida("localhost",this.crearInstanciaPartida());
+         cCrearPartida.crearPartida(this.crearInstanciaPartida());
          
     }
     
@@ -257,8 +257,8 @@ public class FrmCrearPartida extends javax.swing.JFrame implements FrameBase<Con
         Tablero tablero = new Tablero(this.getNumCasillas(), cc.crearCasillas(this.getNumCasillas()));
         partida.setTablero(tablero);
         
-        //FrmTablero frmTablero= new FrmTablero(6);
-        //frmTablero.setVisible(true);
+//        FrmTablero frmTablero= new FrmTablero(6);
+//        frmTablero.setVisible(true);
         return partida;
     }
 

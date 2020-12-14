@@ -18,7 +18,7 @@ import modelo.ModeloPartida;
 public class Server{
 
     List<ClienteServer> clientes;
-
+    private Protocolo protocolo;
     /**
      * @param args the command line arguments
      */
@@ -28,6 +28,7 @@ public class Server{
 
     public Server() {
         this.clientes = new ArrayList<>();
+        this.protocolo= new Protocolo(this);
         ServerSocket servidor;
         try {
             servidor = new ServerSocket(4000);
@@ -44,7 +45,14 @@ public class Server{
             System.out.println("Error en Server");
         }
     }
-
+    
+    public void avisarClientes(Object obj) {
+        for (ClienteServer cliente : this.getClientes()) {
+            cliente.avisarCliente(obj);
+            //System.out.println("Innnnngresó");
+        }
+    }
+    
     public List<ClienteServer> getClientes() {
         return clientes;
     }
@@ -59,6 +67,11 @@ public class Server{
         return color == null;
     }
 
+    public void enviarInstancia(Object obj){
+        this.protocolo.manejarEntrada(obj);
+    }
+    
+    
     public String getColor() {
         return this.color;
     }
@@ -66,5 +79,7 @@ public class Server{
     public void setColor(String color) {
         this.color = color;
     }
+    
+    
 
 }

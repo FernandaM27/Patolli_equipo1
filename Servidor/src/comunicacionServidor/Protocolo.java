@@ -40,7 +40,7 @@ public class Protocolo implements Observer {
      *
      * @param input
      */
-    public void processInput(Object input) {
+    public void manejarEntrada(Object input) {
         if (input instanceof Movimiento) {
             Movimiento movimiento = (Movimiento) input;
             this.manejarMovimiento(movimiento);
@@ -64,14 +64,14 @@ public class Protocolo implements Observer {
     public void manejarPartida(Partida partida) {
         fachada.crearPartida(partida);
     }
-
+    
     public void manejarMovimiento(Movimiento movimiento) {
         if(movimiento.getApuesta()!=null){
             fachada.pagarApuesta(movimiento);
         }
         fachada.moverFichas(movimiento);
     }
-
+    
     public void manejarTablero(Tablero tablero) {
 //        fachada.(tablero);
     }
@@ -82,13 +82,7 @@ public class Protocolo implements Observer {
      */
      @Override
     public void update(Observable mPartida, Object mensaje) {
-         if(((String)mensaje).equalsIgnoreCase("partida creada")){
-             try {
-                 this.notificarPartidaCreada("partida creada");
-             } catch (IOException ex) {
-                 Logger.getLogger(Protocolo.class.getName()).log(Level.SEVERE, null, ex);
-             }
-        }
+          this.server.avisarClientes(mPartida);
     }
     
     private void notificarPartidaCreada(String mensaje) throws IOException{

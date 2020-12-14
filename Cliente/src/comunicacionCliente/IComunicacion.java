@@ -14,7 +14,7 @@ import entidades.Partida;
  */
 public interface IComunicacion {        
     
-    public void crearPartida(String ip, Partida partida);    
+    public void crearPartida(Partida partida);    
     
     public void pagarApuesta();
     

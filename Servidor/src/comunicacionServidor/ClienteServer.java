@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author jc
  */
-public class ClienteServer extends Thread{
+public class ClienteServer extends Thread {
 
     private Socket socket;
     private Server server;
@@ -54,9 +54,10 @@ public class ClienteServer extends Thread{
     public void escuchar() {
         try {
             Object obj;
-            while (shouldRun) {                
+            while (shouldRun) {
                 try {
-                    if((obj=in.readObject())!=null){
+                    if ((obj = in.readObject()) != null) {
+
 //                        if(server.consultarColor()){
 //                            Casa casa= (Casa)obj;
 //                            server.setColor(casa.getColor());
@@ -65,7 +66,6 @@ public class ClienteServer extends Thread{
 //                            Casa casa= new Casa(server.getColor());
 //                            this.avisarCliente(casa);
 //                        }
-                        
                     }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteServer.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,9 +82,14 @@ public class ClienteServer extends Thread{
 //    private void notificarServer(Object objet) {
 //        this.server.update(this, objet);
 //    }
-
-    public void notificarCliente(String mensaje) throws IOException {
-        this.out.writeObject(mensaje);
+    
+    public void avisarCliente(Object obj) {
+        try {
+            //out.println(obj.trim().toUpperCase());
+            out.writeObject(obj);
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

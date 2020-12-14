@@ -7,10 +7,12 @@ package controles;
 
 import comunicacionCliente.Comunicacion;
 import comunicacionCliente.IComunicacion;
+import entidades.Partida;
 import frames.FrameBase;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import modelos.ModeloTablero;
 
 /**
  *
@@ -20,12 +22,13 @@ public class ControlComunicacion implements ControlBase {
 
     protected IComunicacion comunicacion;
     private static ControlComunicacion ctrl;
-
+    private ModeloTablero modeloTablero;
     /**
      * método constructor que se encarga de inicializar los valores de la clase
      */
     protected ControlComunicacion() {
         this.comunicacion = new Comunicacion(this);
+        this.modeloTablero= ModeloTablero.getInstance();
     }
 
     /**
@@ -49,7 +52,13 @@ public class ControlComunicacion implements ControlBase {
     public void mostrarPantalla(JFrame frm) {
         frm.setVisible(true);
     }
-
+    
+    public void agregarPartida(Partida partida){
+        this.modeloTablero.setPartida(partida);
+        this.notificar("Partida creada");
+    }
+    
+    
     /**
      * método que se encarga de mostrar un mensaje de error
      *
@@ -70,6 +79,10 @@ public class ControlComunicacion implements ControlBase {
         JOptionPane.showMessageDialog(null, mensaje, "Éxito", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public void recibirPartida(Partida partida){
+        
+    }
+    
     /**
      * método que se encarga de procesar los eventos
      *
@@ -78,6 +91,11 @@ public class ControlComunicacion implements ControlBase {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    }
+
+    @Override
+    public void notificar(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Partida existente", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

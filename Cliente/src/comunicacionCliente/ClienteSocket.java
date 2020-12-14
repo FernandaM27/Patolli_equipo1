@@ -67,12 +67,7 @@ public class ClienteSocket extends Observable implements Runnable {
             }
         }
     }
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String[] args) {
-//     
-//    }
+ 
     /**
      * 
      */
@@ -87,9 +82,10 @@ public class ClienteSocket extends Observable implements Runnable {
 
     
     /*
-     * Se que pidieron quedar en uno pero #FaltaDeTiempo
-     *--------------------------------------------------
-     */
+      Se que pidieron quedar en uno pero #FaltaDeTiempo
+     --------------------------------------------------
+        
+    */
     
     /**
      * Se que

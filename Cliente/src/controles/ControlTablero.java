@@ -48,8 +48,6 @@ public class ControlTablero extends ControlComunicacion{
       * método que se encarga de eliminar un jugador del modeloTablero
       * @param jugador 
       */
-    public void eliminarJugador(Jugador jugador){
-        this.modeloTablero.eliminarJugador(jugador);
-    }
+    
   
 }

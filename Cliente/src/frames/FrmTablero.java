@@ -25,7 +25,7 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     
     private FrmTablero() {
         initComponents();
-        this.modeloTablero= new ModeloTablero();
+        this.modeloTablero= ModeloTablero.getInstance();
         this.modeloTablero.addObserver(this);
         this.dibujadorTablero= new Fachada(modeloTablero.getTablero());
         this.setLocationRelativeTo(null);

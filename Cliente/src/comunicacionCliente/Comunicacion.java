@@ -38,7 +38,7 @@ public class Comunicacion implements IComunicacion, Observer {
      * @return 
      */
     @Override
-    public void crearPartida(String ip, Partida partida) {
+    public void crearPartida(Partida partida) {
         try {
             this.cliente.enviarPartida(partida);
         } catch (IOException ex) {
@@ -55,13 +55,16 @@ public class Comunicacion implements IComunicacion, Observer {
     public void pagarApuesta() {
 
     }
+    
     /**
      * metodo que permite realizar un movimiento y cambiar la ubicación de una ficha
      */
+    
     @Override
     public void realizarMovimiento() {
 
     }
+    
     /**
      * metodo que permite ingresar partida a un jugador
      * @param jugador 
