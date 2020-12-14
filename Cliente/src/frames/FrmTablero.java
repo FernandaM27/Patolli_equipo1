@@ -9,7 +9,16 @@ import controles.ControlBase;
 import controles.ControlTablero;
 import dibujos.Fachada;
 import dibujos.IDibujoTablero;
+import entidades.Apuesta;
+import entidades.Cania;
+import entidades.Jugador;
+import entidades.Movimiento;
+import java.awt.Label;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
+import java.util.Random;
+import javax.swing.JOptionPane;
 import modelos.ModeloTablero;
 
 /**
@@ -22,16 +31,20 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     private ModeloTablero modeloTablero;
     private int i=0;
     private static FrmTablero frmTablero;
+    private Jugador jugador;
+    private ControlTablero ctrlTablero;
     
     private FrmTablero() {
         initComponents();
-        this.modeloTablero= ModeloTablero.getInstance();
-        this.modeloTablero.addObserver(this);
-        this.dibujadorTablero= new Fachada(modeloTablero.getTablero());
+        
         this.setLocationRelativeTo(null);
         this.setTitle("Tablero");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setResizable(false);
+        this.ctrlTablero= new ControlTablero();
+        this.modeloTablero= ModeloTablero.getInstance();
+        this.modeloTablero.addObserver(FrmTablero.getInstance());
+        this.dibujadorTablero= new Fachada(modeloTablero.getTablero());
         this.agregarElementoPantalla();
         this.asignarEtiquetas();
     }
@@ -49,26 +62,14 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
     }
                 
     public void agregarInfoJugadores(){
-//        
-//        for(Jugador jugador: modeloTablero.getJugadores()){
-//            
-//        }
+        ArrayList<Jugador>jugadores=(ArrayList<Jugador>) modeloTablero.getPartida().getJugadores();
+        this.JPJugador1.add(new Label(jugadores.get(0).getNombre()));
+        this.JPJugador2.add(new Label(jugadores.get(1).getNombre()));
+        this.JPJugador3.add(new Label(jugadores.get(2).getNombre()));
+        this.JPJugador4.add(new Label(jugadores.get(3).getNombre()));
+        
     } 
     
-//    private JPanel obtenerPanel(){
-//        switch(i){
-//            case 0:
-//                return this.jPanel1;
-//                break;
-//            case 1:
-//                break;
-//            case 2:
-//                break;
-//            case 3:
-//                break;
-//        }
-//        return null;
-//    }
     private void agregarFicha() {
 //        canvas.agregarFichas(new Ficha(1),1);
 //        canvas.agregarFichas(new Ficha(2),2);
@@ -255,47 +256,62 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
         this.tirarCanias();
      }//GEN-LAST:event_jButton2ActionPerformed
     private void tirarCanias(){
-        //agregar metodo para tirar cania Logica
-        //Ctrl
+        Integer resultado = this.resultadoTurno();
+        mostrarResultado(resultado);
+        Integer mover= preguntarCualMover();
+        moverFichaSeleccionada(0, resultado);
     }
     
-    private void agregarJugadores(){
-        
+    
+    public void mostrarResultado(Integer resultado){
+            JOptionPane.showMessageDialog(this, "El resulado es: "+resultado);
     }
     
+    public void moverFichaSeleccionada(Integer i, Integer r){
+        Movimiento mov= new Movimiento();
+        mov.setCantidad(r);
+        mov.setFicha(jugador.getFicha(0));
+        this.ctrlTablero.movimientoRealizado(mov);
+    }
+    
+    public Integer preguntarCualMover(){
+        return Integer.parseInt(JOptionPane.showInputDialog(this));
+    }
     /**
      * Crear metodo en el control para avisar a los demás jugadores
      * cuidar que los metodos que modifiquen el modelo pasen por el control y directo al modelo, para respetar el estilo.
+     * @return 
      */
-//    public List<Cania> tirarCanias() {
-//        Random rd = new Random();
-//        for (int i = 0; i < 5; i++) {
-//            Boolean b= rd.nextBoolean();            
-//            this.modeloTablero.canias.add(new Cania(b));
-//        }
-//        System.out.println(this.modeloTablero.canias);
-//        return canias;
-//    }UnsupportedOperationException
-//
-//    public Integer contarCanias() {
-//        List<Cania> turno = tirarCanias();
-//        Integer contador = 0;
-//        for (Cania b : turno) {
-//            if (b.getValor() == true) {
-//                contador++;
-//            }
-//        }
-//        return contador;
-//    }
+    public List<Cania> tirarCaniasBooleanas() {
+        Random rd = new Random();
+        for (int i = 0; i < 5; i++) {
+            Boolean b= rd.nextBoolean();            
+            this.modeloTablero.agregarCania(new Cania(b));
+        }
+        //System.out.println(this.modeloTablero.canias);
+        return modeloTablero.getPartida().getCanias();
+    }
 
-//    public Integer resultadoTurno() {
-//        Integer numCanias = contarCanias();
-//        if (numCanias == 5) {
-//            return 10;
-//        } else {
-//            return numCanias;
-//        }
-////    }
+    public Integer contarCanias() {
+        List<Cania> turno = tirarCaniasBooleanas();
+        Integer contador = 0;
+        for (Cania b : turno) {
+            if (b.getValor() == true) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    public Integer resultadoTurno() {
+        Integer numCanias = contarCanias();
+        if (numCanias == 5) {
+            return 10;
+        } else {
+            return numCanias;
+        }
+    }
+    
 
     @Override
     public void asignarEtiquetas() {
@@ -304,17 +320,17 @@ public class FrmTablero extends javax.swing.JFrame implements FrameBase<ControlT
 
     @Override
     public void asignarComando() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //No fueron necesarios
     }
 
     @Override
     public void asignarEventos(ControlBase control) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //No fueron necesarios
     }
 
     @Override
     public void update(Observable arg0, Object arg1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.agregarElementoPantalla();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPJugador1;

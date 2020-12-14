@@ -6,6 +6,7 @@
 package comunicacionCliente;
 
 import entidades.Jugador;
+import entidades.Movimiento;
 import entidades.Partida;
 
 /**
@@ -18,7 +19,7 @@ public interface IComunicacion {
     
     public void pagarApuesta();
     
-    public void realizarMovimiento();
+    public void realizarMovimiento(Movimiento movimiento);
     
     public void ingresarPartida(Jugador jugador);
     

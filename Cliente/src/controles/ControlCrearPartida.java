@@ -5,6 +5,7 @@
  */
 package controles;
 
+import comunicacionCliente.Comunicacion;
 import entidades.Partida;
 import frames.FrmCrearPartida;
 import frames.FrmIngresarPartida;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ControlCrearPartida extends ControlComunicacion{
     
-    private FrmCrearPartida fCrearPartida;
+    //private FrmCrearPartida fCrearPartida;
     private FrmIngresarPartida fIngresarPartida;
     private static ControlCrearPartida ctrl;
    /**
@@ -26,8 +27,10 @@ public class ControlCrearPartida extends ControlComunicacion{
      * @param crear 
      */
     private ControlCrearPartida(FrmCrearPartida crear) {
-        this.fCrearPartida = crear;
-        this.fIngresarPartida = FrmIngresarPartida.getInstance();
+        //this.fCrearPartida = crear;
+       // this.fIngresarPartida = FrmIngresarPartida.getInstance();
+        this.setId(1);
+        ((Comunicacion)super.comunicacion).setCtrlCrearPartida(ctrl);
     }
     
     

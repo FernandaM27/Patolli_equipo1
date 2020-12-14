@@ -23,11 +23,12 @@ public class ControlComunicacion implements ControlBase {
     protected IComunicacion comunicacion;
     private static ControlComunicacion ctrl;
     private ModeloTablero modeloTablero;
+    private int id;
     /**
      * método constructor que se encarga de inicializar los valores de la clase
      */
     protected ControlComunicacion() {
-        this.comunicacion = new Comunicacion(this);
+        this.comunicacion = (Comunicacion)Comunicacion.getInstance();
         this.modeloTablero= ModeloTablero.getInstance();
     }
 
@@ -98,4 +99,12 @@ public class ControlComunicacion implements ControlBase {
         JOptionPane.showMessageDialog(null, mensaje, "Partida existente", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+   
 }

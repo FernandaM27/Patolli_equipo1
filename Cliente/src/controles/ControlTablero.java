@@ -7,6 +7,7 @@ package controles;
 
 import entidades.Jugador;
 import entidades.Movimiento;
+import entidades.Partida;
 import java.awt.event.ActionEvent;
 import modelos.ModeloTablero;
 
@@ -24,6 +25,7 @@ public class ControlTablero extends ControlComunicacion{
     private void tirarCanias(){
         super.comunicacion.notificarTurno();
         //this.modeloTablero.setCanias(canias);
+        this.setId(3);
     }
     
     /**
@@ -49,5 +51,11 @@ public class ControlTablero extends ControlComunicacion{
       * @param jugador 
       */
     
-  
+    public void actualizarPartida(Partida partida){
+        modeloTablero.setPartida(partida);
+    }
+    
+    public void movimientoRealizado(Movimiento movimiento){
+        super.comunicacion.realizarMovimiento(movimiento);
+    }
 }

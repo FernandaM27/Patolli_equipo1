@@ -9,7 +9,7 @@ public class Partida implements Serializable{
 
     private static final long serialVersionUID = 3931645525716260135L;
     
-    private final List<Cania> canias;
+    private List<Cania> canias;
     private int numeroJugadores;
     private int numeroFichas;
     private int montoApuestas;
@@ -85,6 +85,14 @@ public class Partida implements Serializable{
 
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
+    }
+
+    public List<Cania> getCanias() {
+        return canias;
+    }
+
+    public void setCania(Cania canias) {
+        this.canias.add(canias);
     }
     
     

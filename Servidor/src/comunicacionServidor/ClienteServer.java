@@ -66,6 +66,7 @@ public class ClienteServer extends Thread {
 //                            Casa casa= new Casa(server.getColor());
 //                            this.avisarCliente(casa);
 //                        }
+                          server.enviarInstancia(obj);
                     }
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClienteServer.class.getName()).log(Level.SEVERE, null, ex);

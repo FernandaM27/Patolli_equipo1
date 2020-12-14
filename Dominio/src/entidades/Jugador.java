@@ -70,6 +70,10 @@ public class Jugador implements Serializable{
     public ArrayList<Ficha> getFichas() {
         return fichas;
     }
+    
+    public Ficha getFicha(int i) {
+        return fichas.get(i);
+    }
     /**
      * método que asigna las fichas que perteneceran a un jugador
      * @param fichas 

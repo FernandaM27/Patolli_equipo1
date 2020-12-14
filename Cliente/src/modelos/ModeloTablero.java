@@ -5,6 +5,7 @@
  */
 package modelos;
 
+import entidades.Cania;
 import entidades.Casilla;
 import entidades.Partida;
 import entidades.Tablero;
@@ -93,8 +94,15 @@ public class ModeloTablero extends ModeloBase {
 
     public void setPartida(Partida partida) {
         this.partida = partida;
+        this.setChanged();
+        this.notifyObservers("Actualizado");
+    }
+    
+    public void agregarCania(Cania cania){
+        this.partida.setCania(cania);
     }
  
+    
     /**
      * le asigna los valores a la lista de etiquetas heredada de modeloBase y
      * corresponden al frame s

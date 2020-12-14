@@ -6,8 +6,13 @@
 package comunicacionCliente;
 
 import controles.ControlComunicacion;
+import controles.ControlCrearPartida;
+import controles.ControlIngresarPartida;
+import controles.ControlTablero;
 import entidades.Jugador;
+import entidades.Movimiento;
 import entidades.Partida;
+import frames.FrmIngresarPartida;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -19,18 +24,30 @@ import java.util.logging.Logger;
  * @author jc
  */
 public class Comunicacion implements IComunicacion, Observer {
-
+    
+    private static Comunicacion comunicacion;
+    
     private ClienteSocket cliente;
 
-    private ControlComunicacion ctrlComunicacion;
+    private ControlCrearPartida ctrlCrearPartida;
+    private ControlIngresarPartida ctrlIngresarPartida;
+    private ControlTablero ctrlTablero;
+    public int envio; 
     /**
      * metodo constructor que se encarga de inicializar controlComunicacion
      * @param comunicacion 
      */
-    public Comunicacion(ControlComunicacion comunicacion) {
-        this.ctrlComunicacion = comunicacion;
+    private Comunicacion() {
         this.cliente = new ClienteSocket(this);
+        System.out.println("entre");
         new Thread(this.cliente).start();
+    }
+    
+    public static Comunicacion getInstance(){
+        if(comunicacion == null){
+            comunicacion = new Comunicacion();
+        }
+        return comunicacion;
     }
     /**
      * método que se encarga de crear una partida 
@@ -41,6 +58,8 @@ public class Comunicacion implements IComunicacion, Observer {
     public void crearPartida(Partida partida) {
         try {
             this.cliente.enviarPartida(partida);
+            envio=1;
+            System.out.println("id"+envio);
         } catch (IOException ex) {
             Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,8 +80,12 @@ public class Comunicacion implements IComunicacion, Observer {
      */
     
     @Override
-    public void realizarMovimiento() {
-
+    public void realizarMovimiento(Movimiento movimiento) {
+        try {
+            this.cliente.enviarMovimiento(movimiento);
+        } catch (IOException ex) {
+            Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -71,15 +94,28 @@ public class Comunicacion implements IComunicacion, Observer {
      */
     @Override
     public void ingresarPartida(Jugador jugador) {
-
+        envio=2;
+        try {
+            this.cliente.enviarJugador(jugador);
+        } catch (IOException ex) {
+            Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * metodo que permite actualiza el modelo
      */
     @Override
     public void actualizarModelo(Partida partida) {
-        //Enviar al modelo
-        //this.ctrlComunicacion
+        if(envio==1){
+            //this.ctrlCrearPartida.mostrarExito("Se ha creado una partida");
+            //this.ctrlCrearPartida.mostrarPantalla(FrmIngresarPartida.getInstance());
+        }else if(envio ==2){
+           //this.ctrlCrearPartida.mostrarExito(mensaje);
+            System.out.println("HOla");
+        }else if(envio == 3){
+            //this.ctrlCrearPartida.mostrarExito(mensaje);
+            System.out.println("Adios");
+        }
     }
     /**
      * metodo que permite notificar el turno en momento
@@ -94,7 +130,8 @@ public class Comunicacion implements IComunicacion, Observer {
      */
     @Override
     public void notificarCliente(String mensaje) {
-        this.ctrlComunicacion.mostrarExito(mensaje);
+        
+        //this.ctrlComunicacion.mostrarExito(mensaje);
     }
     /**
      * método que permite actualizar los objetos observados
@@ -106,4 +143,53 @@ public class Comunicacion implements IComunicacion, Observer {
         
     }
 
+    public static Comunicacion getComunicacion() {
+        return comunicacion;
+    }
+
+    public static void setComunicacion(Comunicacion comunicacion) {
+        Comunicacion.comunicacion = comunicacion;
+    }
+
+    public ClienteSocket getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteSocket cliente) {
+        this.cliente = cliente;
+    }
+
+    public ControlCrearPartida getCtrlCrearPartida() {
+        return ctrlCrearPartida;
+    }
+
+    public void setCtrlCrearPartida(ControlCrearPartida ctrlCrearPartida) {
+        this.ctrlCrearPartida = ctrlCrearPartida;
+    }
+
+    public ControlIngresarPartida getCtrlIngresarPartida() {
+        return ctrlIngresarPartida;
+    }
+
+    public void setCtrlIngresarPartida(ControlIngresarPartida ctrlIngresarPartida) {
+        this.ctrlIngresarPartida = ctrlIngresarPartida;
+    }
+
+    public ControlTablero getCtrlTablero() {
+        return ctrlTablero;
+    }
+
+    public void setCtrlTablero(ControlTablero ctrlTablero) {
+        this.ctrlTablero = ctrlTablero;
+    }
+
+    public int getEnvio() {
+        return envio;
+    }
+
+    public void setEnvio(int envio) {
+        this.envio = envio;
+    }
+
+    
 }

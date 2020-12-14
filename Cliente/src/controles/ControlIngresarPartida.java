@@ -13,27 +13,32 @@ import java.awt.event.ActionEvent;
  *
  * @author Alfon
  */
-public class ControlngresarPartida extends ControlComunicacion implements ControlBase{
+public class ControlIngresarPartida extends ControlComunicacion implements ControlBase{
     
     private FrmTablero frmTablero=null;
-    private static ControlngresarPartida ctrl;
+    private static ControlIngresarPartida ctrl;
     /**
      * método constructor que se encarga de incializar frmTablero
      */
     
-    private ControlngresarPartida() {
+    private ControlIngresarPartida() {
         this.frmTablero= FrmTablero.getInstance();
+        this.setId(2);
     }
     
     /**
      * método singleton que regresa la instancia de controlPartida
      * @return 
      */
-    public static ControlngresarPartida getInstance(){
+    public static ControlIngresarPartida getInstance(){
         if (ctrl==null) {
-            return ctrl= new ControlngresarPartida();
+            return ctrl= new ControlIngresarPartida();
         }
         return ctrl;
+    }
+    
+    public void ingresarJugador(Jugador jugador){
+        super.comunicacion.ingresarPartida(jugador);
     }
 
     /**

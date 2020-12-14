@@ -6,7 +6,7 @@
 package frames;
 
 import controles.ControlBase;
-import controles.ControlngresarPartida;
+import controles.ControlIngresarPartida;
 import entidades.Jugador;
 import java.awt.Color;
 import java.util.Observable;
@@ -18,21 +18,21 @@ import modelos.ModeloIngresarPartida;
  *
  * @author fermi
  */
-public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<ControlngresarPartida, ModeloIngresarPartida> {
+public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<ControlIngresarPartida, ModeloIngresarPartida> {
 
     private Color color;
     /**
      * Creates new form FrmIngresar
      */
     private static FrmIngresarPartida frmIngresaP;
-    private ControlngresarPartida ctrlIngresarPartida;
+    private ControlIngresarPartida ctrlIngresarPartida;
     private ModeloIngresarPartida modeloIngresarP;
     private FrmIngresarPartida() {
         initComponents();
         this.modeloIngresarP = new ModeloIngresarPartida();
         this.setLocationRelativeTo(this);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.ctrlIngresarPartida= ControlngresarPartida.getInstance();
+        this.ctrlIngresarPartida= ControlIngresarPartida.getInstance();
         this.setResizable(false);
         this.setVisible(false);
         this.asignarEtiquetas();
@@ -42,10 +42,8 @@ public class FrmIngresarPartida extends javax.swing.JFrame implements FrameBase<
     public static FrmIngresarPartida getInstance() {
         if (frmIngresaP == null) {
             return frmIngresaP = new FrmIngresarPartida();
-        } else if (frmIngresaP != null) {
-            return frmIngresaP;
-        }
-        return null;
+        } 
+        return frmIngresaP;
     }
 
     

@@ -31,7 +31,7 @@ public class Server{
         this.protocolo= new Protocolo(this);
         ServerSocket servidor;
         try {
-            servidor = new ServerSocket(4000);
+            servidor = new ServerSocket(4444);
             System.out.println("Listo para conectarse......");
             while (true) {
                 Socket cliente = new Socket();
@@ -49,6 +49,7 @@ public class Server{
     public void avisarClientes(Object obj) {
         for (ClienteServer cliente : this.getClientes()) {
             cliente.avisarCliente(obj);
+            System.out.println("simón");
             //System.out.println("Innnnngresó");
         }
     }

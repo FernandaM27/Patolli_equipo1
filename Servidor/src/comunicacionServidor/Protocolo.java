@@ -82,7 +82,7 @@ public class Protocolo implements Observer {
      */
      @Override
     public void update(Observable mPartida, Object mensaje) {
-          this.server.avisarClientes(mPartida);
+          this.server.avisarClientes(mensaje);
     }
     
     private void notificarPartidaCreada(String mensaje) throws IOException{
