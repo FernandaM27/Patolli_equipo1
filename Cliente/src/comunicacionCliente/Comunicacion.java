@@ -29,7 +29,7 @@ public class Comunicacion implements IComunicacion, Observer {
      */
     public Comunicacion(ControlComunicacion comunicacion) {
         this.ctrlComunicacion = comunicacion;
-        this.cliente = new ClienteSocket("localhost", this);
+        this.cliente = new ClienteSocket(this);
         new Thread(this.cliente).start();
     }
     /**
@@ -40,11 +40,14 @@ public class Comunicacion implements IComunicacion, Observer {
     @Override
     public void crearPartida(String ip, Partida partida) {
         try {
-            this.cliente.enviar(partida);
+            this.cliente.enviarPartida(partida);
         } catch (IOException ex) {
             Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //Agregar Metodos clienteSockets
+    
+    
     /**
      * metodo que se permite el pagar apuesta
      */
@@ -71,8 +74,9 @@ public class Comunicacion implements IComunicacion, Observer {
      * metodo que permite actualiza el modelo
      */
     @Override
-    public void actualizarModelo() {
-
+    public void actualizarModelo(Partida partida) {
+        //Enviar al modelo
+        //this.ctrlComunicacion
     }
     /**
      * metodo que permite notificar el turno en momento

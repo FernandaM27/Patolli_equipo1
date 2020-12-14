@@ -44,7 +44,7 @@ public class Fachada implements IControl {
     }
 
     @Override
-    public void apuestaRealizada(Apuesta apuesta) {
+    public void pagarApuesta(Movimiento apuesta) {
         this.ctrlMovimiento.apuestaRealizada(apuesta);
     }
 

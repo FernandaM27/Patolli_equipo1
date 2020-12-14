@@ -22,7 +22,7 @@ public interface IComunicacion {
     
     public void ingresarPartida(Jugador jugador);
     
-    public void actualizarModelo();
+    public void actualizarModelo(Partida partida);
     
     public void notificarTurno();
     

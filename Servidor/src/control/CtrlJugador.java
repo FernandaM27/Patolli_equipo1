@@ -28,11 +28,11 @@ public class CtrlJugador {
     }
     
     public void agregarJugador(Jugador jugador) {
-        this.modeloPartida.addJugador(jugador);
+        this.modeloPartida.agregarJugador(jugador);
      }
 
     public void eliminarJugador(Jugador jugador) {
-        this.modeloPartida.deleteJugador(jugador);
+        this.modeloPartida.eliminarDatosJugador(jugador);
      }
 
 }

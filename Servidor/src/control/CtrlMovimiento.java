@@ -45,11 +45,11 @@ public class CtrlMovimiento {
 
     public void eliminarFicha(Casilla casilla) {
         if(!casilla.isDisponible()){
-            modeloPartida.eliminarFicha(casilla);
+            this.modeloPartida.eliminarFicha(casilla);
         }
     }
 
-    public void apuestaRealizada(Apuesta apuesta) {
-
+    public void apuestaRealizada(Movimiento movimiento) {
+        this.modeloPartida.pagarApuesta(movimiento.getFicha().getJugador(), movimiento.getApuesta());
     }
 }

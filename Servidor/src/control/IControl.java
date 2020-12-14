@@ -19,7 +19,7 @@ public interface IControl {
     public void moverFichas(Movimiento movimiento);
     public void tirarCanias(int resultado);
     public void eliminarFicha(Ficha ficha);
-    public void apuestaRealizada(Apuesta apuesta);
+    public void pagarApuesta(Movimiento apuesta);
     public void agregarJugador(Jugador jugador);
     public void eliminarJugador(Jugador jugador);
     public void crearPartida(Partida partida);

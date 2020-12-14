@@ -14,11 +14,13 @@ public class Partida implements Serializable{
     private int numeroFichas;
     private int montoApuestas;
     private Tablero tablero;
+    private List<Jugador>jugadores;
     /**
      * método constructor de la partida que crea un arraylist de cañas
      */
     public Partida() {
         canias = new ArrayList<>(5);
+        jugadores = new ArrayList<>();
     }
     /**
      * método que regresa el tablero de la partida
@@ -76,6 +78,16 @@ public class Partida implements Serializable{
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
     }
+
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+    
+    
     /**
      * método que regresa los valores de la partida en un string
      * @return 

@@ -5,6 +5,8 @@
  */
 package comunicacionCliente;
 
+import entidades.Jugador;
+import entidades.Movimiento;
 import entidades.Partida;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -23,15 +25,14 @@ public class ClienteSocket extends Observable implements Runnable {
     private ObjectInputStream in;
     private ObjectOutputStream out;
     private Socket cliente;
-    private String ip;
+    private String ip = "localhost";
     private Comunicacion comunicacion;
     /**
      * 
      * @param ip
      * @param comunicacion 
      */
-    public ClienteSocket(String ip, Comunicacion comunicacion) {
-        this.ip = ip;
+    public ClienteSocket(Comunicacion comunicacion) {
         this.comunicacion = comunicacion;
     }
     /**ç
@@ -39,30 +40,30 @@ public class ClienteSocket extends Observable implements Runnable {
      * @param ip
      * @throws IOException 
      */
-    public void conectar(String ip) throws IOException {
+    public void conectar() throws IOException {
         if (this.cliente == null) {
             this.cliente = new Socket(ip, 4444);
             out = new ObjectOutputStream(cliente.getOutputStream());
             in = new ObjectInputStream(cliente.getInputStream());
             Object object = null;
-            try {
-                object = in.readObject();
-            } catch (Exception e) {
-                System.out.println("Error al leer");
-            }
-            if (object != null) {
-                comunicacion.notificarCliente((String) object);
-            }
+//            try {
+//                object = in.readObject();
+//            } catch (Exception e) {
+//                System.out.println("Error al leer");
+//            }
+//            if (object != null) {
+//                comunicacion.notificarCliente((String) object);
+//            }
         }
         while (true) {
             try {
-                Object obj;
-                if ((obj = in.readObject()) != null) {
+                Partida partida;
+                if ((partida = (Partida)in.readObject()) != null) {
                     //usar el update
-                    this.comunicacion.notificarCliente((String)obj);
+                    this.comunicacion.actualizarModelo(partida);
                 }
             } catch (Exception e) {
-                System.out.println("ERRROR al conectar");
+                System.out.println("Error al escuchar");
             }
         }
     }
@@ -78,16 +79,40 @@ public class ClienteSocket extends Observable implements Runnable {
     @Override
     public void run() {
         try {
-            this.conectar(ip);
+            this.conectar();
         } catch (IOException ex) {
             Logger.getLogger(ClienteSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void enviar(Partida partida) throws IOException {
+    
+    /*
+     * Se que pidieron quedar en uno pero #FaltaDeTiempo
+     *--------------------------------------------------
+     */
+    
+    /**
+     * Se que
+     * @param partida
+     * @throws IOException 
+     */
+    public void enviarPartida(Partida partida) throws IOException {
         if (cliente.isConnected()) {
             out.writeObject(partida);
         }
     }
+    
+    public void enviarMovimiento(Movimiento movimiento) throws IOException {
+        if (cliente.isConnected()) {
+            out.writeObject(movimiento);
+        }
+    }
+    
+    public void enviarJugador(Jugador jugador) throws IOException {
+        if (cliente.isConnected()) {
+            out.writeObject(jugador);
+        }
+    }
+    
 
 }

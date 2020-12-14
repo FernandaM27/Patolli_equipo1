@@ -9,7 +9,7 @@ public class Jugador implements Serializable{
 
     private String nombre;
     private String color;
-    private int monto;
+    private int fondos;
     private ArrayList<Ficha> fichas;
 
     /**
@@ -53,15 +53,15 @@ public class Jugador implements Serializable{
      * metodo que regresa el monto para apostar a un jugador
      * @return 
      */
-    public int getMonto() {
-        return monto;
+    public int getFondos() {
+        return fondos;
     }
     /**
      * método que asigna el valor para apostar a un jugador
      * @param monto 
      */
-    public void setMonto(int monto) {
-        this.monto = monto;
+    public void setFondos(int fondos) {
+        this.fondos = fondos;
     }
     /**
      * método que regresa las fichas de un jugador

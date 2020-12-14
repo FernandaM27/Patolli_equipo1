@@ -11,6 +11,7 @@ import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
@@ -21,12 +22,12 @@ import java.util.Observable;
 public class ModeloPartida extends Observable {
 
     private Partida partida;
-    private List<Jugador> jugadores;
     private static ModeloPartida modeloPartida;
     private String estado;
+    private List<Jugador> turnos;
     
     private ModeloPartida() {
-        this.jugadores = new ArrayList<>();
+        this.turnos= new LinkedList<>();
     }
 
     public static ModeloPartida getInstance() {
@@ -42,21 +43,22 @@ public class ModeloPartida extends Observable {
         }return true;
     }
 
-    public void addJugador(Jugador jugador) {
+    public void agregarJugador(Jugador jugador) {
         if (this.partidaCreada()) {
-            jugadores.add(jugador);
+            partida.getJugadores().add(jugador);
+            turnos.add(jugador);
             super.setChanged();
-            super.notifyObservers("jugadorAgregado");
+            super.notifyObservers(this.partida);
         } else {
             super.notifyObservers("PartidaNoExistente");
         }
     }
 
-    public void deleteJugador(Jugador jugador) {
+    public void eliminarDatosJugador(Jugador jugador) {
         if (this.partidaCreada()) {
-            jugadores.remove(jugador);
+             partida.getJugadores().remove(jugador);
             super.setChanged();
-            super.notifyObservers("jugadorEliminado");
+            super.notifyObservers(this.partida);
         } else {
             super.notifyObservers("PartidaNoExistente");
         }
@@ -64,21 +66,19 @@ public class ModeloPartida extends Observable {
     }
     
     public void crearPartida(Partida partida){
-        System.out.println(partida);
         if (!this.partidaCreada()) {
             this.partida=partida;
             this.estado="listo";
             System.out.println("se creo con éxito");
             super.setChanged();
-            super.notifyObservers("partida creada");
-            
+            super.notifyObservers(partida);
         } else{
             super.notifyObservers("Ya hay una partida creada");
         }
     }
    
     public void iniciarPartida(){
-        if (!this.partidaCreada() && this.partida.getNumeroJugadores()==this.jugadores.size()) {
+        if (!this.partidaCreada() && this.partida.getNumeroJugadores()== partida.getJugadores().size()) {
             this.estado="iniciado";
             super.setChanged();
             super.notifyObservers("partida inicializada");
@@ -88,20 +88,26 @@ public class ModeloPartida extends Observable {
     }
     
     public void pagarApuesta(Jugador jugador, Apuesta apuesta){
-        int i=this.jugadores.indexOf(jugador);
+        int i= partida.getJugadores().indexOf(jugador);
         if(i!=-1){
-            Jugador j = this.jugadores.get(i);
-            j.setMonto(j.getMonto()-apuesta.getCantidad());
-            this.validarFondos(j);
+            if(validarFondos(jugador, apuesta.getCantidad())){
+                jugador.setFondos(jugador.getFondos()-apuesta.getCantidad());
+            }else{
+                eliminarDatosJugador(jugador);
+                super.notifyObservers();
+            }
         }
     }
     
-    private void validarFondos(Jugador j){
-        if(j.getMonto()<=0){
-            this.jugadores.remove(j);
-            this.setChanged();
-            this.notifyObservers("Jugador eliminado");
+    private void actualizarJugador(){
+        
+    }
+    
+    private boolean validarFondos(Jugador j, int apuesta){
+        if(j.getFondos()-apuesta<=0){
+            return false;
         }
+        return true;
     }
     
     public void tirarCanias(int resultado){
@@ -112,4 +118,5 @@ public class ModeloPartida extends Observable {
     public void eliminarFicha(Casilla casilla){
        // t//his.ta
     }
+    
 }

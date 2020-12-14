@@ -9,6 +9,8 @@ public class Movimiento implements Serializable {
     private Apuesta apuesta;
 
     private Ficha ficha;
+    
+    private int cantidad;
     /**
      * constructor vacio de movimiento
      */
@@ -18,10 +20,12 @@ public class Movimiento implements Serializable {
      * Construcor con los parametros de apuesta y ficha para asignar
      * @param apuesta
      * @param ficha 
+     * @param cantidad 
      */
-    public Movimiento(Apuesta apuesta, Ficha ficha) {
+    public Movimiento(Apuesta apuesta, Ficha ficha, int cantidad) {
         this.apuesta = apuesta;
         this.ficha = ficha;
+        this.cantidad= cantidad;
     }
     /**
      * método que nos regresa la apuesta del movimiento
@@ -52,4 +56,13 @@ public class Movimiento implements Serializable {
         this.ficha = ficha;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    
 }

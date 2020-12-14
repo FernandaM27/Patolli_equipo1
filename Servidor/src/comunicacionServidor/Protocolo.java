@@ -52,6 +52,7 @@ public class Protocolo implements Observer {
             this.manejarJugador(jugador);
         } else if (input instanceof Tablero) {
             Tablero tablero = (Tablero) input;
+            // Sino se ocupa Remover
         }
 
     }
@@ -65,7 +66,9 @@ public class Protocolo implements Observer {
     }
 
     public void manejarMovimiento(Movimiento movimiento) {
-        //Verificar que hacer
+        if(movimiento.getApuesta()!=null){
+            fachada.pagarApuesta(movimiento);
+        }
         fachada.moverFichas(movimiento);
     }
 
@@ -89,6 +92,6 @@ public class Protocolo implements Observer {
     }
     
     private void notificarPartidaCreada(String mensaje) throws IOException{
-        this.server.notificarCliente(mensaje);
+       // this.server.notificarCliente(mensaje);
     }
 }
